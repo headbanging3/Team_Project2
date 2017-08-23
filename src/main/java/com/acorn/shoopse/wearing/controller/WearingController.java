@@ -20,14 +20,8 @@ public class WearingController {
 	@Autowired
 	private WearingService wearingService;
 
-	@RequestMapping("/manager/insertformagency")
-	public ModelAndView insertformAgency(){
-		ModelAndView mView = new ModelAndView();
-		mView.setViewName("manager/insertform_warehousing");
-		return mView;
-	}
 	
-	@RequestMapping("manager/insertagency")
+	@RequestMapping("manager/insertwarehousing")
 	public String insert(@ModelAttribute WearingDto dto){
 		wearingService.insert(dto);
 		return "redirect:warehousing.do";
@@ -36,7 +30,7 @@ public class WearingController {
 	@RequestMapping("manager/warehousing")
 	public ModelAndView getList(){
 		ModelAndView mView=wearingService.getList();
-		mView.setViewName("manager/agency_list");
+		mView.setViewName("manager/warehousing_list");
 		return mView;
 	}
 }

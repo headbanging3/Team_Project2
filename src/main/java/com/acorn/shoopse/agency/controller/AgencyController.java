@@ -37,6 +37,13 @@ public class AgencyController {
 		mView.setViewName("manager/agency_list");
 		return mView;
 	}
+
+	@RequestMapping("/manager/insertformwarehousing")
+	public ModelAndView insertformWarehousing(){
+		ModelAndView mView = agencyService.getList();
+		mView.setViewName("manager/insertform_warehousing");
+		return mView;
+	}
 }
 
 
