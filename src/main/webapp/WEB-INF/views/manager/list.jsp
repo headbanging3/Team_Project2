@@ -72,7 +72,7 @@
 		</c:choose>
 		<tr class="${color }">
 			<td>${tmp.mem_num }</td>
-			<td>${tmp.classification }</td>
+			<td>${tmp.mem_flag }</td>
 			<td>${tmp.id }</td>
 			<td>${tmp.pwd }</td>
 			<td>${tmp.name }</td>
