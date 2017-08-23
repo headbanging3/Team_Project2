@@ -28,6 +28,7 @@
 	<thead>
 		<tr class="info">
 			<th>#</th>
+			<th>회원구분</th>
 			<th>아이디</th>
 			<th>비밀번호</th>
 			<th>이름</th>
@@ -35,6 +36,7 @@
 			<th>이메일</th>
 			<th>주소</th>
 			<th>가입날짜</th>
+			<th>마일리지</th>
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
@@ -70,6 +72,7 @@
 		</c:choose>
 		<tr class="${color }">
 			<td>${tmp.mem_num }</td>
+			<td>${tmp.classification }</td>
 			<td>${tmp.id }</td>
 			<td>${tmp.pwd }</td>
 			<td>${tmp.name }</td>
@@ -77,6 +80,7 @@
 			<td>${tmp.email }</td>
 			<td>${tmp.addr }</td>
 			<td>${tmp.regdate }</td>
+			<td>${tmp.point }</td>
 			<td><a href="updateform.do?mem_num=${tmp.mem_num}">수정</a></td>
 			<td><a href="delete.do?mem_num=${tmp.mem_num} ">삭제</a></td>
 		</tr>

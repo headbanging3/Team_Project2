@@ -9,9 +9,42 @@ public class ManagerDto {
 	private String email;
 	private String addr;
 	private String regdate;
+	private String classification;
+	private int point;
 	
 	public ManagerDto() {}
 
+	public ManagerDto(int mem_num, String id, String pwd, String name, String phone, String email, String addr,
+			String regdate, String classification, int point) {
+		super();
+		this.mem_num = mem_num;
+		this.id = id;
+		this.pwd = pwd;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.addr = addr;
+		this.regdate = regdate;
+		this.classification = classification;
+		this.point = point;
+	}
+
+	
+	public String getClassification() {
+		return classification;
+	}
+
+	public void setClassification(String classification) {
+		this.classification = classification;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public ManagerDto(int mem_num, String id, String pwd, String name, String phone, String email, String addr,
 			String regdate) {
 		super();

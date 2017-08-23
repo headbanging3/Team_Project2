@@ -3,8 +3,9 @@
 <mapper namespace="manager">
 
 	<select id="getList" resultType="com.acorn.shoopse.manager.dto.ManagerDto">
-		SELECT  mem_num, id, pwd, name, phone, email, addr, regdate
-		FROM users 
+		SELECT  u.mem_num, id, pwd, name, phone, email, addr, regdate, point, mem_flag
+		FROM users u, users_tb ut
+		WHERE u.mem_num = ut.mem_num;
 	</select>
 	<delete id="delete" parameterType="int">
 		DELETE FROM users
