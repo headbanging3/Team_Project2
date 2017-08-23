@@ -1,4 +1,4 @@
-package com.acorn.shoopse.agency.controller;
+package com.acorn.shoopse.wearing.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,29 +11,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.agency.dto.AgencyDto;
 import com.acorn.shoopse.agency.service.AgencyService;
+import com.acorn.shoopse.wearing.dto.WearingDto;
+import com.acorn.shoopse.wearing.service.WearingService;
 
 @Controller
-public class AgencyController {
+public class WearingController {
 	
 	@Autowired
-	private AgencyService agencyService;
+	private WearingService wearingService;
 
 	@RequestMapping("/manager/insertformagency")
 	public ModelAndView insertformAgency(){
 		ModelAndView mView = new ModelAndView();
-		mView.setViewName("manager/insertform_agency");
+		mView.setViewName("manager/insertform_warehousing");
 		return mView;
 	}
 	
 	@RequestMapping("manager/insertagency")
-	public String insert(@ModelAttribute AgencyDto dto){
-		agencyService.insert(dto);
-		return "redirect:agencylist.do";
+	public String insert(@ModelAttribute WearingDto dto){
+		wearingService.insert(dto);
+		return "redirect:warehousing.do";
 	}
 	
-	@RequestMapping("manager/agencylist")
+	@RequestMapping("manager/warehousing")
 	public ModelAndView getList(){
-		ModelAndView mView=agencyService.getList();
+		ModelAndView mView=wearingService.getList();
 		mView.setViewName("manager/agency_list");
 		return mView;
 	}
