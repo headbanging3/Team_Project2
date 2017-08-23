@@ -70,9 +70,17 @@
 				<c:set var="count1" value="1"/>
 			</c:when>
 		</c:choose>
+		<c:set var="root" value="3"/>
 		<tr class="${color }">
 			<td>${tmp.mem_num }</td>
-			<td>${tmp.mem_flag }</td>
+			<c:choose>
+				<c:when test="${tmp.mem_flag == root }">
+					<td>관리자</td>
+				</c:when>
+				<c:otherwise>
+					<td>일반 회원</td>
+				</c:otherwise>
+			</c:choose>
 			<td>${tmp.id }</td>
 			<td>${tmp.pwd }</td>
 			<td>${tmp.name }</td>
