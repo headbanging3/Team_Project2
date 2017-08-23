@@ -97,24 +97,4 @@ public class ManagerController {
 		List<ProductsKindDto> divisionList=managerService.getDivision(parent_kind_code);
 		return divisionList;
 	}
-
-	//재두
-	//업체관련	
-	//입고관련
-	@RequestMapping("/manager/warehousing")
-	public ModelAndView warehousingList(){
-		ModelAndView mView = new ModelAndView();
-		mView.setViewName("manager/warehousing_list");
-		return mView;
-	}
-	@RequestMapping("manager/insertformwarehousing")
-	public String insertformWarehousing(){
-		return "manager/insertform_warehousing";
-	}
-	@RequestMapping("manager/insertwarehousing")
-	public ModelAndView insertWarehousing(){
-		//입고 등록폼에서 오는 파라미터값으로 입고TB에 insert하고 list로넘어감
-		return null;
-	}
-
 }

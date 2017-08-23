@@ -10,7 +10,7 @@
 <body>
 <h1>입고 등록</h1>
 <a href="agencylist.do">업체 추가 및 관리</a>
-<form action="insertWarehousing.do" method="post">
+<form action="insertwarehousing.do" method="post">
 	<label for="agency">업체 선택 : </label>
 	<select name="a_code" id="agency">
 	    <option value="">업체선택</option>
