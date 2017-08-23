@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>입고 등록</h1>
+<a href="warehousing.do">입고LIST</a>
 <a href="agencylist.do">업체 추가 및 관리</a>
 <form action="insertwarehousing.do" method="get">
 	<label for="agency">업체 선택 : </label>
