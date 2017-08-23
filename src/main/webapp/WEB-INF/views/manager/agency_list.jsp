@@ -34,7 +34,7 @@
 		<c:choose>
            	<c:when test="${empty list }">
    				<tr>
-   					<td colspan="5">게시글이 없습니다.</td>
+   					<td colspan="6">게시글이 없습니다.</td>
    				</tr>	
            	</c:when>	
            	<c:otherwise>
@@ -49,7 +49,7 @@
 	                </tr>
 	      		</c:forEach>			
            	</c:otherwise>
-           		</c:choose>
+		</c:choose>
 	</tbody>
 </table>
 </body>

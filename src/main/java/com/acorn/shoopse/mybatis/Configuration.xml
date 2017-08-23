@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.acorn.shoopse.help.dto.HelpQnaListDto" alias="qnalistDto"/>
 		<typeAlias type="com.acorn.shoopse.products.dto.ProductsDto" alias="productsDto"/>
 		<typeAlias type="com.acorn.shoopse.agency.dto.AgencyDto" alias="agencyDto"/>
+		<typeAlias type="com.acorn.shoopse.wearing.dto.WearingDto" alias="wearingDto"/>
 	</typeAliases>
 	
 	<!-- sql 문을 정의하고 있는 xml 문서 -->
@@ -20,5 +21,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/acorn/shoopse/mybatis/ManagerMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/HelpMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/ProductsMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/WearingMapper.xml"/>
 	</mappers>	
 </configuration>
