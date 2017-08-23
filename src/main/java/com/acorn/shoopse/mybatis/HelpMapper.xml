@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="help">
+	<insert id="insert" parameterType="helpDto">
+		INSERT INTO service(mem_num,phone,email,title,content,regdate,type)
+		VALUES(#{mem_num},#{phone},#{email},#{title},#{content},SYSDATE,#{type})
+	</insert>
+	<select id="getNum" parameterType="string" resultType="int">
+		SELECT mem_num
+		FROM users
+		WHERE id=#{id}
+	</select>
+	<select id="getList" parameterType="int" resultType="helpDto">
+		SELECT ROWNUM rnum, title, content, TO_CHAR(regdate,'YYYY.MM.DD AM HH24:MI') regdate,type,state
+		FROM service 
+		WHERE mem_num=#{mem_num}
+		ORDER BY regdate asc
+	</select>
+	<select id="getDetail" parameterType="helpDto" resultType="helpDto">
+		SELECT *
+		FROM (SELECT ROWNUM rnum, title, content, TO_CHAR(regdate,'YYYY.MM.DD AM HH24:MI') regdate,type,state
+				FROM service
+				WHERE mem_num=#{mem_num}
+				ORDER BY regdate asc)
+	    WHERE rnum=#{rnum}
+	</select>
+	
+	
+	
+	
+	<select id="getQnaList" parameterType="qnalistDto" resultType="qnalistDto">
+		SELECT *
+		FROM	(SELECT result1.*, ROWNUM rnum
+				FROM (SELECT qna_listnum, qna_title, qna_pdnum, qna_writer, qna_content, 
+						TO_CHAR(qna_regdate,'YYYY.MM.DD') AS qna_regdate 
+						FROM qnalist 
+						ORDER BY qna_listnum DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum} 
+	</select>
+		<select id="getQnaCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM),0)
+		FROM qnalist
+	</select>
+	<insert id="insertQna" parameterType="qnalistDto">
+		INSERT INTO qnalist(qna_listnum, qna_title, qna_pdnum,
+				qna_writer, qna_content, qna_regdate) 
+		VALUES(qnalist_seq.NEXTVAL, #{qna_title}, #{qna_pdnum}, #{qna_writer}, #{qna_content} ,SYSDATE)
+	</insert>
+	<select id="getQnaDetail" parameterType="int" resultType="qnalistDto">
+		SELECT qna_listnum, qna_title, qna_writer, qna_content FROM qnalist WHERE qna_listnum=#{listnum}
+	</select>
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM qnalist WHERE qna_listnum=#{listnum}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+

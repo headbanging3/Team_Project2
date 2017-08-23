@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="agency">
+	<insert id="insert" parameterType="agencyDto">
+		INSERT INTO agency(a_code,company,name,phone,email,regdate) 
+		VALUES(agency_seq.NEXTVAL, #{company}, #{name}, #{phone}, #{email},SYSDATE)
+	</insert>
+	<select id="getList" resultType="agencyDto">
+		SELECT a_code, company, name, phone, email, 
+		TO_CHAR(regdate,'YYYY.MM.DD') AS regdate
+		FROM agency 
+		ORDER BY a_code DESC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

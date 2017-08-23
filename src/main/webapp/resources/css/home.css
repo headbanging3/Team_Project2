@@ -1,0 +1,11 @@
+.container-fluid {
+	text-align: center;
+}
+
+.container-fluid div {
+	margin: 0 auto;
+}
+figure img{
+	width: 100px;
+	height: 100px;	
+}

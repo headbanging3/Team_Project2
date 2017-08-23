@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.acorn.shoopse.help.dto.HelpDto" alias="helpDto"/>
+		<typeAlias type="com.acorn.shoopse.users.dto.UsersDto"
+			alias="usersDto"/>
+		<typeAlias type="com.acorn.shoopse.manager.dto.ManagerDto" alias="managerDto"/>
+		<typeAlias type="com.acorn.shoopse.help.dto.HelpQnaListDto" alias="qnalistDto"/>
+		<typeAlias type="com.acorn.shoopse.products.dto.ProductsDto" alias="productsDto"/>
+		<typeAlias type="com.acorn.shoopse.agency.dto.AgencyDto" alias="agencyDto"/>
+	</typeAliases>
+	
+	<!-- sql 문을 정의하고 있는 xml 문서 -->
+	<mappers>
+		<mapper resource="com/acorn/shoopse/mybatis/AgencyMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/UsersMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/ManagerMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/HelpMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/ProductsMapper.xml"/>
+	</mappers>	
+</configuration>

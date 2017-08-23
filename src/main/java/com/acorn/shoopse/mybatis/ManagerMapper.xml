@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager">
+
+	<select id="getList" resultType="com.acorn.shoopse.manager.dto.ManagerDto">
+		SELECT  mem_num, id, pwd, name, phone, email, addr, regdate
+		FROM users 
+	</select>
+	<delete id="delete" parameterType="int">
+		DELETE FROM users
+		WHERE mem_num = #{mem_num}
+	</delete>
+	<update id="update" parameterType="com.acorn.shoopse.manager.dto.ManagerDto">
+		UPDATE users
+		SET name=#{name}, id=#{id}, pwd=#{pwd}, phone=#{phone}, email=#{email}, addr=#{addr}
+		WHERE mem_num=#{mem_num}
+	</update>
+	<select id="getData" parameterType="int" resultType="com.acorn.shoopse.manager.dto.ManagerDto">
+		SELECT mem_num,id,pwd,name,email,phone,addr,regdate
+		FROM users
+		WHERE mem_num=#{mem_num}
+	</select>
+	
+	<insert id="insert" parameterType="usersDto">
+		INSERT INTO member(mem_num,id,pwd,name,phone,email,addr,regdate) 
+		VALUES(member_seq.NEXTVAL, #{id}, #{pwd}, #{name}, #{phone}, #{email}, #{addr},SYSDATE)
+	</insert>
+	<select id="findId" parameterType="usersDto" resultType="String">
+		SELECT id FROM member WHERE name=#{name} AND email=#{email}
+	</select>
+	<select id="findPwd" parameterType="usersDto" resultType="String">
+		SELECT pwd FROM member WHERE id=#{id} AND phone=#{phone}
+	</select>
+	<select id="overLab" parameterType="String" resultType="String">
+		SELECT id FROM member WHERE id=#{id}
+	</select>
+	<select id="isValid" parameterType="usersDto" resultType="usersDto">
+		SELECT id,pwd 
+		FROM member
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+

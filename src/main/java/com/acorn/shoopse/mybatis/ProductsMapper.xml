@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="products">
+	<select id="getList" resultType="productsDto">
+		SELECT p_code, p_kind_code, p_name, 
+				p_brand, p_price, point, p_regdate, 
+				p_comment, p_detail_comment, p_main_img
+		FROM product_tb
+		ORDER BY p_code DESC
+	</select>
+	<select id="getCategory" resultType="com.acorn.shoopse.products.dto.ProductsKindDto">
+		SELECT p_kind_code, parent_kind_code, kind_name
+		FROM product_kind
+		WHERE parent_kind_code IS NULL
+		ORDER BY p_kind_code ASC
+	</select>
+	<select id="getDivision" parameterType="int" 
+			resultType="com.acorn.shoopse.products.dto.ProductsKindDto">
+		SELECT p_kind_code, parent_kind_code, kind_name
+		FROM product_kind
+		WHERE parent_kind_code=#{parent_kind_code}
+		ORDER BY p_kind_code ASC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
