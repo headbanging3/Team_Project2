@@ -19,6 +19,7 @@
 <body>
 <h1>업체 list</h1>
 <a href="insertformagency.do">업체 등록</a>
+<a href="insertformwarehousing.do">입고 등록</a>
 <table>
 	<thead>
 		<tr>

@@ -23,6 +23,7 @@ public class WearingController {
 	
 	@RequestMapping("manager/insertwarehousing")
 	public String insert(@ModelAttribute WearingDto dto){
+		System.out.println(dto.getA_code()+"ㅡㅡ"+dto.getW_date()+"ㅡㅡ"+dto.getW_no()+"ㅡㅡ"+dto.getW_total_count()+"ㅡㅡ"+dto.getW_total_price()+"ㅡㅡ");
 		wearingService.insert(dto);
 		return "redirect:warehousing.do";
 	}
