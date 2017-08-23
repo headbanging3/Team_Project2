@@ -1,11 +1,13 @@
 package com.acorn.shoopse.manager.service;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dao.ManagerDao;
@@ -79,6 +81,16 @@ public class ManagerServiceImpl implements ManagerService{
 	public List<ProductsKindDto> getDivision(int parent_kind_code) {
 		List<ProductsKindDto> divisionList=managerDao.getDivision(parent_kind_code);
 		return divisionList;
+	}
+
+	@Override
+	public void productsInsert(ProductsDto dto) {
+		
+		
+		
+		
+		managerDao.productsInsert(dto);
+		
 	}
 
 

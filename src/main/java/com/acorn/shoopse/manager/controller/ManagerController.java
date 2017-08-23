@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.manager.service.ManagerService;
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 @Controller
@@ -82,7 +83,7 @@ public class ManagerController {
 		mView.setViewName("/manager/products/p_list");
 		return mView;
 	}
-	// 관리자 상품 등록(카테고리 포함)
+	// 관리자 상품 등록 페이지 이동(카테고리 포함)
 	@RequestMapping("/manager/products/p_insertform")
 	public ModelAndView p_insertform(){
 		ModelAndView mView=managerService.getCategory();
@@ -97,7 +98,18 @@ public class ManagerController {
 		List<ProductsKindDto> divisionList=managerService.getDivision(parent_kind_code);
 		return divisionList;
 	}
-
+	
+	// 관리자 상품 등록
+	@RequestMapping("/manager/products/p_insert")
+	public String productsInsert(@ModelAttribute ProductsDto dto){
+		managerService.productsInsert(dto);
+		
+		return "redirect:/manager/products/p_list";
+	}
+	
+	
+	
+	
 	//재두
 	//업체관련	
 	//입고관련

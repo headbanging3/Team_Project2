@@ -37,22 +37,23 @@
 	<select id="category">
 		<option value="#">브랜드</option>
 		<c:forEach var="tmp" items="${categoryList}">		
-			<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
+			<option value="${tmp.kind_name }">${tmp.kind_name }</option>
 		</c:forEach>
 	</select>
 	<br />	
-	<label for="price">가격</label>
-	<input type="text" name="price" id="price" /><br />
+	
+	<label for="p_price">가격</label>
+	<input type="text" name="p_price" id="p_price" /><br />
 	<label for="point">마일리지</label>
 	<input type="text" name="point" id="point" disabled="disabled" /><br />
 	
-	<label for="comment">상품 간단 설명</label><br />
-	<textarea name="comment" id="comment" cols="30" rows="10"></textarea><br />
-	<label for="comment">상품 상세 설명</label><br />
-	<textarea name="detailComment" id="detailComment" cols="50" rows="20"></textarea><br />
+	<label for="p_comment">상품 간단 설명</label><br />
+	<textarea name="p_comment" id="p_comment" cols="30" rows="10"></textarea><br />
+	<label for="p_detail_comment">상품 상세 설명</label><br />
+	<textarea name="p_detail_comment" id="p_detail_comment" cols="50" rows="20"></textarea><br />
 	
-	<label for="file">메인 이미지 파일</label>
-	<input type="file" name="file" id="file" /><br/>
+	<label for="p_main_img">메인 이미지 파일</label>
+	<input type="file" name="p_main_img" id="p_main_img" /><br/>
 	<button type="submit">상품 등록</button>
 </form>
 
@@ -86,7 +87,7 @@
 		  console.log(code);
 	});
 	
-	$("#price").keyup(function(){
+	$("#p_price").keyup(function(){
 		var price=$(this).val();
 		var point=price*0.05;
 		$("#point").val(point);
