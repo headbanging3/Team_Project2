@@ -17,6 +17,7 @@
 	<li><a href="manager/m_nav2.do">nav2</a></li>
 	<li><a href="manager/products/p_list.do">상품 목록</a></li>
 	<li><a href="manager/warehousing.do">입고</a></li>
+	<li><a href="">주문</a></li>
 </ul>
 </body>
 </html>
