@@ -98,7 +98,6 @@ public class ManagerController {
 		List<ProductsKindDto> divisionList=managerService.getDivision(parent_kind_code);
 		return divisionList;
 	}
-	
 	// 관리자 상품 등록
 	@RequestMapping("/manager/products/p_insert")
 	public String productsInsert(@ModelAttribute ProductsDto dto){
@@ -128,5 +127,6 @@ public class ManagerController {
 		//입고 등록폼에서 오는 파라미터값으로 입고TB에 insert하고 list로넘어감
 		return null;
 	}
+
 
 }
