@@ -1,7 +1,7 @@
 # Created by https://www.gitignore.io/api/java,maven,eclipse,windows
 
 ### Eclipse ###
-
+src/main/java/com/acorn/shoopse/mybatis/db.properties
 .metadata
 bin/
 tmp/
