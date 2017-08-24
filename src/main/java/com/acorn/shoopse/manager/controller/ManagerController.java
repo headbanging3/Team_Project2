@@ -115,6 +115,9 @@ public class ManagerController {
 	
 	
 	/* ************************* 주문 List CRUD ************************* */
-	
+	@RequestMapping("/products/orderAction")
+	public String orderAction() {
+		return "/manager/order/alert";
+	}
 
 }
