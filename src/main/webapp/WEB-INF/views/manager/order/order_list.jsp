@@ -9,8 +9,16 @@
 </head>
 <body>
 	<table border="1">
-	
-	
+		<thead>
+			<tr>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
 	</table>
 </body>
 </html>

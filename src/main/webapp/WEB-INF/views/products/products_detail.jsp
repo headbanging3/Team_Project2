@@ -167,13 +167,14 @@
      							 <li role="presentation"><a role="menuitem"  href="#">JavaScript</a></li>
 							</ul>
 						</div>
-						<select name="job">
+						<form name="myForm" method="post">
+						<select name="size">
 						    <option value="">사이즈</option>
 						    <option value="235">235</option>
 						    <option value="240">240</option>
 						    <option value="245">245</option>
 						</select>
-						<select name="job">
+						<select name="amount">
 						    <option value="">수량</option>
 						    <option value="1">1</option>
 						    <option value="2">2</option>
@@ -181,10 +182,10 @@
 						</select>
 						
 							<ul class="orderBtn">
-								<li><button><a href="orderAction.do">주문</a></button></li>
-								<li><button><a href="cartAction.do">장바구니 담기</a></button></li>
+								<input type="button" value="주문" onclick='mySubmit(1)'/>
+								<input type="button" value="담기" onclick='mySubmit(2)'/>
 							</ul>
-					
+						</form>
 						<div id="refund">
 							<h4><strong>반송 가이드</strong></h4>
 							<p>주절주절</p>
@@ -329,5 +330,16 @@
 <jsp:include page="../footer.jsp"/>
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
+<script>
+	function mySubmit(index) {
+		if(index==1) {
+			document.myForm.action="orderPage.do";
+		}
+		if(index==2) {
+			document.myForm.action="";
+		}
+		document.myForm.submit();
+	}
+</script>
 </body>
 </html>
