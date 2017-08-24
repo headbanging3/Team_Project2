@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>입고리스트1</title>
+<title>입고리스트</title>
 </head>
 <style>
 	table{
