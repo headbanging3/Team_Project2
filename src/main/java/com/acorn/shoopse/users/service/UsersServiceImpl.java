@@ -53,15 +53,16 @@ public class UsersServiceImpl implements UsersService {
 	public ModelAndView signin(UsersDto dto, HttpServletRequest request) {
 		
 		//Dao 를 이용해서 유효한 정보인지 확인한다.
-		boolean isValid=usersDao.isValid(dto);
+		UsersDto user=usersDao.isValid(dto);
+		
 		ModelAndView mView=new ModelAndView();
 		String url=request.getParameter("url");
 		
-		if(isValid){
+		if(user!=null){
 			request.getSession().setAttribute("id", dto.getId());
+			request.getSession().setAttribute("mem_num", user.getMem_num());
 			mView.addObject("url",url);
-		}else{
-			
+		}else{			
 			String location=request.getContextPath()+
 					"/popup/signinform.do?url="+url;
 			
