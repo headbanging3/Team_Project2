@@ -1,21 +1,24 @@
 package com.acorn.shoopse.products.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductsDto {
 	private String p_code;
 	private String p_kind_code;
 	private String p_name;
 	private String p_brand;
 	private int p_price;
-	private int point;
+	private double point;
 	private String p_regdate;
 	private String p_comment;
 	private String P_detail_comment;
 	private String p_main_img;
+	private MultipartFile file;
 	
 	public ProductsDto(){}
 
 	public ProductsDto(String p_code, String p_kind_code, String p_name, String p_brand, int p_price, int point,
-			String p_regdate, String p_comment, String p_detail_comment, String p_main_img) {
+			String p_regdate, String p_comment, String p_detail_comment, String p_main_img, MultipartFile file) {
 		super();
 		this.p_code = p_code;
 		this.p_kind_code = p_kind_code;
@@ -27,6 +30,7 @@ public class ProductsDto {
 		this.p_comment = p_comment;
 		P_detail_comment = p_detail_comment;
 		this.p_main_img = p_main_img;
+		this.file = file;
 	}
 
 	public String getP_code() {
@@ -69,11 +73,11 @@ public class ProductsDto {
 		this.p_price = p_price;
 	}
 
-	public int getPoint() {
+	public double getPoint() {
 		return point;
 	}
 
-	public void setPoint(int point) {
+	public void setPoint(double point) {
 		this.point = point;
 	}
 
@@ -108,7 +112,15 @@ public class ProductsDto {
 	public void setP_main_img(String p_main_img) {
 		this.p_main_img = p_main_img;
 	}
-	
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	
 	
 }

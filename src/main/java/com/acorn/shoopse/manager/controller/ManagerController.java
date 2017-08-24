@@ -1,5 +1,6 @@
 package com.acorn.shoopse.manager.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
@@ -100,12 +103,17 @@ public class ManagerController {
 	}
 	// 관리자 상품 등록
 	@RequestMapping("/manager/products/p_insert")
-	public String productsInsert(@ModelAttribute ProductsDto dto){
-		//managerService.productsInsert(dto);
+	public String productsInsert(HttpServletRequest request, @ModelAttribute ProductsDto dto){
+		managerService.productsInsert(dto, request);
 		
 		return "redirect:/manager/products/p_list.do";
 	}
 	
-	
+	// 관리자 상품 삭제
+	@RequestMapping("/manager/products/p_delete")
+	public String productsDelete(HttpServletRequest request){
+		managerService.productsDelete(request);
+		return "redirect:/manager/products/p_list.do";
+	}
 
 }

@@ -16,4 +16,5 @@ public interface ManagerDao {
 	public List<ProductsKindDto> getCategory();
 	public List<ProductsKindDto> getDivision(int parent_kind_code);
 	public void productsInsert(ProductsDto dto);
+	public void productsDelete(String p_code);
 }
