@@ -73,7 +73,8 @@
    		display:inline-block;
 		width:100px;
 		height:80px;
-		margin-bottom:30px;
+		margin-bottom:0;
+		
    }
  	#conMain img{
  		width:1000px;
@@ -88,6 +89,24 @@
  	}
  	.productsFooter th{
  		text-align:center;
+ 	}
+ 	
+ 	#refund {
+ 		margin-bottom :0px;
+ 		padding-bottom:0px;
+ 	}
+ 	
+ 	#sub_img {
+ 	
+ 	}
+ 	
+ 	#topContent {
+ 		padding-bottom : 100px;
+ 	}
+ 	
+ 	.orderBtn li{
+ 		margin-top: 0px;
+ 		display: inline;
  	}
 </style>
 </head>
@@ -111,7 +130,7 @@
 		</div>
 		<div class="row" id="conTop">
 			<div class="col-sm-10 col-sm-push-1">
-				<div class="contents">
+				<div class="contents" id="topContent">
 					<div class="conTop">
 						<h4 style="text-align:left; margin-left:50px;"><strong>상품 페이지</strong></h4>
 					</div>
@@ -132,26 +151,48 @@
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">235</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+    							  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+     							 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
 							</ul>
 						</div>
+						
 						<div class="dropdown">
-							<button data-toggle="dropdown" class="btn btn-default dropdown-toggle btn-lg">수량
+							<button class="btn btn-default dropdown-toggle btn-lg" data-toggle="dropdown" >수량
 								<span class="caret"></span>
 							</button>
-							<ul class="dropdown-menu">
-								<li><a href="#">1</a></li>
-								
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation"><a role="menuitem"  href="#">HTML</a></li>
+    							  <li role="presentation"><a role="menuitem"  href="#">CSS</a></li>
+     							 <li role="presentation"><a role="menuitem"  href="#">JavaScript</a></li>
 							</ul>
 						</div>
-						<div>
+						<select name="job">
+						    <option value="">사이즈</option>
+						    <option value="235">235</option>
+						    <option value="240">240</option>
+						    <option value="245">245</option>
+						</select>
+						<select name="job">
+						    <option value="">수량</option>
+						    <option value="1">1</option>
+						    <option value="2">2</option>
+						    <option value="3">3</option>
+						</select>
+						
+							<ul class="orderBtn">
+								<li><button><a href="orderAction.do">주문</a></button></li>
+								<li><button><a href="cartAction.do">장바구니 담기</a></button></li>
+							</ul>
+					
+						<div id="refund">
 							<h4><strong>반송 가이드</strong></h4>
 							<p>주절주절</p>
 						</div>
 					</div>
 					
  				</div>
- 				<div class="contents">
+ 				<div class="contents" id="sub_img">
  					<div class="conMain">
  						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
  					</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+	<select id="getList" resultType="cartDto" parameterType="int">
+		SELECT pt.p_name, ps.p_size, os.o_count, os.o_sub_price, os.o_sub_total_price 
+		FROM order_tb ot 
+		JOIN order_sub os 
+		    ON  ot.o_no=os.o_no
+		JOIN product_sub ps 
+		    ON os.p_no=ps.p_no
+		JOIN product_tb pt
+		    ON ps.p_code = pt.p_code
+		WHERE ot.mem_num=#{mem_num} and ot.o_status = 2
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

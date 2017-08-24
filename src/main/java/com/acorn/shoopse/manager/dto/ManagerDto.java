@@ -9,11 +9,12 @@ public class ManagerDto {
 	private String email;
 	private String addr;
 	private String regdate;
+	private String mem_flag;
+	private int point;
 	
-	public ManagerDto() {}
 
 	public ManagerDto(int mem_num, String id, String pwd, String name, String phone, String email, String addr,
-			String regdate) {
+			String regdate, String mem_flag, int point) {
 		super();
 		this.mem_num = mem_num;
 		this.id = id;
@@ -23,7 +24,11 @@ public class ManagerDto {
 		this.email = email;
 		this.addr = addr;
 		this.regdate = regdate;
+		this.mem_flag = mem_flag;
+		this.point = point;
 	}
+
+	public ManagerDto() {}
 
 	public int getMem_num() {
 		return mem_num;
@@ -89,6 +94,20 @@ public class ManagerDto {
 		this.regdate = regdate;
 	}
 
-	
+	public String getMem_flag() {
+		return mem_flag;
+	}
+
+	public void setMem_flag(String mem_flag) {
+		this.mem_flag = mem_flag;
+	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	
 }

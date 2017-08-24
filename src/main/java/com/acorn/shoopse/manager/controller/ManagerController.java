@@ -30,6 +30,8 @@ public class ManagerController {
 	
 	@Autowired
 	private ManagerService managerService;
+
+	/* ************************* 회원 List CRUD ************************* */
 	
 	@RequestMapping("/manager/m_list2")
 	public String m_list2() {
@@ -79,6 +81,10 @@ public class ManagerController {
 		return "redirect:/manager/m_list.do";
 	}
 	
+	
+	
+	/* ************************* 상품 List CRUD ************************* */
+	
 	// 관리자 상품 목록
 	@RequestMapping("/manager/products/p_list")
 	public ModelAndView p_list(){
@@ -112,8 +118,17 @@ public class ManagerController {
 	// 관리자 상품 삭제
 	@RequestMapping("/manager/products/p_delete")
 	public String productsDelete(HttpServletRequest request){
+	
+	
 		managerService.productsDelete(request);
 		return "redirect:/manager/products/p_list.do";
+	}
+
+	/* ************************* 주문 List CRUD ************************* */
+	@RequestMapping("/products/orderAction")
+	public String orderAction() {
+		return "/manager/order/alert";
+
 	}
 
 }
