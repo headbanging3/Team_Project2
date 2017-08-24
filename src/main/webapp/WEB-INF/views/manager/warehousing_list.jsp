@@ -18,23 +18,37 @@
 </style>
 <body>
 <h1>입고 List</h1>
+<a href="${pageContext.request.contextPath }/m_home.do">관리자 페이지</a>
 <a href="insertformwarehousing.do">입고등록</a>
 <table>
 	<thead>
 		<tr>
 			<th>입고 번호</th>
 			<th>입고 일자</th>
+			<th>입고 총수량</th>
 			<th>입고 금액</th>
 			<th>납품사코드</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>1</td>
-			<td>2017-08-22</td>
-			<td>20,153,789원</td>
-			<td>01 나이키</td>
-		</tr>
+		<c:choose>
+           	<c:when test="${empty list }">
+   				<tr>
+   					<td colspan="5">입고목록이 없습니다.</td>
+   				</tr>	
+           	</c:when>	
+           	<c:otherwise>
+           		<c:forEach var="tmp" items="${list }">
+         			<tr>
+	                    <td>${tmp.w_no }</td>
+	                    <td>${tmp.w_date }</td>
+	                    <td>${tmp.w_total_count }</td>
+	                    <td>${tmp.w_total_price }</td>
+	                   	<td>${tmp.a_code }</td>
+	                </tr>
+	      		</c:forEach>			
+           	</c:otherwise>
+		</c:choose>
 	</tbody>
 </table>
 </body>

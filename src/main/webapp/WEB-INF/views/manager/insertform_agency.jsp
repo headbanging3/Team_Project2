@@ -9,6 +9,7 @@
 </head>
 <body>
 <h1>업체 등록</h1>
+<a href="agencylist.do">취소</a>
 <form action="insertagency.do" method="post">
 	<label for="company">납품사명 : </label>
 	<input type="text" name="company" id="company"/>

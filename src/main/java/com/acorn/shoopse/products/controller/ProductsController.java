@@ -25,4 +25,6 @@ public class ProductsController {
 	public String detail(){
 		return "products/products_detail";
 	}
+	
+	
 }

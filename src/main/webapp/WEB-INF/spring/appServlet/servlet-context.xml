@@ -54,12 +54,15 @@
 	<aop:aspectj-autoproxy/>
 	
 	<context:component-scan base-package="com.acorn.shoopse"/>
+	<context:component-scan base-package="com.acorn.shoopse.agency.*"/>
+	<context:component-scan base-package="com.acorn.shoopse.wearing.*"/>
 	<context:component-scan base-package="com.acorn.shoopse.aspect"/>	
 	<context:component-scan base-package="com.acorn.shoopse.users.*"/>
 	<context:component-scan base-package="com.acorn.shoopse.help.*"/>
 	<context:component-scan base-package="com.acorn.shoopse.products.*"/>
 	<context:component-scan base-package="com.acorn.shoopse.users.controller"/>
-	
+	<context:component-scan base-package="com.acorn.shoopse.manager.*"/>
+
 	<!-- View Page 설정 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

@@ -9,9 +9,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" type="text/css" media="screen">
+<style>
+	#footer {
+		    position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+	}
+	html {
+		height: 100%;
+	}
+	
+	body {
+		margin: 0;
+		height: 100%;
+	}
+	.contentArea {
+		min-height: 100%;
+		position: relative;
+		padding-bottom: 50px;
+	}
+</style>
 </head>
 <body>
-<footer>
+<div class="contentArea">
+	
+
+<footer id="footer">
 		<div class=footer-top></div>
 
 		<div class=footer-bottom>
@@ -23,6 +47,7 @@
 				<li>Copyright(c)2017 by Acorn. All pictures cannot be copied without permission. </li>
 			</ul>
 		</div>
-	</footer>
+</footer>
+	</div>
 </body>
 </html>

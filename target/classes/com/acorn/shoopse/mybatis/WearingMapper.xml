@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wearing">
+	<insert id="insert" parameterType="wearingDto">
+		INSERT INTO wearing_tb(w_no,w_date,w_total_count,w_total_price,a_code)
+		VALUES(w_no_seq.NEXTVAL,TO_DATE(#{w_date}),#{w_total_count},#{w_total_price},#{a_code})
+	</insert>
+	<select id="getList" resultType="wearingDto">
+		SELECT w_no, w_total_count, w_total_price, a_code, 
+		TO_CHAR(w_date,'YYYY.MM.DD') AS w_date
+		FROM wearing_tb 
+		ORDER BY w_no DESC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

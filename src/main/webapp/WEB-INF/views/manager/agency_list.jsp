@@ -19,6 +19,7 @@
 <body>
 <h1>업체 list</h1>
 <a href="insertformagency.do">업체 등록</a>
+<a href="insertformwarehousing.do">입고 등록</a>
 <table>
 	<thead>
 		<tr>
@@ -34,7 +35,7 @@
 		<c:choose>
            	<c:when test="${empty list }">
    				<tr>
-   					<td colspan="5">게시글이 없습니다.</td>
+   					<td colspan="6">게시글이 없습니다.</td>
    				</tr>	
            	</c:when>	
            	<c:otherwise>
@@ -49,7 +50,7 @@
 	                </tr>
 	      		</c:forEach>			
            	</c:otherwise>
-           		</c:choose>
+		</c:choose>
 	</tbody>
 </table>
 </body>

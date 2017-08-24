@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.manager.service.ManagerService;
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 @Controller
@@ -26,6 +27,8 @@ public class ManagerController {
 	
 	@Autowired
 	private ManagerService managerService;
+
+	/* ************************* 회원 List CRUD ************************* */
 	
 	@RequestMapping("/manager/m_list2")
 	public String m_list2() {
@@ -75,6 +78,10 @@ public class ManagerController {
 		return "redirect:/manager/m_list.do";
 	}
 	
+	
+	
+	/* ************************* 상품 List CRUD ************************* */
+	
 	// 관리자 상품 목록
 	@RequestMapping("/manager/products/p_list")
 	public ModelAndView p_list(){
@@ -82,7 +89,7 @@ public class ManagerController {
 		mView.setViewName("/manager/products/p_list");
 		return mView;
 	}
-	// 관리자 상품 등록(카테고리 포함)
+	// 관리자 상품 등록 페이지 이동(카테고리 포함)
 	@RequestMapping("/manager/products/p_insertform")
 	public ModelAndView p_insertform(){
 		ModelAndView mView=managerService.getCategory();
@@ -97,24 +104,20 @@ public class ManagerController {
 		List<ProductsKindDto> divisionList=managerService.getDivision(parent_kind_code);
 		return divisionList;
 	}
-
-	//재두
-	//업체관련	
-	//입고관련
-	@RequestMapping("/manager/warehousing")
-	public ModelAndView warehousingList(){
-		ModelAndView mView = new ModelAndView();
-		mView.setViewName("manager/warehousing_list");
-		return mView;
+	// 관리자 상품 등록
+	@RequestMapping("/manager/products/p_insert")
+	public String productsInsert(@ModelAttribute ProductsDto dto){
+		//managerService.productsInsert(dto);
+		
+		return "redirect:/manager/products/p_list.do";
 	}
-	@RequestMapping("manager/insertformwarehousing")
-	public String insertformWarehousing(){
-		return "manager/insertform_warehousing";
-	}
-	@RequestMapping("manager/insertwarehousing")
-	public ModelAndView insertWarehousing(){
-		//입고 등록폼에서 오는 파라미터값으로 입고TB에 insert하고 list로넘어감
-		return null;
+	
+	
+	
+	/* ************************* 주문 List CRUD ************************* */
+	@RequestMapping("/products/orderAction")
+	public String orderAction() {
+		return "/manager/order/alert";
 	}
 
 }

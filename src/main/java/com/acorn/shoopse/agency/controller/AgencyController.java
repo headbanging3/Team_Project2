@@ -27,7 +27,6 @@ public class AgencyController {
 	
 	@RequestMapping("manager/insertagency")
 	public String insert(@ModelAttribute AgencyDto dto){
-		System.out.println("company 출력 :"+dto.getCompany());
 		agencyService.insert(dto);
 		return "redirect:agencylist.do";
 	}
@@ -36,6 +35,13 @@ public class AgencyController {
 	public ModelAndView getList(){
 		ModelAndView mView=agencyService.getList();
 		mView.setViewName("manager/agency_list");
+		return mView;
+	}
+
+	@RequestMapping("/manager/insertformwarehousing")
+	public ModelAndView insertformWarehousing(){
+		ModelAndView mView = agencyService.getList();
+		mView.setViewName("manager/insertform_warehousing");
 		return mView;
 	}
 }
