@@ -21,6 +21,35 @@
 		WHERE parent_kind_code=#{parent_kind_code}
 		ORDER BY p_kind_code ASC
 	</select>
+	<insert id="productsInsert" parameterType="productsDto">
+		INSERT INTO product_tb
+		VALUES (
+			p_code_seq.NEXTVAL,
+			#{p_name}, 
+			#{kind_name}, 
+			#{p_price}, 
+			#{point}, 
+			SYSDATE,
+			#{p_kind_code},
+			#{p_comment}, 
+			#{p_detail_comment},
+			#{p_main_img}
+		);		INSERT INTO product_tb
+		VALUES (
+			p_code_seq.NEXTVAL,
+			#{p_name}, 
+			#{kind_name}, 
+			#{p_price}, 
+			#{point}, 
+			SYSDATE,
+			#{p_kind_code},
+			#{p_comment}, 
+			#{p_detail_comment},
+			#{p_main_img}
+		);
+	</insert>
+	
+	
 </mapper>
 
 

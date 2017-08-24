@@ -65,6 +65,12 @@ public class ManagerDaoImpl implements ManagerDao{
 		return list;
 	}
 
+	@Override
+	public void productsInsert(ProductsDto dto) {
+		session.insert("products.productsInsert",dto);
+		
+	}
+
 
 
 }

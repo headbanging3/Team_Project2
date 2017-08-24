@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 import com.acorn.shoopse.users.dao.UsersDao;
 
@@ -20,4 +21,5 @@ public interface ManagerService {
 	 public ModelAndView p_list();
 	 public ModelAndView getCategory();
 	 public List<ProductsKindDto> getDivision(int parent_kind_code);
+	 public void productsInsert(ProductsDto dto);
 }

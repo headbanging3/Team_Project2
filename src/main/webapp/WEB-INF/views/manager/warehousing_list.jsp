@@ -18,6 +18,7 @@
 </style>
 <body>
 <h1>입고 List</h1>
+<a href="${pageContext.request.contextPath }/m_home.do">관리자 페이지</a>
 <a href="insertformwarehousing.do">입고등록</a>
 <table>
 	<thead>
