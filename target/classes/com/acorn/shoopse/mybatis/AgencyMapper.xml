@@ -5,7 +5,7 @@
 		INSERT INTO agency(a_code,company,name,phone,email,regdate) 
 		VALUES(a_code_seq.NEXTVAL, #{company}, #{name}, #{phone}, #{email},SYSDATE)
 	</insert>
-	<!-- dd 33 44-->
+	<!-- dd 33 44 머지되라-->
 	<select id="getList" resultType="agencyDto">
 		SELECT a_code, company, name, phone, email, 
 		TO_CHAR(regdate,'YYYY.MM.DD') AS regdate
