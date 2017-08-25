@@ -14,6 +14,7 @@
 </head>
 <body>
 		<!-- 네비게이션 -->
+		<!-- branch upst -->
 <jsp:include page="navbar.jsp"></jsp:include>
 		<!-- 캐러셀 -->
 <div class="container-fluid">
