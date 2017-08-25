@@ -37,15 +37,16 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public boolean isValid(UsersDto dto) {
+	public UsersDto isValid(UsersDto dto) {
 		UsersDto resultDto=session.selectOne("users.isValid",dto);
 		if(resultDto==null){
-			System.out.println("daoimple isvalid 넘어옴");
-			return false;
+			System.out.println("로그인결과없음");
+			
 		}else{
-			System.out.println("daoimple isvalid else 넘어옴");
-			return true;
+			System.out.println("resulrDto::"+resultDto.getMem_num());
+			System.out.println("daoimple isvalid 성공");
 		}
+		return resultDto;
 	}
 
 	@Override

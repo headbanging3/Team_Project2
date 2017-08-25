@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
@@ -21,5 +22,6 @@ public interface ManagerService {
 	 public ModelAndView p_list();
 	 public ModelAndView getCategory();
 	 public List<ProductsKindDto> getDivision(int parent_kind_code);
-	 public void productsInsert(ProductsDto dto);
+	 public void productsInsert(ProductsDto dto, HttpServletRequest request);
+	 public void productsDelete(HttpServletRequest request);
 }

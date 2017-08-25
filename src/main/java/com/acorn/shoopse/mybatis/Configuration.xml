@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.acorn.shoopse.help.dto.HelpQnaListDto" alias="qnalistDto"/>
 		<typeAlias type="com.acorn.shoopse.products.dto.ProductsDto" alias="productsDto"/>
 		<typeAlias type="com.acorn.shoopse.agency.dto.AgencyDto" alias="agencyDto"/>
+		<typeAlias type="com.acorn.shoopse.order.dto.OrderCartDto" alias="cartDto"/>
 		<typeAlias type="com.acorn.shoopse.wearing.dto.WearingDto" alias="wearingDto"/>
 	</typeAliases>
 	
@@ -21,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/acorn/shoopse/mybatis/ManagerMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/HelpMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/ProductsMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/CartMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/WearingMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/OrderMapper.xml"/>
 	</mappers>	

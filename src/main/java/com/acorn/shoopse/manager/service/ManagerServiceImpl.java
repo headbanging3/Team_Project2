@@ -1,6 +1,8 @@
 package com.acorn.shoopse.manager.service;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dao.ManagerDao;
@@ -84,16 +87,65 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 
 	@Override
-	public void productsInsert(ProductsDto dto) {
-		
-		
-		
+	public void productsInsert(ProductsDto dto, 
+				HttpServletRequest request) {
+	
+		//파일을 저장할 폴더의 절대 경로를 얻어온다.
+		String realPath=request.getSession()
+				.getServletContext().getRealPath("/resources/img");
+		System.out.println(realPath);
+			
+		//MultipartFile 객체의 참조값 얻어오기
+		//FileDto 에 담긴 MultipartFile 객체의 참조값을 얻어온다.
+		MultipartFile mFile=dto.getFile();
+		String orgFileName=mFile.getOriginalFilename();
+	
+		//p_main_img에 파일 이름 설정
+		//dto.setP_main_img(orgFileName);
+	
+		//저장할 파일의 상세 경로
+		String filePath=realPath+File.separator;
+		//디렉토리를 만들 파일 객체 생성
+		File file=new File(filePath);
+		if(!file.exists()){//디렉토리가 존재하지 않는다면
+			file.mkdir();//디렉토리를 만든다.
+		}
+		//파일 시스템에 저장할 파일명을 만든다. (겹치치 않게)
+		String saveFileName=System.currentTimeMillis()+orgFileName;
+		try{
+			// /resources/img 폴더에 파일을 저장한다.
+			mFile.transferTo(new File(filePath+saveFileName));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		dto.setP_main_img(saveFileName);
 		
 		managerDao.productsInsert(dto);
 		
 	}
 
+	@Override
+	public void productsDelete(HttpServletRequest request) {
+		String[] chs=request.getParameterValues("chname");
+//		String[] imgs=request.getParameterValues("imgname");
+		for(int i=0; i<chs.length; i++){
+			System.out.println(chs[i]);
+//			System.out.println(imgs[i]);
+			String[] tmp=chs[i].split(":");
+			
+			System.out.println(tmp[0]);
+			System.out.println(tmp[1]);
+					
+			//1. 파일 시스템에서 물리적인 삭제
+			String path="";
+			try{
+				path=request.getServletContext().getRealPath("/resources/img")+
+						File.separator+tmp[1];
+				new File(path).delete();
+			}catch(Exception e){}
+			
+			managerDao.productsDelete(tmp[0]);
+		}
 
-
-
+	}
 }

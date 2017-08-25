@@ -22,7 +22,7 @@
 		SELECT id FROM users WHERE id=#{id}
 	</select>
 	<select id="isValid" parameterType="usersDto" resultType="usersDto">
-		SELECT id,pwd 
+		SELECT id,pwd,mem_num 
 		FROM users
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
