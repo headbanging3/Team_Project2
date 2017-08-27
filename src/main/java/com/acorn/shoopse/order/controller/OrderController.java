@@ -24,7 +24,7 @@ public class OrderController {
 	@RequestMapping("/products/orderAction")
 	public ModelAndView orderAction(HttpServletRequest request) {
 		try {
-			int mem_num = (int)request.getSession().getAttribute("mem_num");
+			int mem_num = (Integer)request.getSession().getAttribute("mem_num");
 			ModelAndView mView = new ModelAndView();
 			mView.setViewName("/manager/order/alert");
 			return mView;
