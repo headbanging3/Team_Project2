@@ -124,7 +124,4 @@ public class ManagerController {
 		return "redirect:/manager/products/p_list.do";
 	}
 
-
-
-
 }

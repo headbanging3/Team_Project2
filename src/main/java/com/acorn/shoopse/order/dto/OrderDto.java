@@ -1,17 +1,18 @@
 package com.acorn.shoopse.order.dto;
 
 public class OrderDto {
-	int o_no;
-	String o_date;
-	int o_total_count;
-	int o_total_price;
-	int mem_num;
-	String delivery_flag;
-	String o_status;
-	
-	public OrderDto() {}
 
-	public OrderDto(int o_no, String o_date, int o_total_count, int o_total_price, int mem_num, String delivery_flag,
+	private int o_no;
+	private String o_date;
+	private int o_total_count;
+	private int o_total_price;
+	private int mem_num;
+	private String delivery_flag;
+	private String o_status;
+	
+	OrderDto() {}
+	
+	OrderDto(int o_no, String o_date, int o_total_count, int o_total_price, int mem_num, String delivery_flag,
 			String o_status) {
 		super();
 		this.o_no = o_no;

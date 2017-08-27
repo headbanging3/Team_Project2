@@ -36,4 +36,10 @@ public class OrderController {
 		
 		
 	}
+	
+	@RequestMapping("/products/orderPage")
+	public String orderPage() {
+		return "/manager/order/order_insert";
+	}
+	
 }

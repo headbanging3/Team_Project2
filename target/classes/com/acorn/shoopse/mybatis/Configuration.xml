@@ -24,5 +24,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/acorn/shoopse/mybatis/ProductsMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/CartMapper.xml"/>
 		<mapper resource="com/acorn/shoopse/mybatis/WearingMapper.xml"/>
+		<mapper resource="com/acorn/shoopse/mybatis/OrderMapper.xml"/>
 	</mappers>	
 </configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="order">
+
+	<select id="mgetList" resultType="com.acorn.shoopse.manager.dto.ManagerDto">
+		SELECT  u.mem_num, id, name, addr, phone, mem_flag
+		FROM users u, users_tb ut
+		WHERE u.mem_num = ut.mem_num
+		AND id = #{id}
+	</select>
+	
+	<select id="mgetData" resultType="com.acorn.shoopse.manager.dto.ManagerDto" parameterType="String" >
+		SELECT  u.mem_num, id, name, addr, phone, mem_flag
+		FROM users u, users_tb ut
+		WHERE u.mem_num = ut.mem_num
+		AND id = #{id}
+	</select>
+
+</mapper>
+
+
+
+
+
+
+
+

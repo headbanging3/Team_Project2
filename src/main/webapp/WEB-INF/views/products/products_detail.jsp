@@ -174,13 +174,12 @@
 						    <option value="240">240</option>
 						    <option value="245">245</option>
 						</select>
-						<select name="count">
+						<select name="amount">
 						    <option value="">수량</option>
 						    <option value="1">1</option>
 						    <option value="2">2</option>
 						    <option value="3">3</option>
 						</select>
-							
 							<ul class="orderBtn">
 								<li><input id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
 								<li><input id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
@@ -336,8 +335,9 @@
 			document.myForm.action = 'orderAction.do';
 		}
 		if(index==2) {
-			document.myForm.action = '';
+			document.myForm.action="orderPage.do";
 		}
+
 		document.myForm.submit();
 	}
 </script>
