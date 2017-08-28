@@ -32,5 +32,11 @@ public class OrderDaoImpl implements OrderDao{
 		OrderDto dto = session.selectOne("order.mgetData", id);
 		return dto;
 	}
+
+	@Override
+	public void o_Insert(OrderDto dto) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
