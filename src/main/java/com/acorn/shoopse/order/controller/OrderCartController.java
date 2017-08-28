@@ -18,7 +18,7 @@ public class OrderCartController {
 	@RequestMapping("/cart/cart_list")
 	public ModelAndView cartList(HttpServletRequest request){
 		System.out.println("cartList?");
-		int mem_num=(int)request.getSession().getAttribute("mem_num");
+		int mem_num=(Integer)request.getSession().getAttribute("mem_num");
 		System.out.println("mem_num:"+mem_num);
 		ModelAndView mView=orderService.list(mem_num);
 		mView.setViewName("cart/cart_list");

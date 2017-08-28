@@ -1,20 +1,24 @@
 package com.acorn.shoopse.order.dto;
 
 public class OrderDto {
+
 	private int o_no;
 	private String o_date;
-	private String o_total_count;
+	private int o_total_count;
+	private int o_total_price;
 	private int mem_num;
 	private String delivery_flag;
 	private String o_status;
 	
 	OrderDto() {}
 	
-	public OrderDto(int o_no, String o_date, String o_total_count, int mem_num, String delivery_flag, String o_status) {
+	OrderDto(int o_no, String o_date, int o_total_count, int o_total_price, int mem_num, String delivery_flag,
+			String o_status) {
 		super();
 		this.o_no = o_no;
 		this.o_date = o_date;
 		this.o_total_count = o_total_count;
+		this.o_total_price = o_total_price;
 		this.mem_num = mem_num;
 		this.delivery_flag = delivery_flag;
 		this.o_status = o_status;
@@ -36,12 +40,20 @@ public class OrderDto {
 		this.o_date = o_date;
 	}
 
-	public String getO_total_count() {
+	public int getO_total_count() {
 		return o_total_count;
 	}
 
-	public void setO_total_count(String o_total_count) {
+	public void setO_total_count(int o_total_count) {
 		this.o_total_count = o_total_count;
+	}
+
+	public int getO_total_price() {
+		return o_total_price;
+	}
+
+	public void setO_total_price(int o_total_price) {
+		this.o_total_price = o_total_price;
 	}
 
 	public int getMem_num() {
@@ -68,5 +80,5 @@ public class OrderDto {
 		this.o_status = o_status;
 	}
 	
-		
+	
 }

@@ -124,12 +124,4 @@ public class ManagerController {
 		return "redirect:/manager/products/p_list.do";
 	}
 
-	/* ************************* 주문 List CRUD ************************* */
-
-	@RequestMapping("/products/orderAction")
-	public String orderAction() {
-		return "/manager/order/alert";
-
-	}
-
 }
