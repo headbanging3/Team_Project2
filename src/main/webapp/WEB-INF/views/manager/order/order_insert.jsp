@@ -10,10 +10,22 @@
 <body>
 <jsp:include page="../../navbar.jsp"></jsp:include>
 	
-	<div>
-		<h3>주문이 완료 되었습니다.</h3>
-	</div>
-	<li><a href="">돌아가기</a></li>
+<form action="" method="post">
+	<label for="name" value="name">이름 : </label>
+	<input type="text" name="name" id="name" value=""/>
+	<br />
+	<label for="phone">연락처 : </label>
+	<input type="text" name="phone" id="phone" value="" />
+	<br />
+	<input type="radio" name="chk_info" value="myAddr" checked="checked">내주소
+	<input type="radio" name="chk_info" value="aAddr">다른주소
+	<br>
+	<label for="addr">주소 : </label>
+	<input type="text" name="addr" id="addr" value=""/>
+	<br />
+	<button type="submit">확인</button>
+</form>
+	
 <jsp:include page="../../footer.jsp"></jsp:include>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>

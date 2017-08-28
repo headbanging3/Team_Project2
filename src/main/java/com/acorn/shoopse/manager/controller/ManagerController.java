@@ -71,7 +71,7 @@ public class ManagerController {
 	
 	@RequestMapping("/manager/update")
 	public String update(@ModelAttribute ManagerDto dto) {
-		List<ManagerDto> list = new ArrayList<>();
+		List<ManagerDto> list = new ArrayList<ManagerDto>();
 		list.add(dto);
 		System.out.println(list);
 		System.out.println(dto.getEmail());
@@ -122,13 +122,6 @@ public class ManagerController {
 	
 		managerService.productsDelete(request);
 		return "redirect:/manager/products/p_list.do";
-	}
-
-	/* ************************* 주문 List CRUD ************************* */
-	@RequestMapping("/products/orderAction")
-	public String orderAction() {
-		return "/manager/order/alert";
-
 	}
 
 }
