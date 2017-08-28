@@ -5,38 +5,117 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" 
+href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?version=1" />
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
+<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
 <title>입고등록 페이지</title>
 </head>
+<style>
+	#article{
+		padding-top: 50px;
+	}
+</style>
 <body>
-<h1>입고 등록</h1>
-<a href="warehousing.do">입고LIST</a>
-<a href="agencylist.do">업체 추가 및 관리</a>
-<form action="insertwarehousing.do" method="get">
-	<label for="agency">업체 선택 : </label>
-	<select name="a_code" id="agency">
-	    <option value="">업체선택</option>
-	    <c:choose>
-           	<c:when test="${empty list }">
-   				<option value=""></option>
-           	</c:when>	
-           	<c:otherwise>
-           		<c:forEach var="tmp" items="${list }">
-         			<option value="${tmp.a_code }">${tmp.company }</option>
-	      		</c:forEach>			
-           	</c:otherwise>
-		</c:choose>
-	</select>
-	<br />
-	<label for="w_date">입고날짜 : </label>
-	<input type="date" name="w_date" id="w_date" />
-	<br />
-	<label for="w_total_count">입고총수량 : </label>
-	<input type="text" name="w_total_count" id="w_total_count" />
-	<br />
-	<label for="w_total_price">입고금액 : </label>
-	<input type="text" name="w_total_price" id="w_total_price" />
-	<br />
-	<button type="submit">제출</button>
-</form>
+
+<div class="ui top attached menu">
+  <a class="item">
+    <i class="sidebar icon"></i> Menu
+  </a>  
+  <div class="menu right">
+  	<div class="ui pointing menu">
+	  <a class="active item">
+	    Home
+	  </a>
+	  <a class="item">
+	    Messages
+	  </a>
+	  <a class="item">
+	    Friends
+	  </a>
+	  <div class="right menu">
+	    <div class="item">
+	      <div class="ui transparent icon input">
+	        <input type="text" placeholder="Search...">
+	        <i class="search link icon"></i>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+</div>
+<div class="ui bottom attached segment">
+  	<div class="ui labeled left vertical sidebar menu">
+	    <div class="ui simple dropdown item">
+	    	입고관리
+	    	<i class="dropdown icon"></i>
+	    	<div class="right menu">
+		      <a class="item">Electronics</a>
+		      <a class="item">Automotive</a>
+		      <a class="item">Home</a>
+		    </div>
+	    </div>
+	    <a class="item">업체관리</a>
+	    <a href="${pageContext.request.contextPath }/m_home.do" class="item">
+	    	관리자 페이지
+	    </a>
+	    <a href="insertformwarehousing.do" class="item">
+	        입고등록
+	    </a>
+	    <a href="warehousing.do" class="item">
+	    	입고 리스트
+	    </a>
+	    <a href="agencylist.do" class="item">
+	    	업체 리스트
+	    </a>
+	    <a href="insertformagency.do" class="item">
+	    	업체 등록
+	    </a>
+  	</div>
+	<div class="pusher">
+		<div class="ui" id="article">
+			<h1 class="ui header">입고 등록</h1>
+		</div>		
+		<form class="ui form" action="insertwarehousing.do" method="post">
+			<div class="required field">
+				<label>해당 업체 </label>
+				<select class="ui fluid dropdown" name="a_code">
+					<option value="">업체선택</option>
+					<c:choose>
+		           		<c:when test="${empty list }">
+		           			<option value="">업체등록되지않음.</option>
+		           		</c:when>	
+		           		<c:otherwise>
+		           			<c:forEach var="tmp" items="${list }">			      
+								<option value="${tmp.a_code }">${tmp.company }</option>						
+							</c:forEach>			
+		           		</c:otherwise>
+					</c:choose>		
+				</select>			
+			</div>
+			<div class="required field">
+				<label>입고 날짜</label>
+				<input type="date" name="w_date" />
+			</div>
+			<div class="required field">
+				<label>입고 총 수량</label>
+				<input type="text" name="w_total_count" />
+			</div>
+			<div class="required field">
+				<label>입고 금액</label>
+				<input type="text" name="w_total_price"/>
+			</div>
+			<button type="submit" class="ui button">등록</button>
+		</form>		
+	</div>
+</div>
+<script>
+/* 사이드바 관련 js */
+$('.ui.sidebar').sidebar({
+    context: $('.bottom.segment')
+  })
+  .sidebar('attach events', '.menu .item');
+
+</script>
 </body>
 </html>
