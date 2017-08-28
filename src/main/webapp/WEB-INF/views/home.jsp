@@ -10,69 +10,117 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/home1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fotorama.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick-theme.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css" />
 <title>㈜슙스 공식 온라인스토어</title>
+<style>
+.slick-prev:before, .slick-next:before{
+    color: red;
+    font-size: 20px;
+}
+.container-fluid#slickscope{
+	padding-left: 60px;
+	padding-right: 60px;
+}
+#bestbox div.row{
+	margin: 20px auto;
+}
+</style>
 </head>
 <body>
 		<!-- 네비게이션 -->
 		<!-- branch upst -->
 <jsp:include page="navbar.jsp"></jsp:include>
-		<!-- 캐러셀 -->
-<div class="container-fluid">
-	<div class="fotorama" data-loop="true" data-autoplay="true" data-nav="false">
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg2.jpg"/>
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg5.jpg"/>
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg1.jpg"/>
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg4.jpg"/>
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg6.jpg"/>
-	  <img src="${pageContext.request.contextPath }/resources/img/bgimg3.jpg"/>
+		<!-- slick scope -->
+<div class="container-fluid" id="slickscope">
+	<div class="slider">	
+	  <div><img src="http://cfile3.uf.tistory.com/image/2674F9405806350E1374AC" style="height: 720px;" alt="" /></div>
+	  <div><img src="https://cdn.pixabay.com/photo/2017/07/31/11/33/rooftops-2557490_960_720.jpg" alt="" /></div>
+	  <div><img src="https://cdn.pixabay.com/photo/2016/12/27/22/31/converse-1935026_960_720.jpg" alt="" /></div>
+	  <div><img src="https://cdn.pixabay.com/photo/2017/03/27/11/51/blur-2178183_960_720.jpg" alt="" /></div>
+	  <div><img src="https://cdn.pixabay.com/photo/2016/08/10/00/54/foot-1582294_960_720.jpg" alt="" /></div>
+	  <div><img src="https://cdn.pixabay.com/photo/2016/11/23/17/17/adidas-1853899_960_720.jpg" alt="" /></div>
 	</div>
 </div>
 	    <!-- best/new/sale/....-->
-<div id="con">
-	<ul>
-		<li><a href="#">BEST</a></li>
-		<li><a href="#">NEW</a></li>
-		<li><a href="#">SALE</a></li>
-	</ul>
-	<div class="row">
-	  <div class="col-sm-2">
-	    <div class="thumbnail">
-	      <img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>베스트 메뉴</p>
-	        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-2">
-	    <div class="thumbnail">
-	      <img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>베스트 메뉴</p>
-	        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-2">
-	    <div class="thumbnail">
-	      <img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
-	      <div class="caption">
-	        <h3>Thumbnail label</h3>
-	        <p>베스트 메뉴</p>
-	        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-	      </div>
-	    </div>
-	  </div>
+<div class="container-fluid" id="slickscope">
+	<div class="ui massive top attached tabular menu">
+	  <a class="item active" data-tab="best">
+	    BEST
+	  </a>
+	  <a class="item" data-tab="new">
+	    NEW
+	  </a>
+	  <a class="item" data-tab="sales">
+	    SALES
+	  </a>
+	</div>
+	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
+		<div class="row">
+			<div class="col-xs-6">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-6">
+				<div class="row">
+					<div class="col-xs-6">
+						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+					</div>
+					<div class="col-xs-6">
+						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6">
+						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+					</div>
+					<div class="col-xs-6">
+						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+					</div>
+				</div>
+			</div>
+	
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+			<div class="col-xs-3">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+			</div>
+		</div>
+	</div>
+	<div class="ui massive bottom attached tab segment" data-tab="new">
+	  2There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+	</div>
+	<div class="ui massive bottom attached tab segment" data-tab="sales">
+	  3There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
 	</div>
 </div>
 
 	    <!-- news -->
-	    
-<div class="continer">
 
-</div>
+
 <div>
 	<a id="bg" class="btn" href="m_home.do" role="button">관리자페이지</a>
 </div>
@@ -86,5 +134,56 @@
 </c:if>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/fotorama.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/slick.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
+<script>
+var sliderSwitch=false;
+
+$('.slider').on('click', function(){	
+	if(sliderSwitch==false){
+		$(this).slick('slickPause');
+		sliderSwitch=true;
+	}else{
+		$(this).slick('slickPlay');
+		sliderSwitch=false;
+	}	
+});
+$(document).ready(function() {
+	$(".slider").slick({
+		  infinite: true,
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  dots: true,
+		  speed: 100,
+		  centerMode: true,
+		  variableWidth: true,
+		  adaptiveHeight: true,
+		  autoplay: true,
+		  autoplaySpeed: 2000,		  
+	});	
+});
+
+$('.menu .item')
+.tab()
+;
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
