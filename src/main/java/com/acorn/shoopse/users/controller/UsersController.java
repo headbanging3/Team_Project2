@@ -80,7 +80,6 @@ public class UsersController {
 	public ModelAndView findIdAjax(@ModelAttribute UsersDto dto){
 		ModelAndView mView=usersService.findId(dto);
 		mView.setViewName("users/find_id_ajax");
-		System.out.println("mView 리턴전");
 		return mView;
 	}
 	//비밀번호 찾기
@@ -88,7 +87,6 @@ public class UsersController {
 	public ModelAndView findPwdAjax(@ModelAttribute UsersDto dto){
 		ModelAndView mView=usersService.findPwd(dto);
 		mView.setViewName("users/find_pwd_ajax");
-		System.out.println("mView 리턴전");
 		return mView;
 	}
 	

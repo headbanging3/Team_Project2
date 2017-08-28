@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="productsCud">
-	<a href="../../home.do">돌아가기</a>
+	<a href="../../m_home.do">돌아가기</a>
 	<a href="p_insertform.do">상품 등록</a>
 	<!-- <a href="manager/products/p_updateform.do">상품 수정</a> -->
 	<a href="javascript:showdbox()" id="delete">상품 삭제</a>

@@ -107,7 +107,7 @@
 	});
 	
 	//아이디 및 비밀번호 정규식
-	var reg1= /^[a-zA-Z0-9]{4,14}$/;
+	var reg1= /^[a-zA-Z0-9]{5,15}$/;
 	var reg2= /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/;
 	
 	//회원가입 버튼 클릭시 제출되는 버튼
@@ -136,6 +136,9 @@
 		
 		if(inputId==""){
 			alert("아이디를 입력하세요.");
+			return false;
+		}else if(!idMatching){
+			alert("아이디 형식을 확인하세요.");
 			return false;
 		}
 		
