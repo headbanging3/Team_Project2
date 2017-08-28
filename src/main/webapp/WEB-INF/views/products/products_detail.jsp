@@ -180,10 +180,9 @@
 						    <option value="2">2</option>
 						    <option value="3">3</option>
 						</select>
-						
 							<ul class="orderBtn">
-								<input type="button" value="주문" onclick='mySubmit(1)'/>
-								<input type="button" value="담기" onclick='mySubmit(2)'/>
+								<li><input id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
+								<li><input id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
 							</ul>
 						</form>
 						<div id="refund">
@@ -333,11 +332,12 @@
 <script>
 	function mySubmit(index) {
 		if(index==1) {
-			document.myForm.action="orderPage.do";
+			document.myForm.action = 'orderAction.do';
 		}
 		if(index==2) {
-			document.myForm.action="";
+			document.myForm.action="orderPage.do";
 		}
+
 		document.myForm.submit();
 	}
 </script>
