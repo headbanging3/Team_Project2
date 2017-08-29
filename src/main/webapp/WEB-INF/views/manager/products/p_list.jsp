@@ -22,7 +22,7 @@
 	body{
 		padding-left:30px;
 	}
-	.deleteBox{
+	.deleteBox, .updateBox{
 		display: none;
 	}
 	#buttons{
@@ -36,7 +36,7 @@
 <div class="productsCud">
 	<a href="../../m_home.do">돌아가기</a>
 	<a href="p_insertform.do">상품 등록</a>
-	<!-- <a href="manager/products/p_updateform.do">상품 수정</a> -->
+	<a href="javascript:showubox()">상품 수정</a>
 	<a href="javascript:showdbox()" id="delete">상품 삭제</a>
 </div>
 
@@ -48,6 +48,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th class="updateBox">수정</th>
 				<th class="deleteBox">삭제</th>
 			<!-- 상품 -->
 				<th>상품코드</th>
@@ -75,6 +76,7 @@
 				<c:forEach var="tmp" items="${list}">
 					<tr>
 					<!-- 상품 -->
+						<td class="updateBox"><a href="p_updateform.do">수정</a></td>
 						<td class="deleteBox">
 							<input type="checkbox" name="chname" value="${tmp.p_code }:${tmp.p_main_img }"/>
 						</td>
@@ -106,10 +108,14 @@
 <script>
 	function showdbox(){
 		$(".deleteBox").show();
-		$(".deleteBtn").show();
-		$(".canselBtn").show();
 		
 	}
+	
+	function showubox(){
+		$(".updateBox").show();
+		$("#canselBtn").show();
+	}
+	
 	$("#listForm").submit(function(){
 		var isDel=confirm("정말로 삭제 하시겠습니까?");
 		if(isDel){
@@ -122,9 +128,9 @@
 	
 	$("#canselBtn").click(function(){
 		$(".deleteBox").hide();
-		
-		
+		$(".updateBox").hide();
 	});
+	
 
 	
 

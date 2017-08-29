@@ -100,6 +100,17 @@
 		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 		
 		try {
+			var title=$("#title").val();
+			var pdnum=$("#pdnum").val();
+			
+			if(title==""){
+				alert("제목을 입력해주세요.");
+				return false;
+			}else if(pdnum==""){
+				alert("상품 번호를 입력해주세요.");
+				return false;
+			}
+			
 			elClickedObj.form.submit();
 		} catch(e) {}
 	}
@@ -112,6 +123,16 @@
 		
 	$("#cansel").on("click",function(){
 		location.htef="qnalist.do";
+	});
+	
+	$("#pdnum").on("keyup", function(){
+		var reg1= /^[0-9]{0,10}$/;
+		var pdnum=$(this).val();
+		var isVal=reg1.test(pdnum);
+		if(!isVal){
+			alert("상품 번호를 확인해주세요.");
+			$(this).val("");
+		}
 	});
 </script>
 </body>
