@@ -11,21 +11,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" type="text/css" media="screen">
 <style>
 	#footer {
-		    position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-	}
-	html {
-		height: 100%;
-	}
-	
-	body {
-		margin: 0;
-		height: 100%;
+		position: absolute;
+		bottom: 200;
+		left: 0;
+		right: 0;
 	}
 	.contentArea {
-		min-height: 100%;
 		position: relative;
 		padding-bottom: 50px;
 	}

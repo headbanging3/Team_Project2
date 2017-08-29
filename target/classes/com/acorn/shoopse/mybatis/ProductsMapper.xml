@@ -43,7 +43,21 @@
 		DELETE FROM product_tb
 		WHERE p_code=#{p_code}
 	</delete>
-	
+	<select id="getPdData" parameterType="String" resultType="productsDto">
+		SELECT p_code, p_kind_code, p_name, p_brand, p_price, point,
+						p_regdate, p_comment, p_detail_comment, p_main_img 
+		FROM product_tb
+		WHERE p_code=#{p_code}
+	</select>
+	<update id="productsUpdate" parameterType="productsDto">
+		UPDATE product_tb
+		SET p_kind_code=#{p_kind_code}, p_name=#{p_name}, p_brand=(SELECT kind_name 
+																	 FROM product_kind
+																	 WHERE p_kind_code=#{p_kind_code}), 
+		p_price=#{p_price}, 
+		 	point=#{point}, p_comment=#{p_comment}, p_detail_comment=#{p_detail_comment}, p_main_img=#{p_main_img}
+		WHERE p_code=#{p_code}
+	</update>
 	
 </mapper>
 

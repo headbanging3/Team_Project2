@@ -18,4 +18,6 @@ public interface ManagerDao {
 	public List<ProductsKindDto> getDivision(int parent_kind_code);
 	public void productsInsert(ProductsDto dto);
 	public void productsDelete(String p_code);
+	public ProductsDto productsUpdateForm(String p_code); 
+	public void productsUpdate(ProductsDto dto);
 }
