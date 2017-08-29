@@ -93,7 +93,7 @@
 				<c:forEach var="tmp" items="${list}">
 					<tr>
 					<!-- 상품 -->
-						<td class="updateBox"><a href="p_updateform.do">수정</a></td>
+						<td class="updateBox"><a href="p_updateform.do?p_code=${tmp.p_code }">수정</a></td>
 						<td class="deleteBox">
 							<input type="checkbox" name="chname" value="${tmp.p_code }:${tmp.p_main_img }"/>
 						</td>

@@ -78,6 +78,17 @@ public class ManagerDaoImpl implements ManagerDao{
 		
 	}
 
+	@Override
+	public ProductsDto productsUpdateForm(String p_code) {
+		ProductsDto dto=session.selectOne("products.getPdData",p_code);
+		return dto;
+	}
+
+	@Override
+	public void productsUpdate(ProductsDto dto) {
+		session.update("products.productsUpdate", dto);
+	}
+
 
 
 }

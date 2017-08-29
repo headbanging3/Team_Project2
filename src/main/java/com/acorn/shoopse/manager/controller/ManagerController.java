@@ -111,16 +111,25 @@ public class ManagerController {
 	@RequestMapping("/manager/products/p_insert")
 	public String productsInsert(HttpServletRequest request, @ModelAttribute ProductsDto dto){
 		managerService.productsInsert(dto, request);
-		
 		return "redirect:/manager/products/p_list.do";
 	}
-	
 	// 관리자 상품 삭제
 	@RequestMapping("/manager/products/p_delete")
 	public String productsDelete(HttpServletRequest request){
-	
-	
 		managerService.productsDelete(request);
+		return "redirect:/manager/products/p_list.do";
+	}
+	// 관리자 상품 수정 폼
+	@RequestMapping("/manager/products/p_updateform")
+	public ModelAndView productsUpdateForm(String p_code){
+		ModelAndView mView=managerService.productsUpdateForm(p_code);
+		mView.setViewName("/manager/products/p_updateform");
+		return mView;
+	}
+	// 관리자 상품 수정
+	@RequestMapping("/manager/products/p_update")
+	public String productsUpdate(@ModelAttribute ProductsDto dto, HttpServletRequest request){
+		managerService.productsUpdate(dto, request);
 		return "redirect:/manager/products/p_list.do";
 	}
 

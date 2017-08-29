@@ -148,4 +148,60 @@ public class ManagerServiceImpl implements ManagerService{
 		}
 
 	}
+
+	@Override
+	public ModelAndView productsUpdateForm(String p_code) {
+		ProductsDto dto=managerDao.productsUpdateForm(p_code);
+		List<ProductsKindDto> categoryList=managerDao.getCategory();
+		
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("categoryList", categoryList);
+		mView.addObject("dto",dto);
+		return mView;
+	}
+
+	@Override
+	public void productsUpdate(ProductsDto dto, HttpServletRequest request) {
+		//파일을 저장할 폴더의 절대 경로를 얻어온다.
+		String realPath=request.getSession()
+				.getServletContext().getRealPath("/resources/img");
+		System.out.println(realPath);
+			
+		//MultipartFile 객체의 참조값 얻어오기
+		//FileDto 에 담긴 MultipartFile 객체의 참조값을 얻어온다.
+		MultipartFile mFile=dto.getFile();
+		String orgFileName=mFile.getOriginalFilename();
+					//p_main_img에 파일 이름 설정
+		//dto.setP_main_img(orgFileName);
+					//저장할 파일의 상세 경로
+		String filePath=realPath+File.separator;
+		//디렉토리를 만들 파일 객체 생성
+		File file=new File(filePath);
+		if(!file.exists()){//디렉토리가 존재하지 않는다면
+			file.mkdir();//디렉토리를 만든다.
+		}
+		//파일 시스템에 저장할 파일명을 만든다. (겹치치 않게)
+		String saveFileName=System.currentTimeMillis()+orgFileName;
+			try{
+			// /resources/img 폴더에 파일을 저장한다.
+			mFile.transferTo(new File(filePath+saveFileName));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		dto.setP_main_img(saveFileName);
+		
+		System.out.println(dto.getP_kind_code());
+		System.out.println(dto.getP_name());
+		System.out.println(dto.getP_brand());
+		System.out.println(dto.getP_price());
+		System.out.println(dto.getPoint());
+		System.out.println(dto.getP_comment());
+		System.out.println(dto.getP_detail_comment());
+		System.out.println(dto.getP_main_img());
+		System.out.println(dto.getP_code());
+				
+		managerDao.productsUpdate(dto);
+		
+		
+	}
 }

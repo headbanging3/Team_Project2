@@ -30,11 +30,11 @@
 <div id="sideBar">
 	<ul>
 		<li><a href="${pageContext.request.contextPath }/manager/m_list.do">회원목록보기</a></li>
-		<li><a href="${pageContext.request.contextPath }/home.do">유저페이지</a></li>
-		<li><a href="${pageContext.request.contextPath }/manager/m_nav2.do">nav2</a></li>
 		<li><a href="${pageContext.request.contextPath }/manager/products/p_list.do">상품 목록</a></li>
+		<li><a href="${pageContext.request.contextPath }/manager/m_nav2.do">nav2</a></li>
 		<li><a href="${pageContext.request.contextPath }/manager/warehousing.do">입고</a></li>
 		<li><a href="">주문</a></li>
+		<li><a href="${pageContext.request.contextPath }/home.do">유저페이지</a></li>
 	</ul>
 </div>
 </body>
