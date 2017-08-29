@@ -35,12 +35,12 @@
 		<!-- slick scope -->
 <div class="container-fluid" id="slickscope">
 	<div class="slider">	
-	  <div><img src="http://cfile3.uf.tistory.com/image/2674F9405806350E1374AC" style="height: 720px;" alt="" /></div>
-	  <div><img src="https://cdn.pixabay.com/photo/2017/07/31/11/33/rooftops-2557490_960_720.jpg" alt="" /></div>
-	  <div><img src="https://cdn.pixabay.com/photo/2016/12/27/22/31/converse-1935026_960_720.jpg" alt="" /></div>
-	  <div><img src="https://cdn.pixabay.com/photo/2017/03/27/11/51/blur-2178183_960_720.jpg" alt="" /></div>
-	  <div><img src="https://cdn.pixabay.com/photo/2016/08/10/00/54/foot-1582294_960_720.jpg" alt="" /></div>
-	  <div><img src="https://cdn.pixabay.com/photo/2016/11/23/17/17/adidas-1853899_960_720.jpg" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg.jpg" style="height: 720px;" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg1.jpg" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg2.jpg" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg3.jpg" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg4.jpg" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg5.jpg" alt="" /></div>
 	</div>
 </div>
 	    <!-- best/new/sale/....-->
