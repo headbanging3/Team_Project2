@@ -37,6 +37,7 @@
 			<th>주소</th>
 			<th>가입날짜</th>
 			<th>마일리지</th>
+			<th>주문내역</th>
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
@@ -89,6 +90,7 @@
 			<td>${tmp.addr }</td>
 			<td>${tmp.regdate }</td>
 			<td>${tmp.point }</td>
+			<td><a href="userOrderList.do?mem_num=${tmp.mem_num }">상세보기</a></td>
 			<td><a href="updateform.do?mem_num=${tmp.mem_num}">수정</a></td>
 			<td><a href="delete.do?mem_num=${tmp.mem_num} ">삭제</a></td>
 		</tr>
