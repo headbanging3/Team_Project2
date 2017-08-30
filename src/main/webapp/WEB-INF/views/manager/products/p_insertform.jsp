@@ -7,13 +7,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	body{
-		padding :30px;
+	#pInsertForm, #insertText{
+		margin-left:400px;
 	}
 </style>
 </head>
 <body>
-<h3>상품 등록 폼 입니다.</h3>
+<jsp:include page="../nav/m_nav.jsp"></jsp:include>
+<jsp:include page="../nav/sidebar.jsp"></jsp:include>
+<h3 id="insertText">상품 등록 폼 입니다.</h3>
 <form action="p_insert.do" method="post" enctype="multipart/form-data" id="pInsertForm">
 	<select id="category">
 		<option value="#">브랜드</option>
