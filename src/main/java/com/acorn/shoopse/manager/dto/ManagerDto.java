@@ -109,5 +109,12 @@ public class ManagerDto {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+	@Override
+	public String toString() {
+		return "ManagerDto [mem_num=" + mem_num + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone
+				+ ", email=" + email + ", addr=" + addr + ", regdate=" + regdate + ", mem_flag=" + mem_flag + ", point="
+				+ point + "]";
+	}
 	
 }

@@ -81,6 +81,14 @@ public class ManagerController {
 		return "redirect:/manager/m_list.do";
 	}
 	
+	/* ************************* 주문 List CRUD ************************* */
+	// 유저 상세 주문 목록
+	@RequestMapping("/manager/userOrderList")
+	public ModelAndView userOrderList(@RequestParam int mem_num) {
+		ModelAndView mView = managerService.getData(mem_num);
+		mView.setViewName("manager/order/userOrder_list");
+		return mView;
+	}
 	
 	
 	/* ************************* 상품 List CRUD ************************* */

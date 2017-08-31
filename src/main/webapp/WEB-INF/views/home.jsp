@@ -23,8 +23,30 @@
 	padding-left: 60px;
 	padding-right: 60px;
 }
+.slider > div img{
+	height: 650px;
+	border-radius: 5px;
+}
 #bestbox div.row{
 	margin: 20px auto;
+}
+.tabmenu-imgbox{
+	position: relative;
+	border: 1px solid blue;
+}
+.tabmenu-imgbox .inner{
+	position: absolute;
+	box-sizing:border-box;
+	width: 100%;
+	height:30%;
+	line-height:12px;
+	vertical-align:middle;
+	overflow:hidden;
+	left:0px;
+	bottom: 0px;
+	right:0px;
+    background: #999;
+    text-align: center;
 }
 </style>
 </head>
@@ -35,7 +57,7 @@
 		<!-- slick scope -->
 <div class="container-fluid" id="slickscope">
 	<div class="slider">	
-	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg.jpg" style="height: 720px;" alt="" /></div>
+	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg.jpg" alt="" /></div>
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg1.jpg" alt="" /></div>
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg2.jpg" alt="" /></div>
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg3.jpg" alt="" /></div>
@@ -43,6 +65,12 @@
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg5.jpg" alt="" /></div>
 	</div>
 </div>
+
+<c:forEach var="tmp" items="${list}" varStatus="status">
+	<p>[${status.index}]: ${list[status.index].p_code}</p>
+</c:forEach>
+
+
 	    <!-- best/new/sale/....-->
 <div class="container-fluid" id="slickscope">
 	<div class="ui massive top attached tabular menu">
@@ -57,9 +85,13 @@
 	  </a>
 	</div>
 	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
-		<div class="row">
-			<div class="col-xs-6">
+		<div class="row">			
+			<div class="col-xs-6 tabmenu-imgbox">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="inner">
+					<span>상품 제목</span><br/>
+					<span>상품 설명 가격</span>
+		        </div>			   
 			</div>
 			<div class="col-xs-6">
 				<div class="row">
