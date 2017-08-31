@@ -71,9 +71,8 @@ public class HelpDaoImpl implements HelpDao{
 	}
 
 	@Override
-	public boolean qnaInsert(HelpQnaListDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+	public void qnaInsert(HelpQnaListDto dto) {
+		session.insert("help.qnaInsert",dto);	
 	}
 
 	@Override
@@ -84,7 +83,7 @@ public class HelpDaoImpl implements HelpDao{
 
 	@Override
 	public void qnaDelete(int listnum) {
-		// TODO Auto-generated method stub
+		session.delete("help.qnaDelete",listnum);
 		
 	}
 
@@ -92,6 +91,12 @@ public class HelpDaoImpl implements HelpDao{
 	public HelpQnaListDto getQnaDetail(int listnum) {
 		HelpQnaListDto resultDto=session.selectOne("help.getQnaDetail",listnum);
 		return resultDto;
+	}
+
+	@Override
+	public void qnaUpdate(HelpQnaListDto dto) {
+		session.update("help.qnaUpdate",dto);
+		
 	}
 
 }

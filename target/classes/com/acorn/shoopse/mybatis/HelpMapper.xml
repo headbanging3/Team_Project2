@@ -41,17 +41,22 @@
 		SELECT NVL(MAX(ROWNUM),0)
 		FROM qnalist
 	</select>
-	<insert id="insertQna" parameterType="qnalistDto">
+	<insert id="qnaInsert" parameterType="qnalistDto">
 		INSERT INTO qnalist(qna_listnum, qna_title, qna_pdnum,
 				qna_writer, qna_content, qna_regdate) 
 		VALUES(qnalist_seq.NEXTVAL, #{qna_title}, #{qna_pdnum}, #{qna_writer}, #{qna_content} ,SYSDATE)
 	</insert>
 	<select id="getQnaDetail" parameterType="int" resultType="qnalistDto">
-		SELECT qna_listnum, qna_title, qna_writer, qna_content FROM qnalist WHERE qna_listnum=#{listnum}
+		SELECT qna_listnum, qna_title, qna_pdnum, qna_writer, qna_content FROM qnalist WHERE qna_listnum=#{listnum}
 	</select>
 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM qnalist WHERE qna_listnum=#{listnum}
 	</delete>
+	<update id="qnaUpdate" parameterType="qnalistDto">
+		UPDATE qnalist 
+		SET qna_title=#{qna_title}, qna_pdnum=#{qna_pdnum}, qna_content=#{qna_content}
+		WHERE qna_listnum=#{qna_listnum}
+	</update>
 </mapper>
 
 

@@ -11,32 +11,49 @@
 	}
 	img{
 		height:100px;
-		width:100px;
+		width:160px;
+	}
+	.imgBox{
+		width:160px;
 	}
 	.productsCud {
 		padding : 20px;
+		margin-left: 400px;
 	}
 	.productsCud a{
 		margin-right:30px;
+		
 	}
-	body{
-		padding-left:30px;
-	}
-	.deleteBox{
+
+	.deleteBox, .updateBox{
 		display: none;
 	}
 	#buttons{
-		margin-left:320px;
+		margin-left:300px;
 		margin-bottom:30px;
+		position: absolute;
 	}
+	#listForm{
+		width:90%;
+		float:left;
+		margin-left:320px;
+		
+	}
+	#listForm table{
+		width:90%;
+		margin-top:50px;
+	}
+	
 </style>
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../nav/m_nav.jsp"></jsp:include>
+<jsp:include page="../nav/sidebar.jsp"></jsp:include>
 <div class="productsCud">
-	<a href="../../home.do">돌아가기</a>
+	<a href="../../m_home.do">돌아가기</a>
 	<a href="p_insertform.do">상품 등록</a>
-	<!-- <a href="manager/products/p_updateform.do">상품 수정</a> -->
+	<a href="javascript:showubox()">상품 수정</a>
 	<a href="javascript:showdbox()" id="delete">상품 삭제</a>
 </div>
 
@@ -48,6 +65,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th class="updateBox">수정</th>
 				<th class="deleteBox">삭제</th>
 			<!-- 상품 -->
 				<th>상품코드</th>
@@ -75,6 +93,7 @@
 				<c:forEach var="tmp" items="${list}">
 					<tr>
 					<!-- 상품 -->
+						<td class="updateBox"><a href="p_updateform.do?p_code=${tmp.p_code }">수정</a></td>
 						<td class="deleteBox">
 							<input type="checkbox" name="chname" value="${tmp.p_code }:${tmp.p_main_img }"/>
 						</td>
@@ -87,8 +106,8 @@
 						<td>${tmp.p_regdate }</td>
 						<td>${tmp.p_comment }</td>
 						<td>${tmp.p_detail_comment }</td>
-						<td>
-							<a href="products_detail.do?p_code=${tmp.p_code }">
+						<td class="imgBox">
+							<a href="${pageContext.request.contextPath }/products/products_detail.do?p_code=${tmp.p_code }">
 								<img src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img }" />
 							</a>
 						</td>
@@ -105,11 +124,17 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 	function showdbox(){
+		$(".updateBox").hide();
 		$(".deleteBox").show();
-		$(".deleteBtn").show();
-		$(".canselBtn").show();
 		
 	}
+	
+	function showubox(){
+		$(".deleteBox").hide();
+		$(".updateBox").show();
+		$("#canselBtn").show();
+	}
+	
 	$("#listForm").submit(function(){
 		var isDel=confirm("정말로 삭제 하시겠습니까?");
 		if(isDel){
@@ -122,9 +147,9 @@
 	
 	$("#canselBtn").click(function(){
 		$(".deleteBox").hide();
-		
-		
+		$(".updateBox").hide();
 	});
+	
 
 	
 

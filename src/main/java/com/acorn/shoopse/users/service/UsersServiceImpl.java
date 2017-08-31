@@ -28,7 +28,6 @@ public class UsersServiceImpl implements UsersService {
 		String id=usersDao.findId(dto);
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("id",id);
-		System.out.println(id);
 		return mView;
 	}
 	//비밀번호 찾기
@@ -37,7 +36,6 @@ public class UsersServiceImpl implements UsersService {
 		String pwd=usersDao.findPwd(dto);
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("pwd",pwd);
-		System.out.println(pwd);
 		return mView;
 	}
 	//회원 가입시 아이디 중복 확인
@@ -80,7 +78,6 @@ public class UsersServiceImpl implements UsersService {
 			UsersDto dto=usersDao.getData(id);
 			mView.addObject("dto", dto);
 		}
-		System.out.println(mView);
 		return mView;
 		
 	}

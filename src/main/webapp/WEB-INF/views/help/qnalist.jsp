@@ -111,7 +111,7 @@
 						<a href="javascript:showPopup()" id="addQna">글작성</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${pageContext.request.contextPath }/service/qnainsert_form.do" id="addQna">글작성</a>
+						<a href="${pageContext.request.contextPath }/help/qnainsert_form.do" id="addQna">글작성</a>
 					</c:otherwise>
 				</c:choose>
 			</div>

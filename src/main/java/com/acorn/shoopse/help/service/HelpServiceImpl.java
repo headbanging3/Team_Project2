@@ -74,7 +74,7 @@ public class HelpServiceImpl implements HelpService{
 			pageNum=Integer.parseInt(strPageNum);
 		}
 		
-		System.out.println(strPageNum);
+		
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
 		//보여줄 페이지 데이터의 끝 ResultSet row 번호
@@ -119,9 +119,14 @@ public class HelpServiceImpl implements HelpService{
 	}
 
 	@Override
-	public boolean qnaInsert(HelpQnaListDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+	public void qnaInsert(HelpQnaListDto dto, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
+		String content=request.getParameter("ir1");
+		
+		dto.setQna_writer(id);
+		dto.setQna_content(content);
+		
+		helpDao.qnaInsert(dto);
 	}
 
 	@Override
@@ -132,7 +137,7 @@ public class HelpServiceImpl implements HelpService{
 
 	@Override
 	public void qnaDelete(int listnum) {
-		// TODO Auto-generated method stub
+		helpDao.qnaDelete(listnum);
 		
 	}
 
@@ -143,6 +148,14 @@ public class HelpServiceImpl implements HelpService{
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("dto", dto);
 		return mView;
+	}
+
+	@Override
+	public void qnaUpdate(HelpQnaListDto dto, HttpServletRequest request) {
+		String content=request.getParameter("ir1");
+		dto.setQna_content(content);
+		
+		helpDao.qnaUpdate(dto);
 	}
 
 	

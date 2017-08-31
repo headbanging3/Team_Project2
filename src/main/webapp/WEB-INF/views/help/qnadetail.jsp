@@ -17,7 +17,7 @@
 	}
 	.delQna{
 		float:right;
-		display:none;
+		
 		margin-right:20px;
 	}
 	.panel{
@@ -27,6 +27,7 @@
 	h3{
 		padding-top:30px;
 	}
+	
 </style>
 </head>
 <body>
@@ -35,34 +36,60 @@
 	<h3>상품문의</h3>
 	<div class="panel panel-default">
         <div class="panel-heading">
-            <h1 class="panel-title">${dto.qna_title }</h1>
+     	    <h1 class="panel-title">제목 : <strong>${dto.qna_title }</strong></h1>
+        </div>
+         <div class="panel-heading">
+          	<h1 class="panel-title">상품 번호 : <strong>${dto.qna_pdnum }</strong></h1>
         </div>
         <div class="panel-body">
             ${dto.qna_content }
         </div>
         <div class="panel-footer">
          	작성자 : <strong>${dto.qna_writer }</strong>
-         	<a href="qnaupdate_form.do?listnum=${dto.qna_listnum }" class="delQna">글수정</a>
+         	<a href="qnaupdate_form.do?qna_listnum=${dto.qna_listnum }&url=${pageContext.request.contextPath }" class="delQna">글수정</a>
             <a href="javascript:deleteCheck()" class="delQna">글삭제</a>
         </div>
     </div>
+    <div>
+		<button class="btn btn-default" onclick="goBack()">돌아가기</button>
+	</div>
 </div>
+
 <jsp:include page="../footer.jsp"/>
 <script src="../resource/js/jquery-3.2.0.js"></script>
-<c:if test="${not empty sessionScope.id }">
-	<c:if test="${sessionScope.id eq dto.qna_writer }">
-		<script>
-		$(".delQna").css("display","block");
-	</script>
-	</c:if>
-</c:if>
 <script>
-function deleteCheck(){
-	var isDelete=confirm("글을 삭제 하시겠습니까?");
-	if(isDelete){
-		location.href="qnadelete.do?listnum=${dto.qna_listnum }";
+	function goBack(){
+		location.href="qnalist.do";
 	}
-}
 </script>
+<c:choose>
+	<c:when test="${not empty sessionScope.id }">
+		<c:if test="${sessionScope.id eq dto.qna_writer }">
+			<script>
+				function deleteCheck(){
+					var isDelete=confirm("글을 삭제 하시겠습니까?");
+					if(isDelete){
+						location.href="qnadelete.do?listnum=${dto.qna_listnum }";
+					}
+				}
+			</script>
+		</c:if>
+		<c:if test="${sessionScope.id ne dto.qna_writer }">
+			<script>
+				function deleteCheck(){
+					alert("권한이 없습니다.");
+				}
+			</script>
+		</c:if>
+	</c:when>
+	<c:otherwise>
+		<script>
+			function deleteCheck(){
+				window.open("${pageContext.request.contextPath}/popup/signinform.do","팝업창","width=400,height=300,top=200,left=700");
+			}
+		</script>
+	</c:otherwise>
+</c:choose>
+
 </body>
 </html>
