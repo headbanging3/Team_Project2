@@ -85,10 +85,12 @@ public class ManagerController {
 	// 유저 상세 주문 목록
 	@RequestMapping("/manager/userOrderList")
 	public ModelAndView userOrderList(@RequestParam int mem_num) {
-		ModelAndView mView = managerService.getData(mem_num);
+		ModelAndView mView = managerService.userOrderList(mem_num);
 		mView.setViewName("manager/order/userOrder_list");
+		
 		return mView;
 	}
+	
 	
 	
 	/* ************************* 상품 List CRUD ************************* */

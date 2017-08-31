@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dao.ManagerDao;
 import com.acorn.shoopse.manager.dto.ManagerDto;
+import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 import com.acorn.shoopse.users.dao.UsersDao;
@@ -32,6 +33,8 @@ public class ManagerServiceImpl implements ManagerService{
 		
 	}
 
+	
+	
 	@Override
 	public ModelAndView list() {
 		List<ManagerDto> list  = managerDao.getList();
@@ -203,5 +206,18 @@ public class ManagerServiceImpl implements ManagerService{
 		managerDao.productsUpdate(dto);
 		
 		
+	}
+
+
+
+	@Override
+	public ModelAndView userOrderList(int mem_num) {
+		ModelAndView mView = new ModelAndView();
+		ManagerDto dto = managerDao.getData(mem_num);
+		OrderListDto dtoa = managerDao.userOrderList(mem_num);
+		mView.addObject("dto", dto);
+		mView.addObject("dtoa", dtoa);
+		
+		return mView;
 	}
 }

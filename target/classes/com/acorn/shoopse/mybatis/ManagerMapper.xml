@@ -40,6 +40,12 @@
 		FROM member
 		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
+	<select id="userOrderList" parameterType="int" resultType="com.acorn.shoopse.order.dto.OrderListDto">
+		SELECT ot.o_no, o_date, o_total_count, o_total_price, mem_num, delivery_flag, o_status, res_name, res_phone, res_address
+		FROM ORDER_TB ot, ORDER_REQ_ADDR ora
+		WHERE ot.o_no = ora.o_no
+		AND mem_num = #{mem_num}
+	</select>
 
 
 </mapper>

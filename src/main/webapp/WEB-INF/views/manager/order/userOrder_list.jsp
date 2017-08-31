@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,32 +12,23 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>ÀÌ¸§</th>
-					<th>¾ÆÀÌµğ</th>
-					<th>È¸¿ø ÁÖ¼Ò</th>
-					<th>ÀüÈ­¹øÈ£</th>
-					<th>°¡ÀÔ³¯Â¥</th>
-					<th>¸¶ÀÏ¸®Áö</th>
+					<th>ì´ë¦„</th>
+					<th>ì•„ì´ë””</th>
+					<th>íšŒì› ì£¼ì†Œ</th>
+					<th>ì „í™”ë²ˆí˜¸</th>
+					<th>ê°€ì…ë‚ ì§œ</th>
+					<th>ë§ˆì¼ë¦¬ì§€</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="">
-					<td>${tmp.mem_num }</td>
-					<c:choose>
-						<c:when test="${tmp.mem_num != 3 }">
-							<td>°ü¸®ÀÚ</td>
-						</c:when>
-						<c:otherwise>
-							<td>ÀÏ¹İ È¸¿ø</td>
-						</c:otherwise>
-					</c:choose>
-					<td>${tmp.name }</td>
-					<td>${tmp.id}</td>
-					<td>${tmp.addr }</td>
-					<td>${tmp.phone }</td>
-					<td>${tmp.regdate }</td>
-					<td>${tmp.point }</td>
-
+					<td>${dto.mem_num }</td>
+					<td>${dto.name }</td>
+					<td>${dto.id}</td>
+					<td>${dto.addr }</td>
+					<td>${dto.phone }</td>
+					<td>${dto.regdate }</td>
+					<td>${dto.point }</td>
 				</tr>
 			</tbody>
 		</table>
@@ -44,19 +36,24 @@
 		<table border="1">
 		<thead>
 			<tr>
-				<th>¹Ş´Â »ç¶÷</th>
-				<th>ÀüÈ­ ¹øÈ£</th>
-				<th>¹è¼Û ÁÖ¼Ò</th>
-				<th>È¸¿ø ÁÖ¼Ò</th>
-				<th>±¸ÀÔ ¼ö·®</th>
-				<th>±¸ÀÔ °¡°İ</th>
-				<th>¹è¼Û »óÅÂ</th>
-				<th>±¸ÀÔÀÚ Á¤º¸</th>
+				<th>ë°›ëŠ” ì‚¬ëŒ</th>
+				<th>ì „í™” ë²ˆí˜¸</th>
+				<th>ë°°ì†¡ ì£¼ì†Œ</th>
+				<th>êµ¬ì… ìˆ˜ëŸ‰</th>
+				<th>êµ¬ì… ê°€ê²©</th>
+				<th>ë°°ì†¡ ìƒíƒœ</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td></td>
+				<td>${dtoa.o_no }</td>
+				<td>${dtoa.res_name }</td>
+				<td>${dtoa.res_phone }</td>
+				<td>${dtoa.res_address }</td>
+				<td>${dtoa.o_total_count }</td>
+				<td>${dtoa.o_total_price }</td>
+				<td>${dtoa.delivery_flag }</td>
+				<td>${dtoa.o_status }</td>
 			</tr>
 		</tbody>
 	</table>
