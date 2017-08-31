@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cart">
 	<select id="getList" resultType="cartDto" parameterType="int">
-		SELECT pt.p_name, ps.p_size, os.o_count, os.o_sub_price, os.o_sub_total_price 
+		SELECT ot.o_no, ps.p_no,ps.p_code,pt.p_name, ps.p_size, os.o_count, os.o_sub_price, os.o_sub_total_price 
 		FROM order_tb ot 
 		JOIN order_sub os 
 		    ON  ot.o_no=os.o_no
@@ -10,8 +10,47 @@
 		    ON os.p_no=ps.p_no
 		JOIN product_tb pt
 		    ON ps.p_code = pt.p_code
-		WHERE ot.mem_num=#{mem_num} and ot.o_status = 2
+		WHERE ot.mem_num=#{mem_num} and ot.o_status = 1
 	</select>
+	
+	<update id="countUpdate" parameterType="cartDto">
+		UPDATE order_sub 
+		SET o_count=#{o_count},
+			o_sub_total_price=#{o_count}*o_sub_price
+		WHERE o_no=#{o_no} 
+		AND p_code=#{p_code} 
+		AND p_no=#{p_no}
+	</update>
+	
+	<select id="countSelect" resultType="cartDto" parameterType="cartDto">
+		SELECT o_count, o_sub_total_price
+		FROM order_sub
+		WHERE o_no=#{o_no} and p_code=#{p_code} and p_no=#{p_no}
+	</select>
+	<select id="getAddr" resultType="UsersDto" parameterType="int">
+		SELECT name,phone,addr
+		FROM users
+		WHERE mem_num = #{mem_num}
+	</select>
+	
+	<update id="orderUpdate" parameterType="orderActionDto">
+		UPDATE order_tb 
+		SET o_total_price =(SELECT sum(o_sub_total_price) FROM order_sub WHERE  o_no=#{o_no})+3000,
+		o_total_count = (SELECT count(o_count) FROM order_sub WHERE  o_no= #{o_no}),
+		o_date=sysdate,
+		o_status='2'
+		WHERE o_no=#{o_no} and mem_num=#{mem_num} 
+		AND o_status='1'
+	</update>
+	
+	<insert id="reqAddrInsert" parameterType="orderActionDto">
+		INSERT INTO order_req_addr
+		(o_no,res_name,res_phone,res_address)
+		VALUES
+		(#{o_no},#{res_name},#{res_phone},#{res_address}) 
+	</insert>
+	
+	
 </mapper>
 
 

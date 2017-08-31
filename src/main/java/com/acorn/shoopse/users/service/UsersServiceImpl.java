@@ -61,6 +61,7 @@ public class UsersServiceImpl implements UsersService {
 		if(user!=null){
 			request.getSession().setAttribute("id", dto.getId());
 			request.getSession().setAttribute("mem_num", user.getMem_num());
+			request.getSession().setAttribute("mem_flag", user.getMem_flag());
 			mView.addObject("url",url);
 		}else{			
 			String location=request.getContextPath()+

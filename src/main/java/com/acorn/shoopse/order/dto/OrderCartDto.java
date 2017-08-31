@@ -2,17 +2,26 @@ package com.acorn.shoopse.order.dto;
 
 public class OrderCartDto {
 	//order_tb
+	private int o_no;
 	private int o_total_count;
 	private int o_total_price;
 	//order_sub
-	private String p_code;
+	private int p_no;
 	private int o_count;
 	private int o_sub_total_price;
 	private int o_sub_price;
 	//product_tb
+	private String p_code;
 	private String p_name;
 	private String p_size;
 	
+	
+	public int getO_no() {
+		return o_no;
+	}
+	public void setO_no(int o_no) {
+		this.o_no = o_no;
+	}
 	public int getO_total_count() {
 		return o_total_count;
 	}
@@ -25,11 +34,11 @@ public class OrderCartDto {
 	public void setO_total_price(int o_total_price) {
 		this.o_total_price = o_total_price;
 	}
-	public String getP_code() {
-		return p_code;
+	public int getP_no() {
+		return p_no;
 	}
-	public void setP_code(String p_code) {
-		this.p_code = p_code;
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
 	}
 	public int getO_count() {
 		return o_count;
@@ -49,6 +58,12 @@ public class OrderCartDto {
 	public void setO_sub_price(int o_sub_price) {
 		this.o_sub_price = o_sub_price;
 	}
+	public String getP_code() {
+		return p_code;
+	}
+	public void setP_code(String p_code) {
+		this.p_code = p_code;
+	}
 	public String getP_name() {
 		return p_name;
 	}
@@ -61,7 +76,5 @@ public class OrderCartDto {
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
 	}
-	
-	
 	
 }
