@@ -7,8 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+	#insertText{
+		margin-top:100px;
+	}
 	#pInsertForm, #insertText{
 		margin-left:400px;
+		
+	}
+	#insertBtn{
+		margin-left:300px;
+		margin-bottom:200px;
 	}
 </style>
 </head>
@@ -45,9 +53,16 @@
 	<label for="p_detail_comment">상품 상세 설명</label><br />
 	<textarea name="p_detail_comment" id="p_detail_comment" cols="50" rows="20"></textarea><br />
 	
-	<label for="p_main_img">메인 이미지 파일</label>
+	<label for="p_main_img">메인 이미지 파일 * </label>
 	<input type="file" name="file" id="file" /><br/>
-	<button type="submit">상품 등록</button>
+	<label for="p_main_img">서브 이미지 파일 * </label>
+	<input type="file" name="subImgs[0]" class="subImgs"/><br/>
+	<input type="file" name="subImgs[1]" class="subImgs"/><br/>
+	<input type="file" name="subImgs[2]" class="subImgs"/><br/>
+	<input type="file" name="subImgs[3]" class="subImgs"/><br/>
+	<input type="file" name="subImgs[4]" class="subImgs"/><br/>
+	
+	<button type="submit" id="insertBtn">상품 등록</button>
 </form>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
@@ -86,7 +101,7 @@
 	
 	$("#p_price").keyup(function(){
 		var price=$(this).val();
-		var point=price*0.05;
+		var point=Math.round(price*0.05);
 		$(".point").val(point);
 		
 	});
@@ -99,6 +114,7 @@
 		var comment=$("#p_comment").val();
 		var detailComment=$("p_detail_comment").val();
 		var file=$("#file").val();
+		var subFiles=document.querySelectorAll(".subImgs");
 		
 		if(categoryNum=='#' || divisionNum=='#'){
 			alert("브랜드 및 분류를 선택하세요!");
@@ -107,10 +123,17 @@
 			alert("제품명 또는 가격을 입력하세요!");
 			return false;
 		}else if(file==''){
-			alert("이미지 파일을 선택하세요!");
+			alert("메인 이미지 파일을 입력하세요!");
 			return false;
 		}
-			
+		
+		for(var i=0; i<subFiles.length; i++){
+			console.log(subFiles[i]);
+			if(subFiles[i].value==''){
+				alert("서브 이미지 파일을 입력하세요!");
+				return false;
+			}
+		}
 		
 	});
 </script>

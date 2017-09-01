@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>네비게이션</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css?ver=13" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" />
 </head>
 <div class="container" id="content2">
@@ -23,12 +23,12 @@
    	 <div class="header" id="topMenu">
    	 	 <a href="javascript:" id="menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
 	   	 <ul id="nav">
-	   	 	<li><a class="menuLink" href="products/products_list.do">NIKE</a></li>
-	   	 	<li><a class="menuLink" href="#">ADIDAS</a></li>
-	   	 	<li><a class="menuLink" href="#">Reebok</a></li>
-	   	 	<li><a class="menuLink" href="#">NewBalance</a></li>
-	   	 	<li><a class="menuLink" href="#">VANS</a></li>
-	   	 	<li><a class="menuLink" href="#">FILA</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=01">NIKE</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=02">ADIDAS</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=03">Reebok</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=04">NewBalance</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=05">VANS</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?parent_kind_code=06">FILA</a></li>
 	   	 </ul>
    	 </div>
    	 	<!-- 유틸메뉴 -->
@@ -68,7 +68,7 @@
    	 </nav>
 </div>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <script>
 	//고객센터 드롭메뉴 js
 	$('.dropdown').click(function(){

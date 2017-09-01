@@ -135,13 +135,14 @@
 						<h4 style="text-align:left; margin-left:50px;"><strong>상품 페이지</strong></h4>
 					</div>
 					<div>
+						
 						<div id="topImg">
-							<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif" />
+							<img src="${pageContext.request.contextPath }/resources/img/${mainImg }" />
 						</div>
 						<div id="topText">
 							<p>Men 나이키 맥스</p>
-							<h3>베어맥스 트리플 블랙</h3>
-							<p><span><strong>23,9000원</strong></span></p>
+							<h3>${getinfo.p_name }</h3>
+							<p><span>${getinfo.p_price }<strong></strong></span></p>
 							<p>카드사별 무이자 혜택</p>
 							<p><a href="#">바로가기 안내</a></p>
 						</div>
@@ -193,21 +194,15 @@
 					
  				</div>
  				<div class="contents" id="sub_img">
- 					<div class="conMain">
- 						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
- 					</div>
- 					<div class="conMain">
- 						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
- 					</div>
- 					<div class="conMain">
- 						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
- 					</div>
- 					<div class="conMain">
- 						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
- 					</div>
- 					<div class="conMain">
- 						<img src="${pageContext.request.contextPath }/resources/img/no_detail_img.gif"/>
- 					</div>
+ 					<c:forEach var="tmp" items="${ subImg}">
+ 						<div class="conMain">
+ 							<img src="${pageContext.request.contextPath }/resources/img/products/nike/max/vapormax/${tmp.p_sub_img }" />
+ 						</div>
+ 					</c:forEach>
+ 						
+ 					
+ 					
+ 					
  				</div>
  				<div class="productsFooter">
  					<div class="deliveryInfo">

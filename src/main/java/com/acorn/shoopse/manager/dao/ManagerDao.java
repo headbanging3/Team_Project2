@@ -3,7 +3,10 @@ package com.acorn.shoopse.manager.dao;
 import java.util.List;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
+import com.acorn.shoopse.order.dto.OrderDto;
+import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 public interface ManagerDao {
@@ -20,4 +23,6 @@ public interface ManagerDao {
 	public void productsDelete(String p_code);
 	public ProductsDto productsUpdateForm(String p_code); 
 	public void productsUpdate(ProductsDto dto);
+	public OrderListDto userOrderList(int mem_num);
+	public void subImgsInsert(ProductsImgsDto imgsDto);
 }

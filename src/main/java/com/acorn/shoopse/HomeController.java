@@ -30,8 +30,10 @@ public class HomeController {
 	public ModelAndView home(HttpServletRequest request){
 		request.setAttribute("manager", "hide");
 		// home best 상품 목록
+		
 		ModelAndView mView=new ModelAndView();
 		mView=productsService.getList();
+		System.out.println("mView::::"+mView);
 		mView.setViewName("home");
 		return mView;
 	}

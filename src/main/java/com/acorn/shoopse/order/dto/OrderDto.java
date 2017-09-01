@@ -10,7 +10,7 @@ public class OrderDto {
 	private String delivery_flag;
 	private String o_status;
 	
-	OrderDto() {}
+
 	
 	OrderDto(int o_no, String o_date, int o_total_count, int o_total_price, int mem_num, String delivery_flag,
 			String o_status) {

@@ -13,6 +13,7 @@ import com.acorn.shoopse.order.dao.OrderCartDao;
 import com.acorn.shoopse.order.dto.OrderActionDto;
 import com.acorn.shoopse.order.dao.OrderDao;
 import com.acorn.shoopse.order.dto.OrderCartDto;
+import com.acorn.shoopse.order.dto.WholeOrderDto;
 import com.acorn.shoopse.users.dto.UsersDto;
 
 @Service
@@ -20,6 +21,9 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private OrderCartDao cartDao;
+	
+	@Autowired
+	private OrderDao orderDao;
 	
 	@Override
 	public ModelAndView list(int mem_num) {
@@ -64,6 +68,14 @@ public class OrderServiceImpl implements OrderService{
 	public ModelAndView getList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ModelAndView wholeOrderList() {
+		List<WholeOrderDto> list = orderDao.orderGetList();
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("list", list);
+		return mView;
 	}
 }
 

@@ -63,19 +63,18 @@
 </style>
 </head>
 <body>
-<jsp:include page="../navbar.jsp"/> 
+<jsp:include page="../navbar.jsp"/>
 <div class="container-fluid">
 	<div class="main">
 		<div class="row">
 			<div class="col-sm-8 col-sm-push-2">
 				<div class="midMenu">
+					
 					<ul>
-						<li class="active"><a href="#">맥스</a></li>
-						<li><a href="#">포스</a></li>
-						<li><a href="#">런닝화</a></li>
-						<li><a href="#">축구화</a></li>
-						<li><a href="#">농구화</a></li>
-						<li><a href="#">슬리퍼</a></li>
+						<c:forEach var="tmp" items="${kindList }">
+						<li class="active"><a href="products_list.do?p_kind_code=${tmp.p_kind_code }">${tmp.kind_name }</a></li>
+						</c:forEach>
+					
 					</ul>
 				</div>
 			</div>
@@ -97,11 +96,11 @@
 						</div>
 					</div>
 					<c:choose>
-           				<c:when test="${empty list }">
+           				<c:when test="${empty plist }">
 	           				<h3>상품이 없습니다.</h3>
            				</c:when>	
            				<c:otherwise>
-							<c:forEach var="tmp" items="${list}">
+							<c:forEach var="tmp" items="${plist}">
 								<div class="content">
 									<a href="products_detail.do?p_code=${tmp.p_code }">
 										<img src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}" />
