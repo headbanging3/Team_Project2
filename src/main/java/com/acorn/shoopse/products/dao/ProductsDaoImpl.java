@@ -24,6 +24,14 @@ public class ProductsDaoImpl implements ProductsDao{
 	public List<ProductsDto> getpList() {
 		List<ProductsDto> plist = session.selectList("products.getpList");
 		return plist;
+	}	
+	@Override
+	public List<ProductsDto> getKindList(int p_code) {
+		List<ProductsDto> kindList = session.selectList("products.getKindList",p_code);
+//		for(ProductsDto temp : kindList){
+//			System.out.println(temp.toString());
+//		}
+		return kindList;
 	}
 
 	@Override
@@ -51,9 +59,5 @@ public class ProductsDaoImpl implements ProductsDao{
 		return dto;
 	}
 
-	
-
-
-	
 
 }

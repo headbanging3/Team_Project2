@@ -151,6 +151,13 @@ public class ProductsDto {
 		this.file = file;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "ProductsDto [p_code=" + p_code + ", p_kind_code=" + p_kind_code + ", p_name=" + p_name + ", p_brand="
+				+ p_brand + ", p_price=" + p_price + ", point=" + point + ", p_regdate=" + p_regdate + ", p_comment="
+				+ p_comment + ", P_detail_comment=" + P_detail_comment + ", p_main_img=" + p_main_img + ", file=" + file
+				+ ", p_sub_img=" + p_sub_img + ", parent_kind_code=" + parent_kind_code + ", kind_name=" + kind_name
+				+ "]";
+	}
 	
 }

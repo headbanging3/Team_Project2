@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
+import com.acorn.shoopse.order.dto.OrderDto;
+import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
@@ -87,6 +89,12 @@ public class ManagerDaoImpl implements ManagerDao{
 	@Override
 	public void productsUpdate(ProductsDto dto) {
 		session.update("products.productsUpdate", dto);
+	}
+
+	@Override
+	public OrderListDto userOrderList(int mem_num) {
+		OrderListDto dto = session.selectOne("manager.userOrderList", mem_num);
+		return dto;
 	}
 
 

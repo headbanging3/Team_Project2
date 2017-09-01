@@ -16,19 +16,11 @@ public class ProductsController {
 	
 	@RequestMapping("/products/products_list")
 	public ModelAndView test(@RequestParam int p_kind_code){
-		System.out.println("p_kind_code::"+p_kind_code);
-		ModelAndView mView=new ModelAndView();
-		mView=productsService.getList();
+		System.out.println("p_kind_code::"+p_kind_code);	
+		ModelAndView mView=productsService.getpList(p_kind_code);
 		mView.setViewName("products/products_list");
 		return mView;
 	}
-//	@RequestMapping("/products/products_list")
-//	public ModelAndView test2(int p_kind_code){
-//		ModelAndView mView=new ModelAndView();
-//		mView=productsService.getpList(p_kind_code);
-//		mView.setViewName("products/products_list");
-//		return mView;
-//	}
 	
 	@RequestMapping("/products/products_detail")
 	public ModelAndView detail(@RequestParam int p_code){

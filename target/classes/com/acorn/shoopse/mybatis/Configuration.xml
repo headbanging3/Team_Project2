@@ -13,6 +13,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.acorn.shoopse.agency.dto.AgencyDto" alias="agencyDto"/>
 		<typeAlias type="com.acorn.shoopse.order.dto.OrderCartDto" alias="cartDto"/>
 		<typeAlias type="com.acorn.shoopse.wearing.dto.WearingDto" alias="wearingDto"/>
+		<!-- <typeAlias type="com.acorn.shoopse.order.dto.OrderListDto" alias="orderListDto"/>  -->
+		<typeAlias type="com.acorn.shoopse.order.dto.OrderActionDto" alias="orderActionDto"/>
 	</typeAliases>
 	
 	<!-- sql 문을 정의하고 있는 xml 문서 -->

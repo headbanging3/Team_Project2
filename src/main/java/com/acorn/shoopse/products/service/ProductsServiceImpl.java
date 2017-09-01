@@ -17,22 +17,21 @@ public class ProductsServiceImpl implements ProductsService{
 	
 	@Override
 	public ModelAndView getList() {
-		ModelAndView mView=new ModelAndView();
-		
+		ModelAndView mView=new ModelAndView();		
 		List<ProductsDto> list=productsDao.getList();
-		//List<ProductsDto> plist=productsDao.getpList();
 		mView.addObject("list", list);
-		//mView.addObject("plist",plist);
 		return mView;
 	}
 	
-//	@Override
-//	public ModelAndView getpList(int p_kind_code) {
-//		ModelAndView mView= new ModelAndView();
-//		List<ProductsDto> plist= productsDao.getpList(p_kind_code);
-//		mView.addObject("plist",plist);
-//		return mView;
-//	}
+	@Override
+	public ModelAndView getpList(int p_kind_code) {
+		ModelAndView mView= new ModelAndView();
+		List<ProductsDto> plist= productsDao.getpList();
+		List<ProductsDto> kindList= productsDao.getKindList(p_kind_code);
+		mView.addObject("plist",plist);
+		mView.addObject("kindList",kindList);
+		return mView;
+	}
 
 	@Override
 	public ModelAndView getDetail(int p_code) {
