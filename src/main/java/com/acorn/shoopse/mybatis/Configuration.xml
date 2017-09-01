@@ -13,7 +13,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.acorn.shoopse.agency.dto.AgencyDto" alias="agencyDto"/>
 		<typeAlias type="com.acorn.shoopse.order.dto.OrderCartDto" alias="cartDto"/>
 		<typeAlias type="com.acorn.shoopse.wearing.dto.WearingDto" alias="wearingDto"/>
+<<<<<<< HEAD
 		<!-- <typeAlias type="com.acorn.shoopse.order.dto.OrderListDto" alias="orderListDto"/>  -->
+=======
+		<typeAlias type="com.acorn.shoopse.order.dto.OrderActionDto" alias="orderActionDto"/>
+>>>>>>> branch 'master' of https://github.com/headbanging3/Team_Project2.git
 	</typeAliases>
 	
 	<!-- sql 문을 정의하고 있는 xml 문서 -->

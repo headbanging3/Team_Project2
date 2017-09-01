@@ -2,6 +2,7 @@ package com.acorn.shoopse.users.dto;
 
 public class UsersDto {
 	private int mem_num;
+	private String mem_flag;
 	private String id;
 	private String pwd;
 	private String name;
@@ -88,6 +89,15 @@ public class UsersDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+
+	public String getMem_flag() {
+		return mem_flag;
+	}
+
+	public void setMem_flag(String mem_flag) {
+		this.mem_flag = mem_flag;
+	}
+	
 	
 	
 }
