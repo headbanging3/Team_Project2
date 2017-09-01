@@ -4,7 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -36,12 +37,14 @@
 		<table border="1">
 		<thead>
 			<tr>
+				<th>주문 번호</th>
 				<th>받는 사람</th>
 				<th>전화 번호</th>
 				<th>배송 주소</th>
 				<th>구입 수량</th>
 				<th>구입 가격</th>
 				<th>배송 상태</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -52,8 +55,27 @@
 				<td>${dtoa.res_address }</td>
 				<td>${dtoa.o_total_count }</td>
 				<td>${dtoa.o_total_price }</td>
-				<td>${dtoa.delivery_flag }</td>
-				<td>${dtoa.o_status }</td>
+				<c:choose>
+					<c:when test="${dtoa.delivery_flag == 1}">
+						<td>장바구니</td>
+					</c:when>
+					<c:when test="${dtoa.delivery_flag == 2}">
+						<td>입금대기</td>
+					</c:when>
+					<c:when test="${dtoa.delivery_flag == 3}">
+						<td>입금완료</td>
+					</c:when>
+					<c:when test="${dtoa.delivery_flag == 4}">
+						<td>배송준비</td>
+					</c:when>
+					<c:when test="${dtoa.delivery_flag == 5}">
+						<td>배송출발</td>
+					</c:when>
+					<c:when test="${dtoa.delivery_flag == 6}">
+						<td>배송완료</td>
+					</c:when>
+				</c:choose>
+				
 			</tr>
 		</tbody>
 	</table>

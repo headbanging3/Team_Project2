@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.acorn.shoopse.order.dto.OrderDto;
+import com.acorn.shoopse.order.dto.WholeOrderDto;
 
 @Repository
 public class OrderDaoImpl implements OrderDao{
@@ -37,6 +38,12 @@ public class OrderDaoImpl implements OrderDao{
 	public void o_Insert(OrderDto dto) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<WholeOrderDto> orderGetList() {
+		List<WholeOrderDto> list = session.selectList("manager.wholeOrderList");
+		return list;
 	}
 	
 }

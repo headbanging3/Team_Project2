@@ -21,4 +21,5 @@ public interface OrderService {
 	public ModelAndView getAddr(int mem_num);
 	public void orderInsert(OrderActionDto dto);
 	public void orderDeleteAjax(List<OrderCartDto> dto);
+	public ModelAndView wholeOrderList();
 }
