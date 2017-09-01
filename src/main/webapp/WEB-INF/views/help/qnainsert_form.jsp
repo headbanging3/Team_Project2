@@ -13,7 +13,7 @@
 		margin: 0 auto;
 		text-align:center;
 	}
-	#title{
+	#title, #pdnum{
 		text-align:center;
 	}
 	#content{
@@ -32,16 +32,21 @@
 </style>
 </head>
 <body>
-<jsp:include page="navbar.do"/>
+<jsp:include page="../navbar.jsp"/>
 <div class="container">
 	<h3>상품문의</h3>
 	<div class="panel panel-default">
-		<form action="qnainsert.do" method="post">
+		<form action="qnainsert.do" method="post" id="qnaForm">
         <div class="panel-heading">
-        	<input type="text" name="title" id="title" class="form-control" placeholder="제목"/>
+        	<label for="qna_title">제목</label>
+        	<input type="text" name="qna_title" id="title" class="form-control"/>
+        </div>
+        <div class="panel-heading">
+        	<label for="qna_pdnum">상품번호</label>
+        	<input type="text" name="qna_pdnum" id="pdnum" class="form-control" placeholder="숫자만 입력"/>
         </div>
         <div class="panel-body">
-           <label for="content">내용</label>
+           <label for="qna_content">내용</label>
            <textarea name="ir1" id="ir1" cols="40" rows="20" class="form-control"></textarea>
 
         </div>
@@ -52,7 +57,7 @@
         </form>
     </div>
 </div>
-<script src="../resource/js/jquery-3.2.0.js"></script>
+<jsp:include page="../footer.jsp"/>	
 <script>
 	var oEditors = [];
 	
@@ -95,6 +100,17 @@
 		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 		
 		try {
+			var title=$("#title").val();
+			var pdnum=$("#pdnum").val();
+	
+			if(title==""){
+				alert("제목을 입력해주세요.");
+				return false;
+			}else if(pdnum==""){
+				alert("상품 번호를 입력해주세요.");
+				return false;
+			}
+			
 			elClickedObj.form.submit();
 		} catch(e) {}
 	}
@@ -107,6 +123,16 @@
 		
 	$("#cansel").on("click",function(){
 		location.htef="qnalist.do";
+	});
+	
+	$("#pdnum").on("keyup", function(){
+		var reg1= /^[0-9]{0,10}$/;
+		var pdnum=$(this).val();
+		var isVal=reg1.test(pdnum);
+		if(!isVal){
+			alert("상품 번호를 확인해주세요.");
+			$(this).val("");
+		}
 	});
 </script>
 </body>

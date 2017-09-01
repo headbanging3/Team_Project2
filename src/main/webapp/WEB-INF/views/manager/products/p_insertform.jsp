@@ -7,45 +7,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	body{
-		padding :30px;
+	#pInsertForm, #insertText{
+		margin-left:400px;
 	}
 </style>
 </head>
 <body>
-<h3>상품 등록 폼 입니다.</h3>
-<form action="p_insert.do" method="post" enctype="multipart/form-data">
+<jsp:include page="../nav/m_nav.jsp"></jsp:include>
+<jsp:include page="../nav/sidebar.jsp"></jsp:include>
+<h3 id="insertText">상품 등록 폼 입니다.</h3>
+<form action="p_insert.do" method="post" enctype="multipart/form-data" id="pInsertForm">
 	<select id="category">
-		<option value="#">대분류</option>
+		<option value="#">브랜드</option>
 		<c:forEach var="tmp" items="${categoryList}">		
 			<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
 		</c:forEach>
 	</select>	
 	
-	<select id="division">
-		<option value="#">소분류</option>
+	<select name="p_kind_code" id="division">
+		<option value="#">분류</option>
 		<c:forEach var="tmp" items="${divisionList}">		
 			<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
 		</c:forEach>
-	</select>
+	</select><br />
 	
-	<br />
-	<label for="kind_name">상품명</label>
-	<input type="text" name="kind_name" /><br />
-	
-	<label for="brand">제조사</label>
-	<select id="category">
-		<option value="#">브랜드</option>
-		<c:forEach var="tmp" items="${categoryList}">		
-			<option value="${tmp.kind_name }">${tmp.kind_name }</option>
-		</c:forEach>
-	</select>
-	<br />	
+	<label for="p_name">상품명</label>
+	<input type="text" name="p_name" id="p_name"/><br /><br />	
 	
 	<label for="p_price">가격</label>
 	<input type="text" name="p_price" id="p_price" /><br />
 	<label for="point">마일리지</label>
-	<input type="text" name="point" id="point" disabled="disabled" /><br />
+	<input type="text" class="point" disabled="disabled"/><br />
+	<input type="hidden" name="point" class="point" />
 	
 	<label for="p_comment">상품 간단 설명</label><br />
 	<textarea name="p_comment" id="p_comment" cols="30" rows="10"></textarea><br />
@@ -53,17 +46,21 @@
 	<textarea name="p_detail_comment" id="p_detail_comment" cols="50" rows="20"></textarea><br />
 	
 	<label for="p_main_img">메인 이미지 파일</label>
-	<input type="file" name="p_main_img" id="p_main_img" /><br/>
+	<input type="file" name="file" id="file" /><br/>
 	<button type="submit">상품 등록</button>
 </form>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
+
 	$("#category").change(function(){
 		var code = "";
 		code=$("#category option:selected").val();
 		  console.log(code);
-		  
+		if(code=='#'){
+			$("#division").empty();
+			return false;
+		}
 		$.ajax({
 			url:"getDivision.do",
 			method:"POST",
@@ -90,7 +87,30 @@
 	$("#p_price").keyup(function(){
 		var price=$(this).val();
 		var point=price*0.05;
-		$("#point").val(point);
+		$(".point").val(point);
+		
+	});
+	
+	$("#pInsertForm").submit(function(){
+		var categoryNum=$("#category option:selected").val();
+		var divisionNum=$("#division option:selected").val();
+		var name=$("#p_name").val();
+		var price=$("#p_price").val();
+		var comment=$("#p_comment").val();
+		var detailComment=$("p_detail_comment").val();
+		var file=$("#file").val();
+		
+		if(categoryNum=='#' || divisionNum=='#'){
+			alert("브랜드 및 분류를 선택하세요!");
+			return false;
+		}else if(name=='' || price==''){
+			alert("제품명 또는 가격을 입력하세요!");
+			return false;
+		}else if(file==''){
+			alert("이미지 파일을 선택하세요!");
+			return false;
+		}
+			
 		
 	});
 </script>

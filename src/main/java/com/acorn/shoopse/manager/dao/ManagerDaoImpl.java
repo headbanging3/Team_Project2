@@ -71,6 +71,24 @@ public class ManagerDaoImpl implements ManagerDao{
 		
 	}
 
+	@Override
+	public void productsDelete(String p_code) {
+		//String p_code_st=Integer.toString(p_code);
+		session.delete("products.productsDelete",p_code);
+		
+	}
+
+	@Override
+	public ProductsDto productsUpdateForm(String p_code) {
+		ProductsDto dto=session.selectOne("products.getPdData",p_code);
+		return dto;
+	}
+
+	@Override
+	public void productsUpdate(ProductsDto dto) {
+		session.update("products.productsUpdate", dto);
+	}
+
 
 
 }

@@ -19,7 +19,8 @@ public interface HelpDao {
 	public List<HelpQnaListDto> getQnaList(HelpQnaListDto dto);
 	public HelpQnaListDto getQnaDetail(int listnum);
 	public int getQnaCount();
-	public boolean qnaInsert(HelpQnaListDto dto);
+	public void qnaInsert(HelpQnaListDto dto);
 	public HelpQnaListDto qnaDetail(int listnum);
 	public void qnaDelete(int listnum);
+	public void qnaUpdate(HelpQnaListDto dto);
 }

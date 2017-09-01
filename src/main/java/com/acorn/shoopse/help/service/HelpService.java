@@ -19,7 +19,8 @@ public interface HelpService {
 	public ModelAndView getQnaList(HttpServletRequest request);
 	public ModelAndView getQnaDetail(HttpServletRequest request);
 	public int getQnaCount();
-	public boolean qnaInsert(HelpQnaListDto dto);
+	public void qnaInsert(HelpQnaListDto dto, HttpServletRequest request);
 	public HelpQnaListDto qnaDetail(int listnum);
 	public void qnaDelete(int listnum);
+	public void qnaUpdate(HelpQnaListDto dto, HttpServletRequest request);
 }

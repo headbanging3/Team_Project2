@@ -16,3 +16,5 @@ DROP TABLE users CASCADE CONSTRAINT;
 
 INSERT INTO users
 VALUES (mem_num_seq.NEXTVAL, 'root', '1234', 'root', '11', 'ppoox@naver.com', '서울',SYSDATE);
+INSERT INTO users
+VALUES (1, 'root', '1234', 'root', '11', 'ppoox@naver.com', '서울',SYSDATE);

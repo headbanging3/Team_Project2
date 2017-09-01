@@ -13,6 +13,7 @@
 	<div>
 		<h3>주문이 완료 되었습니다.</h3>
 	</div>
+	<li><a href="">돌아가기</a></li>
 <jsp:include page="../../footer.jsp"></jsp:include>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
