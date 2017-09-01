@@ -5,18 +5,65 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <title>주문 내역</title>
 </head>
 <body>
 	<table border="1">
 		<thead>
 			<tr>
-				<th></th>
+				<th>#</th>
+				<th>주문자</th>
+				<th>주문자 ID</th>
+				<th>주문자 Email</th>
+				<th>주문자 전화번호</th>
+				<th>수신인</th>
+				<th>수신자 전화번호</th>
+				<th>배송지 주소</th>
+				<th>주문 날짜</th>
+				<th>주문 수량</th>
+				<th>주문 가격</th>
+				<th>주문 제품 상세보기</th>
+				<th>배송 상태</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td></td>
+				<c:forEach var="tmp" items="${list }">
+					<td>${tmp.o_no }</td>
+					<td>${tmp.name }</td>
+					<td>${tmp.id }</td>
+					<td>${tmp.email }</td>
+					<td>${tmp.phone }</td>
+					<td>${tmp.res_name }</td>
+					<td>${tmp.res_phone }</td>
+					<td>${tmp.res_address }</td>
+					<td>${tmp.o_date }</td>
+					<td>${tmp.o_total_count }</td>
+					<td>${tmp.o_total_price }</td>
+					<td><a href="">${tmp.p_name }</a></td>
+					<c:when test="${tmp.p_name }"></c:when>
+					<c:choose>
+						<c:when test="${tmp.o_status == 1 }">
+							<td>장바구니 상태</td>
+						</c:when>
+						<c:when test="${tmp.o_status == 2 }">
+							<td>입금 대기</td>
+						</c:when>
+						<c:when test="${tmp.o_status == 3 }">
+							<td>입금 완료</td>
+						</c:when>
+						<c:when test="${tmp.o_status == 4 }">
+							<td>배송 준비</td>
+						</c:when>
+						<c:when test="${tmp.o_status == 5 }">
+							<td>배송 출발</td>
+						</c:when>
+						<c:when test="${tmp.o_status == 6 }">
+							<td>배송 완료</td>
+						</c:when>
+					</c:choose>
+				</c:forEach>
 			</tr>
 		</tbody>
 	</table>

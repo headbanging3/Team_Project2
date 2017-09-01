@@ -22,3 +22,10 @@ SELECT ot.o_no, o_date, o_total_count, o_total_price, mem_num, delivery_flag, o_
 FROM ORDER_TB ot, ORDER_REQ_ADDR ora
 WHERE ot.o_no = ora.o_no
 AND mem_num = 15
+
+SELECT ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, pt.p_name
+FROM users u, order_tb ot, product_tb pt, order_req_addr ora, order_sub os
+WHERE u.mem_num = ot.mem_num
+AND ot.o_no = ora.o_no
+AND os.p_code = pt.p_code
+ORDER BY ot.o_no DESC;
