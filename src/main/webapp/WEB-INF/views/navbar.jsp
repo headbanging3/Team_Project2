@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>네비게이션</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css?ver=13" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" />
 </head>
 <div class="container" id="content2">
@@ -68,7 +68,7 @@
    	 </nav>
 </div>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 <script>
 	//고객센터 드롭메뉴 js
 	$('.dropdown').click(function(){
