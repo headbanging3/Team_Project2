@@ -14,11 +14,15 @@ public class ProductsDto {
 	private String P_detail_comment;
 	private String p_main_img;
 	private MultipartFile file;
+	private String p_sub_img;
+	private String parent_kind_code;
+	private String kind_name;
+	
 	
 	public ProductsDto(){}
 
 	public ProductsDto(String p_code, String p_kind_code, String p_name, String p_brand, int p_price, int point,
-			String p_regdate, String p_comment, String p_detail_comment, String p_main_img, MultipartFile file) {
+			String p_regdate, String p_comment, String p_detail_comment, String p_main_img, MultipartFile file, String p_sub_img) {
 		super();
 		this.p_code = p_code;
 		this.p_kind_code = p_kind_code;
@@ -31,6 +35,32 @@ public class ProductsDto {
 		P_detail_comment = p_detail_comment;
 		this.p_main_img = p_main_img;
 		this.file = file;
+		this.p_sub_img = p_sub_img;
+	}
+	
+	
+	public String getParent_kind_code() {
+		return parent_kind_code;
+	}
+
+	public void setParent_kind_code(String parent_kind_code) {
+		this.parent_kind_code = parent_kind_code;
+	}
+
+	public String getKind_name() {
+		return kind_name;
+	}
+
+	public void setKind_name(String kind_name) {
+		this.kind_name = kind_name;
+	}
+
+	public String getP_sub_img() {
+		return p_sub_img;
+	}
+
+	public void setP_sub_img(String p_sub_img) {
+		this.p_sub_img = p_sub_img;
 	}
 
 	public String getP_code() {

@@ -18,9 +18,46 @@ public class ProductsServiceImpl implements ProductsService{
 	@Override
 	public ModelAndView getList() {
 		ModelAndView mView=new ModelAndView();
+		
 		List<ProductsDto> list=productsDao.getList();
+		//List<ProductsDto> plist=productsDao.getpList();
 		mView.addObject("list", list);
+		//mView.addObject("plist",plist);
 		return mView;
 	}
+	
+//	@Override
+//	public ModelAndView getpList(int p_kind_code) {
+//		ModelAndView mView= new ModelAndView();
+//		List<ProductsDto> plist= productsDao.getpList(p_kind_code);
+//		mView.addObject("plist",plist);
+//		return mView;
+//	}
+
+	@Override
+	public ModelAndView getDetail(int p_code) {
+		ModelAndView mView= new ModelAndView();
+		List<String> list=productsDao.getdetail(p_code);
+		List<String> subImg=productsDao.subImg(p_code);
+		String mainImg = productsDao.mainImg(p_code);
+		ProductsDto getinfo = productsDao.getinfo(p_code);
+		
+
+		mView.addObject("list",list);
+		mView.addObject("subImg",subImg);
+		mView.addObject("mainImg", mainImg);
+		mView.addObject("getinfo",getinfo);
+		
+		System.out.println("serviceImple mainImg::"+mainImg);
+		System.out.println("serviceImple subImg::"+subImg);
+		System.out.println("serviceImple list::"+list);
+		System.out.println("serviceImple getinfo::"+getinfo);
+		System.out.println("serviceImple:::"+mView);
+		return mView;
+	}
+
+	
+
+	
 	
 }

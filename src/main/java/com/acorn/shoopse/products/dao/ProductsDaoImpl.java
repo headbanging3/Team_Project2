@@ -20,5 +20,40 @@ public class ProductsDaoImpl implements ProductsDao{
 		
 		return list;
 	}
+	@Override
+	public List<ProductsDto> getpList() {
+		List<ProductsDto> plist = session.selectList("products.getpList");
+		return plist;
+	}
+
+	@Override
+	public List<String> getdetail(int p_code) {
+		List<String> list=session.selectList("products.getdetail", p_code);
+		return list;
+	}
+
+	@Override
+	public List<String> subImg(int p_code) {
+		List<String> dto=session.selectList("products.subImg", p_code);
+		return dto;
+	}
+
+	@Override
+	public String mainImg(int p_code) {
+		String mainImg = session.selectOne("products.mainImg", p_code);
+		return mainImg;
+	}
+
+	@Override
+	public ProductsDto getinfo(int p_code) {
+		
+		ProductsDto dto=  session.selectOne("products.getinfo", p_code);
+		return dto;
+	}
+
+	
+
+
+	
 
 }
