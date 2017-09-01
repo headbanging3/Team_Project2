@@ -46,7 +46,7 @@
 		WHERE ot.o_no = ora.o_no
 		AND mem_num = #{mem_num}
 	</select>
-
+	
 
 </mapper>
 

@@ -96,7 +96,7 @@
 						</div>
 					</div>
 					<c:choose>
-           				<c:when test="${empty list }">
+           				<c:when test="${empty plist }">
 	           				<h3>상품이 없습니다.</h3>
            				</c:when>	
            				<c:otherwise>
