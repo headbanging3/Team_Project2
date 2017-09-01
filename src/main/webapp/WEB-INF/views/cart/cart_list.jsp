@@ -31,7 +31,8 @@
 <body>
 		<!-- 네비게이션 -->
 <jsp:include page="../navbar.jsp"></jsp:include>
-
+<c:choose>
+<c:when test="${not empty cartList }">
 <table class="table">
 	<tr>
 		<td>체크박스</td>
@@ -43,7 +44,7 @@
 	</tr>
 	<c:forEach var="tmp" items="${cartList }">
 	<tr>
-		<td></td>
+		<td><input type="checkbox" name="del" class="del"/><br/></td>
 		<td>${tmp.p_name }</td>
 		<td>${tmp.p_size }</td>
 		<td>${tmp.o_count }</td>
@@ -56,6 +57,7 @@
 	</tr>
 	</c:forEach>
 </table>
+<button id="delButton">선택 상품 삭제</button>
 <div id="paymentWrap">
 	<table class="table">
 		<th bgcolor="grey">
@@ -88,6 +90,11 @@
 	</table>
 	
 </div>
+</c:when>
+<c:when test="${empty cartList}">
+	장바구니가 비었습니다
+</c:when>
+</c:choose>
 
 <!-- ****************footer**************** -->
 <jsp:include page="../footer.jsp"></jsp:include>
@@ -97,12 +104,42 @@
 	</script>
 </c:if>
 <script>
+	$("#delButton").on("click",function(){
+		
+		var arr=[];	
+		var $checked = $(".del:checked");
+		$checked.each(function(index) {
+			var obj={};
+			obj.o_no=$(this).parent().siblings().eq(6).val();
+			obj.p_no=$(this).parent().siblings().eq(7).val();
+			obj.p_code=$(this).parent().siblings().eq(8).val();
+			console.log(obj);
+			arr[index]=obj;
+			
+		})
+		console.log(arr);
+		$.ajax({	 		
+	 		url: 'item_delete_ajax.do',
+			type: 'post',
+			data: JSON.stringify(arr),
+			datatype: "json",
+			contentType : 'application/json',
+			success:function(result){
+				$checked.closest('tr').remove();
+				console.log(result);
+				
+			}
+		})		
+		/* console.log($checked.parent().siblings().eq(6).val());
+		console.log($checked.parent().siblings().eq(7).val());
+		console.log($checked.parent().siblings().eq(8).val()); */
+	})
 	var totalSum = function(){
 		var priceDom=document.getElementsByClassName('price');
 		var totalPrice=0;
 		for(var i=0; i<priceDom.length; i++){
 			totalPrice += parseFloat(priceDom[i].textContent);
-			console.log("pp",totalPrice);
+			//console.log(합계",totalPrice);
 		}
 		$("#totalPrice").text(totalPrice);
 		$("#point").text(totalPrice/100);
@@ -111,7 +148,6 @@
 	totalSum();
 	//console.log(priceDom[1].textContent);
 	//console.log(priceDom.length);
-
 	$(".counter").on("click",function(){	
 		var cal=$(this).text();
 		var currVal=parseFloat($(this).parent().prev().text());		
@@ -151,7 +187,9 @@
 				totalSum();
 			}
 		})		
-	})
+	});
+	
+
 </script>
 </body>
 </html>

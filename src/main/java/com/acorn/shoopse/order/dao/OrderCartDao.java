@@ -11,4 +11,5 @@ public interface OrderCartDao {
 	public OrderCartDto itemCount(OrderCartDto dto);
 	public UsersDto getAddr(int mem_num);
 	public void orderInsert(OrderActionDto dto);
+	public void orderDeleteAjax(List<OrderCartDto> dto);
 }

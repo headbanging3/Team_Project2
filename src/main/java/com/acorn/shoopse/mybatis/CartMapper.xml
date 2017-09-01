@@ -50,6 +50,15 @@
 		(#{o_no},#{res_name},#{res_phone},#{res_address}) 
 	</insert>
 	
+	<delete id="orderDelete" parameterType="cartDto">
+		delete
+		FROM order_sub
+		WHERE o_no=#{o_no}
+		AND p_code=#{p_code}
+		AND p_no=#{p_no}
+	</delete>
+	
+	
 	
 </mapper>
 

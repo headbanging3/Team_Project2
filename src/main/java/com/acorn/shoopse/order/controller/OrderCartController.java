@@ -8,7 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.order.dto.OrderActionDto;
@@ -38,6 +41,15 @@ public class OrderCartController {
 		mView.setViewName("cart/item_count_ajax");
 		return mView;		
 	}
+	@RequestMapping("/cart/item_delete_ajax")
+	@ResponseBody
+	public ModelAndView item_delete_ajax(@RequestBody List<OrderCartDto> dto){
+		System.out.println("오??"+dto.get(0).getP_code());
+		orderService.orderDeleteAjax(dto);
+		return null;
+		
+	}
+	
 	@RequestMapping("/cart/order_insertform")
 	public ModelAndView orderPayment(HttpServletRequest request){
 		System.out.println("orderinsert?");

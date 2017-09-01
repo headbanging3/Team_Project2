@@ -43,7 +43,12 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public void orderInsert(OrderActionDto dto) {
-		cartDao.orderInsert(dto);
+		cartDao.orderInsert(dto);		
+	}
+
+	@Override
+	public void orderDeleteAjax(List<OrderCartDto> dto) {
+		cartDao.orderDeleteAjax(dto);
 		
 	}
 }

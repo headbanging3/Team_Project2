@@ -40,4 +40,13 @@ public class OrderCartDaoImpl implements OrderCartDao {
 		session.update("cart.orderUpdate",dto);
 		session.insert("cart.reqAddrInsert",dto);
 	}
+
+	@Override
+	public void orderDeleteAjax(List<OrderCartDto> dto) {
+		for(OrderCartDto temp:dto){
+			
+			session.delete("cart.orderDelete",temp);
+		}
+		
+	}
 }
