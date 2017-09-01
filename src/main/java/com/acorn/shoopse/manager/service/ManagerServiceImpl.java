@@ -217,7 +217,6 @@ public class ManagerServiceImpl implements ManagerService{
 		OrderListDto dtoa = managerDao.userOrderList(mem_num);
 		mView.addObject("dto", dto);
 		mView.addObject("dtoa", dtoa);
-		
 		return mView;
 	}
 }

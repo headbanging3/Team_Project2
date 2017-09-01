@@ -42,4 +42,13 @@ public class OrderController {
 		return "/manager/order/order_insert";
 	}
 	
+	@RequestMapping("/manager/orderList")
+	public ModelAndView orderList() {
+		ModelAndView mView = new ModelAndView();
+		mView = orderService.wholeOrderList();
+		mView.setViewName("/manager/order/order_list");
+		return mView;
+	}
+	
+	
 }

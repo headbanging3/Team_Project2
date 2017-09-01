@@ -67,6 +67,6 @@ public class AgencyDto {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	
+
 	
 }
