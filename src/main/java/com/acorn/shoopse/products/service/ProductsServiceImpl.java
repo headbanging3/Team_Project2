@@ -24,10 +24,10 @@ public class ProductsServiceImpl implements ProductsService{
 	}
 	
 	@Override
-	public ModelAndView getpList(int p_kind_code) {
+	public ModelAndView getpList(ProductsDto dto) {
 		ModelAndView mView= new ModelAndView();
-		List<ProductsDto> plist= productsDao.getpList();
-		List<ProductsDto> kindList= productsDao.getKindList(p_kind_code);
+		List<ProductsDto> plist= productsDao.getpList(dto);
+		List<ProductsDto> kindList= productsDao.getKindList(dto);
 		mView.addObject("plist",plist);
 		mView.addObject("kindList",kindList);
 		return mView;

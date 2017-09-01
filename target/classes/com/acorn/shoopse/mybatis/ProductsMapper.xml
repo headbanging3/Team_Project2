@@ -10,17 +10,27 @@
 		ORDER BY p_regdate DESC
 	</select>
 	
-	<select id="getpList" resultType="productsDto">
-		SELECT p_code, p_kind_code, p_name, 
-				p_brand, p_price, point, p_regdate, 
-				p_comment, p_detail_comment, p_main_img		
-		FROM product_tb
+	<select id="getpList" resultType="productsDto" parameterType="productsDto">
+		SELECT pt.p_code, pk.p_kind_code, pt.p_name, 
+		pt.p_brand, pt.p_price, pt.point, pt.p_regdate, 
+		pt.p_comment, pt.p_detail_comment, pt.p_main_img,
+		pk.kind_name,pk.parent_kind_code
+		FROM product_tb pt, product_kind pk
+		<where>
+			pt.p_kind_code = pk.p_kind_code
+			<if test="parent_kind_code != null">
+				and pk.parent_kind_code = #{parent_kind_code}
+			</if>
+			<if test="p_kind_code != null">
+				and pt.p_kind_code = #{p_kind_code}
+			</if>
+		</where> 
 		ORDER BY p_regdate DESC
 	</select>
-	<select id="getKindList" resultType="productsDto" parameterType="int">	
+	<select id="getKindList" resultType="productsDto" parameterType="productsDto">	
 		SELECT p_kind_code , parent_kind_code , kind_name
 		FROM product_kind
-		where parent_kind_code = #{p_code}
+		where parent_kind_code = #{parent_kind_code}
 		order by p_kind_code asc	
 	</select>
 	
