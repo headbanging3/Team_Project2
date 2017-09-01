@@ -47,6 +47,13 @@
 	
 	<label for="p_main_img">메인 이미지 파일</label>
 	<input type="file" name="file" id="file" /><br/>
+	<label for="p_main_img">서브 이미지 파일</label>
+	<input type="file" name="subfile1" id="subfile1" /><br/>
+	<input type="file" name="subfile2" id="subfile2" /><br/>
+	<input type="file" name="subfile3" id="subfile3" /><br/>
+	<input type="file" name="subfile4" id="subfile4" /><br/>
+	<input type="file" name="subfile5" id="subfile5" /><br/>
+	
 	<button type="submit">상품 등록</button>
 </form>
 

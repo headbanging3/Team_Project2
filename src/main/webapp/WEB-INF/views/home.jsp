@@ -28,11 +28,7 @@
 	#bestbox div.row{
 		margin: 20px auto;
 	}
-	.tabmenu-imgbox{
-		position: relative;
-		
-		
-	}
+	
 	#slickscope{
 		width:80%;
 	}
@@ -49,6 +45,18 @@
 	}
 	.imgWrapper img{
 		border: 1px solid #cecece;
+	}
+	#topLeft img{
+		width:100%;
+		height:100%;
+	}
+	#topRight img{
+		width:100%;
+		height:100%;
+	}
+	.bottom img{
+		width:100%;
+		height:100%;
 	}
 </style>
 </head>
@@ -84,9 +92,9 @@
 	<!-- BEST 메뉴 탭 -->
 	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
 		<div class="row">			
-			<div class="col-xs-8 tabmenu-imgbox">
+			<div class="col-xs-8 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png"/>
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
@@ -94,9 +102,9 @@
 			</div>
 			<div class="col-xs-4">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-12 imgWrapper">
 						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-						<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 							<span><strong>브랜드명</strong></span><br/>
 							<span>상품이름 ||</span>
 							<span>가격</span>
@@ -104,9 +112,9 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-12 imgWrapper">
 						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-						<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 							<span><strong>브랜드명</strong></span><br/>
 							<span>상품이름 ||</span>
 							<span>가격</span>
@@ -117,25 +125,25 @@
 	
 		</div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
 		        </div>	
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
 		        </div>	
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
@@ -143,25 +151,25 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
 		        </div>	
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
 		        </div>	
 			</div>
-			<div class="col-xs-4">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
@@ -173,9 +181,9 @@
 	<!-- NEW 메뉴 탭 -->
 	<div class="ui massive bottom attached tab segment" data-tab="new" id="new">
 	  <div class="row">			
-			<div class="col-xs-8 tabmenu-imgbox imgWrapper">
+			<div class="col-xs-8 imgWrapper" id="topLeft">
 				<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${list[0].p_main_img}"/>
-				<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 					<span><strong>브랜드명</strong></span><br/>
 					<span>상품이름 ||</span>
 					<span>가격</span>
@@ -184,9 +192,9 @@
 			<div class="col-xs-4">
 				<c:forEach var="tmp" items="${list }" begin="1" end="2">
 					<div class="row">	
-						<div class="col-xs-12 imgWrapper">
+						<div class="col-xs-12 imgWrapper" id="topRight">
 							<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
-							<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+							<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 								<span><strong>브랜드명</strong></span><br/>
 								<span>상품이름 ||</span>
 								<span>가격</span>
@@ -198,9 +206,9 @@
 		</div>
 		<div class="row">
 			<c:forEach var="tmp" items="${list }" begin="3" end="5">
-				<div class="col-xs-4 imgWrapper">
+				<div class="col-xs-4 imgWrapper bottm">
 					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
-					<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 						<span><strong>브랜드명</strong></span><br/>
 						<span>상품이름 ||</span>
 						<span>가격</span>
@@ -210,9 +218,9 @@
 		</div>
 		<div class="row">
 			<c:forEach var="tmp" items="${list }" begin="6" end="8">
-				<div class="col-xs-4 imgWrapper">
+				<div class="col-xs-4 imgWrapper bottm">
 					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
-					<div class="col-xs-10 col-xs-push-1 hidden-sm" id="productTag">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
 						<span><strong>브랜드명</strong></span><br/>
 						<span>상품이름 ||</span>
 						<span>가격</span>
