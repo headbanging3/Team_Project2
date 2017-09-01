@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-	String cPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,39 +13,51 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css" />
 <title>㈜슙스 공식 온라인스토어</title>
 <style>
-.slick-prev:before, .slick-next:before{
-    color: red;
-    font-size: 20px;
-}
-.container-fluid#slickscope{
-	padding-left: 60px;
-	padding-right: 60px;
-}
-.slider > div img{
-	height: 650px;
-	border-radius: 5px;
-}
-#bestbox div.row{
-	margin: 20px auto;
-}
-.tabmenu-imgbox{
-	position: relative;
-	border: 1px solid blue;
-}
-.tabmenu-imgbox .inner{
-	position: absolute;
-	box-sizing:border-box;
-	width: 100%;
-	height:30%;
-	line-height:12px;
-	vertical-align:middle;
-	overflow:hidden;
-	left:0px;
-	bottom: 0px;
-	right:0px;
-    background: #999;
-    text-align: center;
-}
+	.slick-prev:before, .slick-next:before{
+	    color: red;
+	    font-size: 20px;
+	}
+	.container-fluid#slickscope{
+		padding-left: 60px;
+		padding-right: 60px;
+	}
+	.slider > div img{
+		height: 650px;
+		border-radius: 5px;
+	}
+	#bestbox div.row{
+		margin: 20px auto;
+	}
+	
+	#slickscope{
+		width:80%;
+	}
+	#productTag{
+		background: #fff;
+		text-align: center;
+		position: absolute;
+		bottom: 20px;
+	}
+	
+	.imgWrapper{
+		padding: 10px;
+		
+	}
+	.imgWrapper img{
+		border: 1px solid #cecece;
+	}
+	#topLeft img{
+		width:100%;
+		height:100%;
+	}
+	#topRight img{
+		width:100%;
+		height:100%;
+	}
+	.bottom img{
+		width:100%;
+		height:100%;
+	}
 </style>
 </head>
 <body>
@@ -66,11 +76,6 @@
 	</div>
 </div>
 
-<c:forEach var="tmp" items="${list}" varStatus="status">
-	<p>[${status.index}]: ${list[status.index].p_code}</p>
-</c:forEach>
-
-
 	    <!-- best/new/sale/....-->
 <div class="container-fluid" id="slickscope">
 	<div class="ui massive top attached tabular menu">
@@ -84,75 +89,150 @@
 	    SALES
 	  </a>
 	</div>
+	<!-- BEST 메뉴 탭 -->
 	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
 		<div class="row">			
-			<div class="col-xs-6 tabmenu-imgbox">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="inner">
-					<span>상품 제목</span><br/>
-					<span>상품 설명 가격</span>
+			<div class="col-xs-8 imgWrapper">
+				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png"/>
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
 		        </div>			   
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-4">
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-12 imgWrapper">
 						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-					</div>
-					<div class="col-xs-6">
-						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+							<span><strong>브랜드명</strong></span><br/>
+							<span>상품이름 ||</span>
+							<span>가격</span>
+				        </div>	
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xs-12 imgWrapper">
 						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-					</div>
-					<div class="col-xs-6">
-						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+							<span><strong>브랜드명</strong></span><br/>
+							<span>상품이름 ||</span>
+							<span>가격</span>
+				        </div>	
 					</div>
 				</div>
 			</div>
 	
 		</div>
 		<div class="row">
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-			</div>
-			<div class="col-xs-3">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-4 imgWrapper">
 				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>	
 			</div>
-			<div class="col-xs-3">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-			</div>
+			
 		</div>
 	</div>
-	<div class="ui massive bottom attached tab segment" data-tab="new">
-	  2There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+	<!-- NEW 메뉴 탭 -->
+	<div class="ui massive bottom attached tab segment" data-tab="new" id="new">
+	  <div class="row">			
+			<div class="col-xs-8 imgWrapper" id="topLeft">
+				<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${list[0].p_main_img}"/>
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>브랜드명</strong></span><br/>
+					<span>상품이름 ||</span>
+					<span>가격</span>
+		        </div>			   
+			</div>
+			<div class="col-xs-4">
+				<c:forEach var="tmp" items="${list }" begin="1" end="2">
+					<div class="row">	
+						<div class="col-xs-12 imgWrapper" id="topRight">
+							<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
+							<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+								<span><strong>브랜드명</strong></span><br/>
+								<span>상품이름 ||</span>
+								<span>가격</span>
+					        </div>	
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="row">
+			<c:forEach var="tmp" items="${list }" begin="3" end="5">
+				<div class="col-xs-4 imgWrapper bottm">
+					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+						<span><strong>브랜드명</strong></span><br/>
+						<span>상품이름 ||</span>
+						<span>가격</span>
+			        </div>	
+				</div>
+			</c:forEach>
+		</div>
+		<div class="row">
+			<c:forEach var="tmp" items="${list }" begin="6" end="8">
+				<div class="col-xs-4 imgWrapper bottm">
+					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+						<span><strong>브랜드명</strong></span><br/>
+						<span>상품이름 ||</span>
+						<span>가격</span>
+			        </div>	
+				</div>
+			</c:forEach>
+		</div>
 	</div>
 	<div class="ui massive bottom attached tab segment" data-tab="sales">
 	  3There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
 	</div>
 </div>
-
-	    <!-- news -->
-
-
 <div>
 	<a id="bg" class="btn" href="m_home.do" role="button">관리자페이지</a>
 </div>
@@ -201,21 +281,4 @@ $('.menu .item')
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

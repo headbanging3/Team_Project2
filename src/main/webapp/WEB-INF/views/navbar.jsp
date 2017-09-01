@@ -23,12 +23,12 @@
    	 <div class="header" id="topMenu">
    	 	 <a href="javascript:" id="menu"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
 	   	 <ul id="nav">
-	   	 	<li><a class="menuLink" href="products/products_list.do">NIKE</a></li>
-	   	 	<li><a class="menuLink" href="#">ADIDAS</a></li>
-	   	 	<li><a class="menuLink" href="#">Reebok</a></li>
-	   	 	<li><a class="menuLink" href="#">NewBalance</a></li>
-	   	 	<li><a class="menuLink" href="#">VANS</a></li>
-	   	 	<li><a class="menuLink" href="#">FILA</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=01">NIKE</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=02">ADIDAS</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=03">Reebok</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=04">NewBalance</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=05">VANS</a></li>
+	   	 	<li><a class="menuLink" href="${pageContext.request.contextPath }/products/products_list.do?p_kind_code=06">FILA</a></li>
 	   	 </ul>
    	 </div>
    	 	<!-- 유틸메뉴 -->
