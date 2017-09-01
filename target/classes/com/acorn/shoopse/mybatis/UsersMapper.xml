@@ -22,9 +22,10 @@
 		SELECT id FROM users WHERE id=#{id}
 	</select>
 	<select id="isValid" parameterType="usersDto" resultType="usersDto">
-		SELECT id,pwd,mem_num 
-		FROM users
-		WHERE id=#{id} AND pwd=#{pwd}
+		SELECT a.id,a.pwd,a.mem_num,b.mem_flag 
+		FROM users a,users_tb b
+		WHERE a.id=#{id} AND a.pwd=#{pwd}
+		AND a.mem_num=b.mem_num
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
 		SELECT mem_num,id,pwd,name,email,phone,addr,regdate

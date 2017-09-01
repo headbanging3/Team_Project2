@@ -26,4 +26,5 @@ public interface ManagerService {
 	 public void productsDelete(HttpServletRequest request);
 	 public ModelAndView productsUpdateForm(String p_code);
 	 public void productsUpdate(ProductsDto dto, HttpServletRequest request);
+	 public ModelAndView userOrderList(int mem_num);
 }
