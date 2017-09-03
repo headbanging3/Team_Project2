@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
-<title>Insert title here</title>
+<title>유저 주문 상세</title>
 </head>
 <body>
 		<table border="1">
