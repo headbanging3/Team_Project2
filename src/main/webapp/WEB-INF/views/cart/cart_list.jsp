@@ -137,7 +137,8 @@
 	var totalSum = function(){
 		var priceDom=document.getElementsByClassName('price');
 		var totalPrice=0;
-		for(var i=0; i<priceDom.length; i++){
+		var length=priceDom.length;
+		for(var i=0; i<length; i++){
 			totalPrice += parseFloat(priceDom[i].textContent);
 			//console.log(합계",totalPrice);
 		}
