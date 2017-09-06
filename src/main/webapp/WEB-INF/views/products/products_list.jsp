@@ -72,7 +72,7 @@
 					
 					<ul>
 						<c:forEach var="tmp" items="${kindList }">
-						<li class="active"><a href="products_list.do?p_kind_code=${tmp.p_kind_code }">${tmp.kind_name }</a></li>
+						<li class="active"><a href="products_list.do?p_kind_code=${tmp.p_kind_code }&parent_kind_code=${tmp.parent_kind_code }">${tmp.kind_name }</a></li>
 						</c:forEach>
 					
 					</ul>

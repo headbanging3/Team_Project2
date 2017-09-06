@@ -1,14 +1,17 @@
 package com.acorn.shoopse.manager.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 import com.acorn.shoopse.users.dao.UsersDao;
 
@@ -27,4 +30,5 @@ public interface ManagerService {
 	 public ModelAndView productsUpdateForm(String p_code);
 	 public void productsUpdate(ProductsDto dto, HttpServletRequest request);
 	 public ModelAndView userOrderList(int mem_num);
+	 public void subimgsInsert(HttpServletRequest request, ProductsImgsDto imgsDto);
 }

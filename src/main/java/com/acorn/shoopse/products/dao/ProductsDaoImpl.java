@@ -24,7 +24,7 @@ public class ProductsDaoImpl implements ProductsDao{
 	public List<ProductsDto> getpList(ProductsDto dto) {
 		List<ProductsDto> plist = session.selectList("products.getpList", dto);
 		for(ProductsDto temp:plist){
-			System.out.println("@$@#@$#::"+temp.toString());
+			System.out.println("getpList::"+temp.toString());
 		}
 		return plist;
 	}

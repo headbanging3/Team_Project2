@@ -167,6 +167,12 @@
 			<artifactId>cglib</artifactId>
 			<version>3.2.0</version>
 		</dependency>
+		<!-- 파일 다중 업로드 -->
+		<dependency>
+		    <groupId>com.jfinal</groupId>
+		    <artifactId>cos</artifactId>
+		    <version>26Dec2008</version>
+		</dependency>
 		
 	</dependencies>
     <build>

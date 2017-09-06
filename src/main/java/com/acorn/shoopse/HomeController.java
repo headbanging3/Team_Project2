@@ -33,7 +33,7 @@ public class HomeController {
 		
 		ModelAndView mView=new ModelAndView();
 		mView=productsService.getList();
-		System.out.println("mView::::"+mView);
+		//System.out.println("mView::::"+mView);
 		mView.setViewName("home");
 		return mView;
 	}
