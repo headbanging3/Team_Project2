@@ -31,9 +31,6 @@ public class ProductsDaoImpl implements ProductsDao{
 	@Override
 	public List<ProductsDto> getKindList(ProductsDto dto) {
 		List<ProductsDto> kindList = session.selectList("products.getKindList",dto);
-//		for(ProductsDto temp : kindList){
-//			System.out.println(temp.toString());
-//		}
 		return kindList;
 	}
 
