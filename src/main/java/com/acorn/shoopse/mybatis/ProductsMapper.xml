@@ -108,11 +108,22 @@
 		 	point=#{point}, p_comment=#{p_comment}, p_detail_comment=#{p_detail_comment}, p_main_img=#{p_main_img}
 		WHERE p_code=#{p_code}
 	</update>
-	<insert id="subImgsInsert" parameterType="com.acorn.shoopse.products.dto.ProductsImgsDto">
+	<insert id="subImgInsert" parameterType="com.acorn.shoopse.products.dto.ProductsImgsDto">
 		INSERT INTO product_sub_img(p_sub_img, p_code)
 		VALUES (#{p_sub_img},(SELECT max(p_code) 
 												FROM product_tb))
 	</insert>
+	<delete id="subImgDelete" parameterType="String">
+		DELETE FROM product_sub_img
+		WHERE p_code=(SELECT p_code 
+					  FROM product_tb
+					  WHERE p_code=#{p_code})
+	</delete>
+	<select id="subImgList" parameterType="String" resultType="String">
+		SELECT p_sub_img
+		FROM product_sub_img
+		WHERE p_code=#{p_code}
+	</select>
 	
 </mapper>
 

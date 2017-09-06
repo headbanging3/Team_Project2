@@ -103,7 +103,7 @@
 							<c:forEach var="tmp" items="${plist}">
 								<div class="content">
 									<a href="products_detail.do?p_code=${tmp.p_code }">
-										<img src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}" />
+										<img src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}" />
 									</a>
 									<h3>${tmp.p_name }</h3>
 									<h4>가격 : <span>${tmp.p_price }</span></h4>
