@@ -14,18 +14,19 @@
 		SELECT pt.p_code, pk.p_kind_code, pt.p_name, 
 		pt.p_brand, pt.p_price, pt.point, pt.p_regdate, 
 		pt.p_comment, pt.p_detail_comment, pt.p_main_img,
-		pk.kind_name,pk.parent_kind_code
+		pk.kind_name, pk.parent_kind_code
 		FROM product_tb pt, product_kind pk
-		<where>
+	    <where>
 			pt.p_kind_code = pk.p_kind_code
 			<if test="parent_kind_code != null">
-				and pk.parent_kind_code = #{parent_kind_code}
+				AND pk.parent_kind_code = #{parent_kind_code}
 			</if>
 			<if test="p_kind_code != null">
-				and pt.p_kind_code = #{p_kind_code}
+				or pK.p_kind_code = #{p_kind_code}
 			</if>
 		</where> 
-		ORDER BY p_regdate DESC
+		
+		
 	</select>
 	<select id="getKindList" resultType="productsDto" parameterType="productsDto">	
 		SELECT p_kind_code , parent_kind_code , kind_name
