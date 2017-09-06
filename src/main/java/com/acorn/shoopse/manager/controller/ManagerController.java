@@ -1,10 +1,12 @@
 package com.acorn.shoopse.manager.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.RequestContext;
 import org.junit.runner.Request;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.manager.service.ManagerService;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 @Controller
@@ -119,8 +122,9 @@ public class ManagerController {
 	}
 	// 관리자 상품 등록
 	@RequestMapping("/manager/products/p_insert")
-	public String productsInsert(HttpServletRequest request, @ModelAttribute ProductsDto dto){
+	public String productsInsert(HttpServletRequest request, @ModelAttribute ProductsDto dto, @ModelAttribute ProductsImgsDto imgDto) {
 		managerService.productsInsert(dto, request);
+		managerService.subimgInsert(request,imgDto);
 		return "redirect:/manager/products/p_list.do";
 	}
 	// 관리자 상품 삭제

@@ -63,7 +63,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../navbar.jsp"/> 
+<jsp:include page="../navbar.jsp"/>
 <div class="container-fluid">
 	<div class="main">
 		<div class="row">
@@ -72,7 +72,7 @@
 					
 					<ul>
 						<c:forEach var="tmp" items="${kindList }">
-						<li class="active"><a href="#">${tmp.kind_name }</a></li>
+						<li class="active"><a href="products_list.do?p_kind_code=${tmp.p_kind_code }&parent_kind_code=${tmp.parent_kind_code }">${tmp.kind_name }</a></li>
 						</c:forEach>
 					
 					</ul>
@@ -96,14 +96,14 @@
 						</div>
 					</div>
 					<c:choose>
-           				<c:when test="${empty list }">
+           				<c:when test="${empty plist }">
 	           				<h3>상품이 없습니다.</h3>
            				</c:when>	
            				<c:otherwise>
 							<c:forEach var="tmp" items="${plist}">
 								<div class="content">
 									<a href="products_detail.do?p_code=${tmp.p_code }">
-										<img src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img}" />
+										<img src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}" />
 									</a>
 									<h3>${tmp.p_name }</h3>
 									<h4>가격 : <span>${tmp.p_price }</span></h4>

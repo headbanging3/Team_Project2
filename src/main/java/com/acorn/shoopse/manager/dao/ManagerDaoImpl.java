@@ -10,6 +10,7 @@ import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.order.dto.OrderDto;
 import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 
@@ -95,6 +96,24 @@ public class ManagerDaoImpl implements ManagerDao{
 	public OrderListDto userOrderList(int mem_num) {
 		OrderListDto dto = session.selectOne("manager.userOrderList", mem_num);
 		return dto;
+	}
+
+	@Override
+	public void subImgInsert(ProductsImgsDto imgsDto) {
+		session.insert("products.subImgInsert", imgsDto);
+		
+	}
+
+	@Override
+	public void subImgDelete(String p_code) {
+		session.delete("products.subImgDelete", p_code);
+		
+	}
+
+	@Override
+	public List<String> subImgList(String p_code) {
+		List<String> list=session.selectList("products.subImgList", p_code);
+		return list;
 	}
 
 

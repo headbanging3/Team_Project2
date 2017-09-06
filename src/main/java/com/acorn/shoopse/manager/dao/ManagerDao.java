@@ -6,6 +6,7 @@ import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.order.dto.OrderDto;
 import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 public interface ManagerDao {
@@ -23,4 +24,7 @@ public interface ManagerDao {
 	public ProductsDto productsUpdateForm(String p_code); 
 	public void productsUpdate(ProductsDto dto);
 	public OrderListDto userOrderList(int mem_num);
+	public void subImgInsert(ProductsImgsDto imgsDto);
+	public void subImgDelete(String p_code);
+	public List<String> subImgList(String p_code);
 }

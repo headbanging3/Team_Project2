@@ -2,24 +2,32 @@ package com.acorn.shoopse.manager.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.manager.dao.ManagerDao;
 import com.acorn.shoopse.manager.dto.ManagerDto;
 import com.acorn.shoopse.order.dto.OrderListDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsImgsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 import com.acorn.shoopse.users.dao.UsersDao;
 import com.acorn.shoopse.users.dto.UsersDto;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 @Service
 public class ManagerServiceImpl implements ManagerService{
@@ -89,15 +97,16 @@ public class ManagerServiceImpl implements ManagerService{
 		return divisionList;
 	}
 
-	@Override
+	
+	@Override		//상품 등록
 	public void productsInsert(ProductsDto dto, 
 				HttpServletRequest request) {
 	
-		//파일을 저장할 폴더의 절대 경로를 얻어온다.
+		String kindCode=dto.getP_kind_code();
+		kindCode.substring(0,2);
 		String realPath=request.getSession()
-				.getServletContext().getRealPath("/resources/img");
-		System.out.println(realPath);
-			
+				.getServletContext().getRealPath("/resources/img/productImgs");
+		
 		//MultipartFile 객체의 참조값 얻어오기
 		//FileDto 에 담긴 MultipartFile 객체의 참조값을 얻어온다.
 		MultipartFile mFile=dto.getFile();
@@ -126,33 +135,45 @@ public class ManagerServiceImpl implements ManagerService{
 		managerDao.productsInsert(dto);
 		
 	}
-
-	@Override
+	
+	
+	
+	
+	@Override		// 상품 삭제
 	public void productsDelete(HttpServletRequest request) {
 		String[] chs=request.getParameterValues("chname");
-//		String[] imgs=request.getParameterValues("imgname");
+		List<String> list=null;
+		
 		for(int i=0; i<chs.length; i++){
-			System.out.println(chs[i]);
-//			System.out.println(imgs[i]);
+			// p_code와 p_main_img 값 넘겨받기
 			String[] tmp=chs[i].split(":");
-			
-			System.out.println(tmp[0]);
-			System.out.println(tmp[1]);
-					
+			// p_code에 해당하는 sub이미지 이름들 가져오기
+			list=managerDao.subImgList(tmp[0]);
 			//1. 파일 시스템에서 물리적인 삭제
-			String path="";
+			String mainImgPath="";
+			String subImgPath="";
 			try{
-				path=request.getServletContext().getRealPath("/resources/img")+
+				// 메인 이미지 삭제
+				mainImgPath=request.getServletContext().getRealPath("/resources/img/productImgs")+
 						File.separator+tmp[1];
-				new File(path).delete();
+				new File(mainImgPath).delete();
+				
+				// 서브 이미지들 삭제
+				for(int j=0; j<list.size(); j++){
+					subImgPath=request.getServletContext().getRealPath("/resources/img/productImgs")+
+							File.separator+list.get(j);
+					new File(subImgPath).delete();
+				}
+				
 			}catch(Exception e){}
 			
+			//2. DB에서의 값 삭제
 			managerDao.productsDelete(tmp[0]);
+			managerDao.subImgDelete(tmp[0]);
 		}
-
 	}
 
-	@Override
+	@Override		// 업데이트 폼 이동
 	public ModelAndView productsUpdateForm(String p_code) {
 		ProductsDto dto=managerDao.productsUpdateForm(p_code);
 		List<ProductsKindDto> categoryList=managerDao.getCategory();
@@ -163,11 +184,11 @@ public class ManagerServiceImpl implements ManagerService{
 		return mView;
 	}
 
-	@Override
+	@Override		//상품 업데이트
 	public void productsUpdate(ProductsDto dto, HttpServletRequest request) {
 		//파일을 저장할 폴더의 절대 경로를 얻어온다.
 		String realPath=request.getSession()
-				.getServletContext().getRealPath("/resources/img");
+				.getServletContext().getRealPath("/resources/img/productImgs");
 		System.out.println(realPath);
 			
 		//MultipartFile 객체의 참조값 얻어오기
@@ -192,23 +213,9 @@ public class ManagerServiceImpl implements ManagerService{
 			e.printStackTrace();
 		}
 		dto.setP_main_img(saveFileName);
-		
-		System.out.println(dto.getP_kind_code());
-		System.out.println(dto.getP_name());
-		System.out.println(dto.getP_brand());
-		System.out.println(dto.getP_price());
-		System.out.println(dto.getPoint());
-		System.out.println(dto.getP_comment());
-		System.out.println(dto.getP_detail_comment());
-		System.out.println(dto.getP_main_img());
-		System.out.println(dto.getP_code());
 				
 		managerDao.productsUpdate(dto);
-		
-		
 	}
-
-
 
 	@Override
 	public ModelAndView userOrderList(int mem_num) {
@@ -218,5 +225,47 @@ public class ManagerServiceImpl implements ManagerService{
 		mView.addObject("dto", dto);
 		mView.addObject("dtoa", dtoa);
 		return mView;
+	}
+
+	@Override
+	public void subimgInsert(HttpServletRequest request, ProductsImgsDto imgsDto) {
+		List<MultipartFile> imgs=imgsDto.getSubImgs();
+		
+		//파일을 저장할 폴더의 절대 경로를 얻어온다.
+		String realPath=request.getSession()
+				.getServletContext().getRealPath("/resources/img/productImgs");
+		
+		for(int i=0; i<imgs.size(); i++){
+			//MultipartFile 객체의 참조값 얻어오기
+			//FileDto 에 담긴 MultipartFile 객체의 참조값을 얻어온다.
+			MultipartFile mFile=imgs.get(i);
+			String orgFileName=mFile.getOriginalFilename();
+		
+			//p_main_img에 파일 이름 설정
+			//dto.setP_main_img(orgFileName);
+		
+			//저장할 파일의 상세 경로
+			String filePath=realPath+File.separator;
+			//디렉토리를 만들 파일 객체 생성
+			File file=new File(filePath);
+			if(!file.exists()){//디렉토리가 존재하지 않는다면
+				file.mkdir();//디렉토리를 만든다.
+			}
+			//파일 시스템에 저장할 파일명을 만든다. (겹치치 않게)
+			String saveFileName=System.currentTimeMillis()+orgFileName;
+			try{
+				// /resources/img 폴더에 파일을 저장한다.
+				mFile.transferTo(new File(filePath+saveFileName));
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			imgsDto.setP_sub_img(saveFileName);
+			
+			managerDao.subImgInsert(imgsDto);
+			
+		}
+		
+		
 	}
 }

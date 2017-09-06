@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.service.ProductsService;
 
 @Controller
@@ -17,9 +19,9 @@ public class ProductsController {
 	private ProductsService productsService;
 	
 	@RequestMapping("/products/products_list")
-	public ModelAndView test(@RequestParam int p_kind_code){
-		System.out.println("p_kind_code::"+p_kind_code);	
-		ModelAndView mView=productsService.getpList(p_kind_code);
+	public ModelAndView test(@ModelAttribute ProductsDto dto){
+		System.out.println("plistParam?::"+dto.toString());	
+		ModelAndView mView=productsService.getpList(dto);
 		mView.setViewName("products/products_list");
 		return mView;
 	}

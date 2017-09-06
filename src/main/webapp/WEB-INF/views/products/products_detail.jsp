@@ -137,7 +137,7 @@
 					<div>
 						
 						<div id="topImg">
-							<img src="${pageContext.request.contextPath }/resources/img/${mainImg }" />
+							<img src="${pageContext.request.contextPath }/resources/img/productImgs/${mainImg }" />
 						</div>
 						<div id="topText">
 							<p>Men 나이키 맥스</p>
@@ -196,13 +196,9 @@
  				<div class="contents" id="sub_img">
  					<c:forEach var="tmp" items="${ subImg}">
  						<div class="conMain">
- 							<img src="${pageContext.request.contextPath }/resources/img/products/nike/max/vapormax/${tmp.p_sub_img }" />
+ 							<img src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_sub_img }" />
  						</div>
  					</c:forEach>
- 						
- 					
- 					
- 					
  				</div>
  				<div class="productsFooter">
  					<div class="deliveryInfo">
