@@ -33,6 +33,11 @@ public class WearingController {
 		mView.setViewName("manager/warehousing_list");
 		return mView;
 	}
+	
+	@RequestMapping("manager/waredetail")
+	public String detail(){
+		return "manager/waredetail";			
+	}
 }
 
 
