@@ -20,7 +20,8 @@
 		font-style: inherit;
 	}
 	.conTop{
-		border-bottom: 1px solid #e8e8e8;
+		border-bottom: 1px solid #black;
+		margin_top:30px;
 	}
 	.contents a{
 		cursor: pointer;
@@ -56,8 +57,8 @@
    }
    #topImg img{
    		margine-top:50px;
-   		width:700px;
-   		height:500px;
+   		width:500px;
+   		height:400px;
    		float:left;
    		border: 1px solid red;
    }
@@ -68,6 +69,7 @@
    }
    #topText p{
    		padding:20px;
+   		margin-top:-15px;
    }
    .dropdown{
    		display:inline-block;
@@ -96,10 +98,6 @@
  		padding-bottom:0px;
  	}
  	
- 	#sub_img {
- 	
- 	}
- 	
  	#topContent {
  		padding-bottom : 100px;
  	}
@@ -107,6 +105,16 @@
  	.orderBtn li{
  		margin-top: 0px;
  		display: inline;
+ 	}
+ 	#sub_img img{
+ 		width: 800px;
+ 		height: 600px;
+ 	}
+ 	.size p{
+ 		display:inline-block;
+ 		margin:0;
+ 		margin-top:-20px;
+ 		margin-bottom:20px;
  	}
 </style>
 </head>
@@ -117,14 +125,7 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-push-2">
 				<div class="midMenu">
-					<ul>
-						<li class="active"><a href="#">맥스</a></li>
-						<li><a href="#">포스</a></li>
-						<li><a href="#">런닝화</a></li>
-						<li><a href="#">축구화</a></li>
-						<li><a href="#">농구화</a></li>
-						<li><a href="#">슬리퍼</a></li>
-					</ul>
+					
 				</div>
 			</div>
 		</div>
@@ -135,26 +136,27 @@
 						<h4 style="text-align:left; margin-left:50px;"><strong>상품 페이지</strong></h4>
 					</div>
 					<div>
-						
 						<div id="topImg">
 							<img src="${pageContext.request.contextPath }/resources/img/productImgs/${mainImg }" />
 						</div>
 						<div id="topText">
 							<p>Men 나이키 맥스</p>
-							<h3>${getinfo.p_name }</h3>
-							<p><span>${getinfo.p_price }<strong></strong></span></p>
-							<p>카드사별 무이자 혜택</p>
-							<p><a href="#">바로가기 안내</a></p>
+							<h3>${getinfo.p_name } </h3>
+							<p><span>${getinfo.p_price }<strong>원</strong></span></p>
+							<div class="size">
+								<p>무이자 혜택</p>
+								<a href="javascript:popup()"> 자세히보기 </a>
+							</div>
 						</div>
-				
+						<!--  
 						<div class="dropdown">
 							<button data-toggle="dropdown" class="btn btn-default dropdown-toggle btn-lg">사이즈
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-    							  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-     							 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+    							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+     							<li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
 							</ul>
 						</div>
 						
@@ -164,32 +166,44 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation"><a role="menuitem"  href="#">HTML</a></li>
-    							  <li role="presentation"><a role="menuitem"  href="#">CSS</a></li>
+    							 <li role="presentation"><a role="menuitem"  href="#">CSS</a></li>
      							 <li role="presentation"><a role="menuitem"  href="#">JavaScript</a></li>
 							</ul>
 						</div>
+						-->
+						<br />
 						<form name="myForm" method="post">
 						<select name="size">
 						    <option value="">사이즈</option>
-						    <option value="235">235</option>
-						    <option value="240">240</option>
-						    <option value="245">245</option>
+						    <c:forEach var="tmp" items="${psize }">
+						    	<option value="${tmp.p_size }">${tmp.p_size }</option>
+						    </c:forEach>
+						   						 
 						</select>
 						<select name="amount">
 						    <option value="">수량</option>
 						    <option value="1">1</option>
 						    <option value="2">2</option>
 						    <option value="3">3</option>
+						    <option value="4">4</option>
+						    <option value="5">5</option>
 						</select>
+						
+						
 							<ul class="orderBtn">
 								<li><input id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
 								<li><input id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
 							</ul>
 						</form>
-						<div id="refund">
+						
+						<!-- 
+							<div id="refund">
 							<h4><strong>반송 가이드</strong></h4>
+							<br />
 							<p>주절주절</p>
 						</div>
+						 -->
+						
 					</div>
 					
  				</div>
@@ -321,6 +335,11 @@
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
+
+	function popup(){
+		window.open("${pageContext.request.contextPath}/products/popup.do","팝업창","width=600,height=400,top=200,left=500");
+	}
+	
 	function mySubmit(index) {
 		if(index==1) {
 			document.myForm.action = 'orderAction.do';

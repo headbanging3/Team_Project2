@@ -12,6 +12,10 @@ public interface ProductsDao {
 	public List<String> subImg(int p_code);
 	public String mainImg(int p_code);
 	public ProductsDto getinfo(int p_code);
+	public List<String> psize(int p_code);
+	public String pstock(int p_code);
+	
+	
 	
 	
 }

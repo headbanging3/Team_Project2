@@ -32,6 +32,7 @@ public class ProductsServiceImpl implements ProductsService{
 	@Override
 	public ModelAndView getpList(ProductsDto dto) {
 		ModelAndView mView= new ModelAndView();
+		
 		List<ProductsDto> plist= productsDao.getpList(dto);
 		List<ProductsDto> kindList= productsDao.getKindList(dto);
 		
@@ -42,8 +43,10 @@ public class ProductsServiceImpl implements ProductsService{
 	}
 
 	@Override
-	public ModelAndView getDetail(int p_code) {
+	public ModelAndView getDetail(int p_code )  {
 		ModelAndView mView= new ModelAndView();
+		List<String> psize= productsDao.psize(p_code);
+		String pstock= productsDao.pstock(p_code);
 		List<String> list=productsDao.getdetail(p_code);
 		List<String> subImg=productsDao.subImg(p_code);
 		String mainImg = productsDao.mainImg(p_code);
@@ -52,14 +55,11 @@ public class ProductsServiceImpl implements ProductsService{
 
 		mView.addObject("list",list);
 		mView.addObject("subImg",subImg);
+		mView.addObject("psize",psize);
+		mView.addObject("pstock",pstock);
 		mView.addObject("mainImg", mainImg);
 		mView.addObject("getinfo",getinfo);
 		
-		System.out.println("serviceImple mainImg::"+mainImg);
-		System.out.println("serviceImple subImg::"+subImg);
-		System.out.println("serviceImple list::"+list);
-		System.out.println("serviceImple getinfo::"+getinfo);
-		System.out.println("serviceImple:::"+mView);
 		return mView;
 	}
 

@@ -20,7 +20,9 @@ public class ProductsDto {
 	private int p_no;
 	private String p_size;
 	private int p_stock;
+
 	
+
 	public ProductsDto(){}
 
 	public ProductsDto(String p_code, String p_kind_code, String p_name, String p_brand, int p_price, int point,
@@ -41,7 +43,6 @@ public class ProductsDto {
 	}
 	
 	
-
 
 	public String getP_code() {
 		return p_code;
