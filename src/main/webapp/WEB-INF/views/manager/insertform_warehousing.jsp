@@ -99,22 +99,69 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 			</div>
 			<div class="required field">
 				<label>입고 총 수량</label>
-				<input type="text" name="w_total_count" />
+				<input type="number" name="w_total_count" />
 			</div>
 			<div class="required field">
 				<label>입고 금액</label>
-				<input type="text" name="w_total_price"/>
+				<input type="number" name="w_total_price"/>
+			</div>
+			<div class="required field">
+				<label for="">제품 종류</label>
+				<select class="ui fluid dropdown" name="" id="category">
+					<option value=""></option>
+					<c:forEach var="tmp" items="${categoryList}">		
+						<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
+					</c:forEach>
+				</select>
+				<select name="p_kind_code" id="division">
+					<option value="#"></option>
+					<c:forEach var="tmp" items="${divisionList}">		
+						<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
+					</c:forEach>
+				</select><br />
 			</div>
 			<button type="submit" class="ui button">등록</button>
 		</form>		
 	</div>
 </div>
 <script>
+$("#category").change(function(){
+	var code = "";
+	code=$("#category option:selected").val();
+	  console.log(code);
+	if(code=='#'){
+		$("#division").empty();
+		return false;
+	}
+	$.ajax({
+		url:"getDivision.do",
+		method:"POST",
+		data:{parent_kind_code:code},
+		success:function(data){
+			console.log("ajax통신 성공!");
+			console.log(data);
+			
+			$("#division").empty();
+			for(var i=0; i<data.length; i++){
+				$('<option value="'+ data[i].p_kind_code +'">' + data[i].kind_name + '</option>').appendTo('#division');
+			}
+		}			
+	});
+});
+
+$("#division").change(function(){
+	var code = "";
+	code=$("#division option:selected").val();
+	  console.log(code);
+});
+
 /* 사이드바 관련 js */
 $('.ui.sidebar').sidebar({
     context: $('.bottom.segment')
   })
   .sidebar('attach events', '.menu .item');
+
+
 
 </script>
 </body>

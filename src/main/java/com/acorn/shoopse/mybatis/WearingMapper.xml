@@ -11,6 +11,9 @@
 		FROM wearing_tb 
 		ORDER BY w_no DESC
 	</select>
+	<select id="p_getList">
+		SELECT P_CODE, P_BRAND, P_NAME, P_KIND_CODE FROM product_tb
+	</select>
 </mapper>
 
 
