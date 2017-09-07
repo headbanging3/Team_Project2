@@ -99,9 +99,21 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 
 	@Override
-	public void subImgsInsert(ProductsImgsDto imgsDto) {
-		session.insert("products.subImgsInsert", imgsDto);
+	public void subImgInsert(ProductsImgsDto imgsDto) {
+		session.insert("products.subImgInsert", imgsDto);
 		
+	}
+
+	@Override
+	public void subImgDelete(String p_code) {
+		session.delete("products.subImgDelete", p_code);
+		
+	}
+
+	@Override
+	public List<String> subImgList(String p_code) {
+		List<String> list=session.selectList("products.subImgList", p_code);
+		return list;
 	}
 
 
