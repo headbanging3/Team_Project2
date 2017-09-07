@@ -127,13 +127,13 @@
 			return false;
 		}
 		
-		for(var i=0; i<subFiles.length; i++){
+		/* for(var i=0; i<subFiles.length; i++){
 			console.log(subFiles[i]);
 			if(subFiles[i].value==''){
 				alert("서브 이미지 파일을 입력하세요!");
 				return false;
-			}
-		}
+			} 
+		}*/
 		
 	});
 </script>

@@ -27,11 +27,16 @@ public class OrderCartController {
 	@RequestMapping("/cart/cart_list")
 	public ModelAndView cartList(HttpServletRequest request){
 		//System.out.println("cartList?");
-		int mem_num=(int)request.getSession().getAttribute("mem_num");
-		//System.out.println("mem_num:"+mem_num);
+		int mem_num = 0;
+		if(request.getSession().getAttribute("mem_num")!=null){
+			mem_num=(int)request.getSession().getAttribute("mem_num");
+			//System.out.println("mem_num:"+mem_num);
+		}
 		ModelAndView mView=orderService.list(mem_num);
 		mView.setViewName("cart/cart_list");
 		return mView;
+		//return null;
+		
 	}
 	@RequestMapping("/cart/item_count_ajax")
 	public ModelAndView itemCountAjax(@ModelAttribute OrderCartDto dto){
