@@ -30,5 +30,6 @@ public interface ManagerService {
 	 public ModelAndView productsUpdateForm(String p_code);
 	 public void productsUpdate(ProductsDto dto, HttpServletRequest request);
 	 public ModelAndView userOrderList(int mem_num);
-	 public void subimgsInsert(HttpServletRequest request, ProductsImgsDto imgsDto);
+	 public void subimgInsert(HttpServletRequest request, ProductsImgsDto imgsDto);
+	 
 }
