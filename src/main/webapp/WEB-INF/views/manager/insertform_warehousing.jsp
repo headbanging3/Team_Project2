@@ -76,7 +76,7 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 		<div class="ui" id="article">
 			<h1 class="ui header">입고 등록</h1>
 		</div>		
-		<form class="ui form" action="insertwarehousing.do" method="post">
+		<form id="myForm" class="ui form" name="myForm" action="" method="post">
 			<div class="required field">
 				<label>해당 업체 </label>
 				<select class="ui fluid dropdown" name="a_code">
@@ -108,24 +108,35 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 			<div class="required field">
 				<label for="">제품 종류</label>
 				<select class="ui fluid dropdown" name="" id="category">
-					<option value=""></option>
+					<option value="#">선택</option>
 					<c:forEach var="tmp" items="${categoryList}">		
 						<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
 					</c:forEach>
 				</select>
 				<select name="p_kind_code" id="division">
-					<option value="#"></option>
+					<option value="#">선택</option>
 					<c:forEach var="tmp" items="${divisionList}">		
 						<option value="${tmp.p_kind_code }">${tmp.kind_name }</option>
 					</c:forEach>
 				</select><br />
+		
+			</div>
+			<div class="required field">
+				<label for="">상품명</label>
+				<select name="" id="division2">
+					<option value="#"></option>
+				</select>
 			</div>
 			<button type="submit" class="ui button">등록</button>
 		</form>		
 	</div>
 </div>
+
 <script>
+
+
 $("#category").change(function(){
+	var params = $('#myForm').serialize();
 	var code = "";
 	code=$("#category option:selected").val();
 	  console.log(code);
@@ -140,20 +151,26 @@ $("#category").change(function(){
 		success:function(data){
 			console.log("ajax통신 성공!");
 			console.log(data);
-			
 			$("#division").empty();
 			for(var i=0; i<data.length; i++){
 				$('<option value="'+ data[i].p_kind_code +'">' + data[i].kind_name + '</option>').appendTo('#division');
 			}
+			
 		}			
 	});
 });
 
 $("#division").change(function(){
 	var code = "";
-	code=$("#division option:selected").val();
+	code=$("#category option:selected").val();
 	  console.log(code);
+
 });
+
+
+
+
+
 
 /* 사이드바 관련 js */
 $('.ui.sidebar').sidebar({
