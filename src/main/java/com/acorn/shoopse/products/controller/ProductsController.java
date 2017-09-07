@@ -35,5 +35,13 @@ public class ProductsController {
 		return mView;
 	}
 	
+	@RequestMapping("/products/popup")
+	public String popup(){
+		return "products/popup";
+	}
+	
+	
+	
+	
 	
 }
