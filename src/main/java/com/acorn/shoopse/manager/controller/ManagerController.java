@@ -124,7 +124,7 @@ public class ManagerController {
 	@RequestMapping("/manager/products/p_insert")
 	public String productsInsert(HttpServletRequest request, @ModelAttribute ProductsDto dto, @ModelAttribute ProductsImgsDto imgDto) {
 		managerService.productsInsert(dto, request);
-		managerService.subimgsInsert(request,imgDto);
+		managerService.subimgInsert(request,imgDto);
 		return "redirect:/manager/products/p_list.do";
 	}
 	// 관리자 상품 삭제

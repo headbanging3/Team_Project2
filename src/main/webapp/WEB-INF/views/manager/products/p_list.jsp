@@ -87,7 +87,7 @@
 		<tbody>
 		<c:choose>
 			<c:when test="${empty list }">
-				<h3>상품이 없습니다.</h3>
+				<td colspan="13" style="text-align: center;"><h3>상품이 없습니다.</h3></td>
 			</c:when>	
 			<c:otherwise>
 				<c:forEach var="tmp" items="${list}">
@@ -96,6 +96,7 @@
 						<td class="updateBox"><a href="p_updateform.do?p_code=${tmp.p_code }">수정</a></td>
 						<td class="deleteBox">
 							<input type="checkbox" name="chname" value="${tmp.p_code }:${tmp.p_main_img }"/>
+							<input type="hidden" name="p_code" value="${tmp.p_code }" />
 						</td>
 						<td>${tmp.p_code}</td>
 						<td>${tmp.p_kind_code }</td>
@@ -108,7 +109,7 @@
 						<td>${tmp.p_detail_comment }</td>
 						<td class="imgBox">
 							<a href="${pageContext.request.contextPath }/products/products_detail.do?p_code=${tmp.p_code }">
-								<img src="${pageContext.request.contextPath }/resources/img/${tmp.p_main_img }" />
+								<img src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img }" />
 							</a>
 						</td>
 						<td>상품번호(상품 상세)</td>

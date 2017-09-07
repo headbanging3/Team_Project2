@@ -17,6 +17,10 @@ public class ProductsDto {
 	private String p_sub_img;
 	private String parent_kind_code;
 	private String kind_name;
+	private String p_size;
+	private int p_stock;
+	private int p_no;
+	
 	
 	
 	public ProductsDto(){}
@@ -39,6 +43,30 @@ public class ProductsDto {
 	}
 	
 	
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
+
+	public int getP_stock() {
+		return p_stock;
+	}
+
+	public void setP_stock(int p_stock) {
+		this.p_stock = p_stock;
+	}
+
 	public String getParent_kind_code() {
 		return parent_kind_code;
 	}

@@ -2,6 +2,7 @@ package com.acorn.shoopse.manager.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
@@ -101,9 +102,10 @@ public class ManagerServiceImpl implements ManagerService{
 	public void productsInsert(ProductsDto dto, 
 				HttpServletRequest request) {
 	
-		//파일을 저장할 폴더의 절대 경로를 얻어온다.
+		String kindCode=dto.getP_kind_code();
+		kindCode.substring(0,2);
 		String realPath=request.getSession()
-				.getServletContext().getRealPath("/resources/img");
+				.getServletContext().getRealPath("/resources/img/productImgs");
 		
 		//MultipartFile 객체의 참조값 얻어오기
 		//FileDto 에 담긴 MultipartFile 객체의 참조값을 얻어온다.
@@ -140,19 +142,34 @@ public class ManagerServiceImpl implements ManagerService{
 	@Override		// 상품 삭제
 	public void productsDelete(HttpServletRequest request) {
 		String[] chs=request.getParameterValues("chname");
-
-		for(int i=0; i<chs.length; i++){
-			String[] tmp=chs[i].split(":");
+		List<String> list=null;
 		
+		for(int i=0; i<chs.length; i++){
+			// p_code와 p_main_img 값 넘겨받기
+			String[] tmp=chs[i].split(":");
+			// p_code에 해당하는 sub이미지 이름들 가져오기
+			list=managerDao.subImgList(tmp[0]);
 			//1. 파일 시스템에서 물리적인 삭제
-			String path="";
+			String mainImgPath="";
+			String subImgPath="";
 			try{
-				path=request.getServletContext().getRealPath("/resources/img")+
+				// 메인 이미지 삭제
+				mainImgPath=request.getServletContext().getRealPath("/resources/img/productImgs")+
 						File.separator+tmp[1];
-				new File(path).delete();
+				new File(mainImgPath).delete();
+				
+				// 서브 이미지들 삭제
+				for(int j=0; j<list.size(); j++){
+					subImgPath=request.getServletContext().getRealPath("/resources/img/productImgs")+
+							File.separator+list.get(j);
+					new File(subImgPath).delete();
+				}
+				
 			}catch(Exception e){}
 			
+			//2. DB에서의 값 삭제
 			managerDao.productsDelete(tmp[0]);
+			managerDao.subImgDelete(tmp[0]);
 		}
 	}
 
@@ -171,7 +188,7 @@ public class ManagerServiceImpl implements ManagerService{
 	public void productsUpdate(ProductsDto dto, HttpServletRequest request) {
 		//파일을 저장할 폴더의 절대 경로를 얻어온다.
 		String realPath=request.getSession()
-				.getServletContext().getRealPath("/resources/img");
+				.getServletContext().getRealPath("/resources/img/productImgs");
 		System.out.println(realPath);
 			
 		//MultipartFile 객체의 참조값 얻어오기
@@ -211,12 +228,12 @@ public class ManagerServiceImpl implements ManagerService{
 	}
 
 	@Override
-	public void subimgsInsert(HttpServletRequest request, ProductsImgsDto imgsDto) {
+	public void subimgInsert(HttpServletRequest request, ProductsImgsDto imgsDto) {
 		List<MultipartFile> imgs=imgsDto.getSubImgs();
 		
 		//파일을 저장할 폴더의 절대 경로를 얻어온다.
 		String realPath=request.getSession()
-				.getServletContext().getRealPath("/resources/img");
+				.getServletContext().getRealPath("/resources/img/productImgs");
 		
 		for(int i=0; i<imgs.size(); i++){
 			//MultipartFile 객체의 참조값 얻어오기
@@ -245,47 +262,9 @@ public class ManagerServiceImpl implements ManagerService{
 			
 			imgsDto.setP_sub_img(saveFileName);
 			
-			managerDao.subImgsInsert(imgsDto);
+			managerDao.subImgInsert(imgsDto);
+			
 		}
-		
-				
-		
-		
-		
-		
-//		MultipartRequest multi=null;
-//		File file=null;
-//		
-//		int sizeLimit=30*1024*1024;
-//		String formName="";
-//		String fileName="";
-//		
-//		String realPath=request.getSession()
-//				.getServletContext().getRealPath("/resources/img");
-//		
-//		try{
-//			multi=new MultipartRequest(request, realPath, sizeLimit, "UTF-8", 
-//							new DefaultFileRenamePolicy());
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//		if(multi==null){
-//			response.setContentType("text/html; charset=UTF=8");
-//			response.setCharacterEncoding("UTF-8");
-//			response.getWriter().write("<script>alert('업로드 실패'); location.href='';</script>");
-//			return;
-//		}
-//		
-//		Enumeration forms=multi.getFileNames();
-//		
-//
-//		while(forms.hasMoreElements()){
-//			formName=(String)forms.nextElement();
-//			fileName=multi.getFilesystemName(formName);
-//			if(fileName !=null);
-//			file=multi.getFile(formName);
-//		}
-//		
 		
 		
 	}

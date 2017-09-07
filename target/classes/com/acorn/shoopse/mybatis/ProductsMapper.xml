@@ -14,18 +14,19 @@
 		SELECT pt.p_code, pk.p_kind_code, pt.p_name, 
 		pt.p_brand, pt.p_price, pt.point, pt.p_regdate, 
 		pt.p_comment, pt.p_detail_comment, pt.p_main_img,
-		pk.kind_name,pk.parent_kind_code
+		pk.kind_name, pk.parent_kind_code
 		FROM product_tb pt, product_kind pk
-		<where>
+	    <where>
 			pt.p_kind_code = pk.p_kind_code
 			<if test="parent_kind_code != null">
-				and pk.parent_kind_code = #{parent_kind_code}
+				AND pk.parent_kind_code = #{parent_kind_code}
 			</if>
 			<if test="p_kind_code != null">
-				and pt.p_kind_code = #{p_kind_code}
+				AND pK.p_kind_code = #{p_kind_code}
 			</if>
 		</where> 
-		ORDER BY p_regdate DESC
+		
+		
 	</select>
 	<select id="getKindList" resultType="productsDto" parameterType="productsDto">	
 		SELECT p_kind_code , parent_kind_code , kind_name
@@ -56,6 +57,20 @@
 		WHERE p_code = #{p_code}
 	</select>
 	
+	<select id="getsize" resultType="productsDto" parameterType="int">
+		select p_size 
+		from product_sub
+		where p_code = #{p_code}	
+	</select>
+	<select id="getstock" resultType="productsDto" parameterType="int">
+		select p_stock
+		from product_sub
+		where p_size = #{p_size}	
+	</select>
+	
+	<select id="getslist" resultType="productsDto" parameterType="int">
+	
+	</select>
 	
 	<!-- 두언 -->
 	<select id="getCategory" resultType="com.acorn.shoopse.products.dto.ProductsKindDto">
@@ -108,11 +123,22 @@
 		 	point=#{point}, p_comment=#{p_comment}, p_detail_comment=#{p_detail_comment}, p_main_img=#{p_main_img}
 		WHERE p_code=#{p_code}
 	</update>
-	<insert id="subImgsInsert" parameterType="com.acorn.shoopse.products.dto.ProductsImgsDto">
+	<insert id="subImgInsert" parameterType="com.acorn.shoopse.products.dto.ProductsImgsDto">
 		INSERT INTO product_sub_img(p_sub_img, p_code)
 		VALUES (#{p_sub_img},(SELECT max(p_code) 
 												FROM product_tb))
 	</insert>
+	<delete id="subImgDelete" parameterType="String">
+		DELETE FROM product_sub_img
+		WHERE p_code=(SELECT p_code 
+					  FROM product_tb
+					  WHERE p_code=#{p_code})
+	</delete>
+	<select id="subImgList" parameterType="String" resultType="String">
+		SELECT p_sub_img
+		FROM product_sub_img
+		WHERE p_code=#{p_code}
+	</select>
 	
 </mapper>
 

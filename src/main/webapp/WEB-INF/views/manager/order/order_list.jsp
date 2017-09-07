@@ -6,9 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<style>
+	#container {
+		margin-left: 350px;
+	}
+</style>
 <title>주문 내역</title>
 </head>
+<jsp:include page="../nav/m_nav.jsp"></jsp:include>
+<jsp:include page="../nav/sidebar.jsp"></jsp:include>
 <body>
+<div id="container">
 	<table border="1">
 		<thead>
 			<tr>
@@ -41,8 +49,9 @@
 					<td>${tmp.o_date }</td>
 					<td>${tmp.o_total_count }</td>
 					<td>${tmp.o_total_price }</td>
-					<td><a href="">${tmp.p_name }</a></td>
-					<c:when test="${tmp.p_name }"></c:when>
+					<td><c:if test="${tmp.o_total_count ne 1 }">
+							<a href="">${tmp.p_name }외  ${tmp.o_total_count - 1}개</a></c:if></td>
+				
 					<c:choose>
 						<c:when test="${tmp.o_status == 1 }">
 							<td>장바구니 상태</td>
@@ -67,5 +76,6 @@
 			</tr>
 		</tbody>
 	</table>
+</div>
 </body>
 </html>
