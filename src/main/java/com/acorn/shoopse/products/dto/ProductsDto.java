@@ -17,12 +17,12 @@ public class ProductsDto {
 	private String p_sub_img;
 	private String parent_kind_code;
 	private String kind_name;
+	private int p_no;
 	private String p_size;
 	private int p_stock;
-	private int p_no;
+
 	
-	
-	
+
 	public ProductsDto(){}
 
 	public ProductsDto(String p_code, String p_kind_code, String p_name, String p_brand, int p_price, int point,
@@ -43,53 +43,6 @@ public class ProductsDto {
 	}
 	
 	
-	public int getP_no() {
-		return p_no;
-	}
-
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
-	}
-
-	public String getP_size() {
-		return p_size;
-	}
-
-	public void setP_size(String p_size) {
-		this.p_size = p_size;
-	}
-
-	public int getP_stock() {
-		return p_stock;
-	}
-
-	public void setP_stock(int p_stock) {
-		this.p_stock = p_stock;
-	}
-
-	public String getParent_kind_code() {
-		return parent_kind_code;
-	}
-
-	public void setParent_kind_code(String parent_kind_code) {
-		this.parent_kind_code = parent_kind_code;
-	}
-
-	public String getKind_name() {
-		return kind_name;
-	}
-
-	public void setKind_name(String kind_name) {
-		this.kind_name = kind_name;
-	}
-
-	public String getP_sub_img() {
-		return p_sub_img;
-	}
-
-	public void setP_sub_img(String p_sub_img) {
-		this.p_sub_img = p_sub_img;
-	}
 
 	public String getP_code() {
 		return p_code;
@@ -177,6 +130,54 @@ public class ProductsDto {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public String getP_sub_img() {
+		return p_sub_img;
+	}
+
+	public void setP_sub_img(String p_sub_img) {
+		this.p_sub_img = p_sub_img;
+	}
+
+	public String getParent_kind_code() {
+		return parent_kind_code;
+	}
+
+	public void setParent_kind_code(String parent_kind_code) {
+		this.parent_kind_code = parent_kind_code;
+	}
+
+	public String getKind_name() {
+		return kind_name;
+	}
+
+	public void setKind_name(String kind_name) {
+		this.kind_name = kind_name;
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
+	}
+
+	public int getP_stock() {
+		return p_stock;
+	}
+
+	public void setP_stock(int p_stock) {
+		this.p_stock = p_stock;
 	}
 
 	@Override
