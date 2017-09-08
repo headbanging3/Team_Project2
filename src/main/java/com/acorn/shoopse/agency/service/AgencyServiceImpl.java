@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.acorn.shoopse.agency.dao.AgencyDao;
 import com.acorn.shoopse.agency.dto.AgencyDto;
 import com.acorn.shoopse.manager.dao.ManagerDao;
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.products.dto.ProductsKindDto;
 
 @Service
@@ -36,6 +37,14 @@ public class AgencyServiceImpl implements AgencyService {
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("list", list);
 		mView.addObject("categoryList", categoryList);
+		return mView;
+	}
+	
+	public ModelAndView getpList() {
+		List<ProductsDto> list2 = agencyDao.getpList();
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("list2", list2);
+		
 		return mView;
 	}
 }

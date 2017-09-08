@@ -48,11 +48,12 @@
 	</select>
 	
 	<select id="wholeOrderList" resultType="com.acorn.shoopse.order.dto.WholeOrderDto">
-		SELECT ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, pt.p_name, o_status
+		SELECT ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, max(pt.p_name), o_status
 		FROM users u, order_tb ot, product_tb pt, order_req_addr ora, order_sub os
 		WHERE u.mem_num = ot.mem_num
 		AND ot.o_no = ora.o_no
 		AND os.p_code = pt.p_code
+		GROUP BY ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, o_status
 		ORDER BY ot.o_no DESC
 	</select>
 
