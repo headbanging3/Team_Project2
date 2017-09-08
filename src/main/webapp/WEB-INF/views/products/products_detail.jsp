@@ -13,6 +13,7 @@
 		padding: 20px;
 	}
 	.contents{
+		margin-top:100px;
 		border-bottom: 5px solid #e8e8e8;
 		background-color: #fff;
 		padding: 30px 20px;
@@ -21,7 +22,7 @@
 	}
 	.conTop{
 		border-bottom: 1px solid #black;
-		margin_top:30px;
+		
 	}
 	.contents a{
 		cursor: pointer;
@@ -31,6 +32,7 @@
 	.contents h5{
 		text-align: left;
 		padding-left: 12px;
+		margin-top:-10px;
 	}
 	.content{
 		display: inline-block;
@@ -65,11 +67,11 @@
    #topText span{
    		font-size: 20px;
    		padding: 20px;
-   		margine-top:30px;
+   		margine-top:-30px;
    }
    #topText p{
-   		padding:20px;
-   		margin-top:-15px;
+   		
+   		margin-top:15px;
    }
    .dropdown{
    		display:inline-block;
@@ -99,22 +101,32 @@
  	}
  	
  	#topContent {
- 		padding-bottom : 100px;
+ 		padding-bottom : 200px;
  	}
  	
  	.orderBtn li{
  		margin-top: 0px;
  		display: inline;
  	}
+ 	
  	#sub_img img{
+ 		margin-top:100px;
  		width: 800px;
- 		height: 600px;
+ 		height: 400px;
  	}
  	.size p{
+ 		
  		display:inline-block;
  		margin:0;
  		margin-top:-20px;
- 		margin-bottom:20px;
+ 		
+ 	}
+ 	.carculator{
+ 		text-align: center;
+ 	}
+ 	.order{
+ 		margin-top:30px;
+ 		margin-bottom:30px;
  	}
 </style>
 </head>
@@ -133,7 +145,7 @@
 			<div class="col-sm-10 col-sm-push-1">
 				<div class="contents" id="topContent">
 					<div class="conTop">
-						<h4 style="text-align:left; margin-left:50px;"><strong>상품 페이지</strong></h4>
+						<h4 style="text-align:left; margin-left:50px; margin-top:-20px;"><strong>상품 페이지</strong></h4>
 					</div>
 					<div>
 						<div id="topImg">
@@ -147,6 +159,9 @@
 								<p>무이자 혜택</p>
 								<a href="javascript:popup()"> 자세히보기 </a>
 							</div>
+						</div>
+						<div class="calculator">
+						
 						</div>
 						<!--  
 						<div class="dropdown">
@@ -173,14 +188,15 @@
 						-->
 						<br />
 						<form name="myForm" method="post">
-						<select name="size">
+						<select id="size" name="size">
 						    <option value="">사이즈</option>
 						    <c:forEach var="tmp" items="${psize }">
 						    	<option value="${tmp.p_size }">${tmp.p_size }</option>
 						    </c:forEach>
 						   						 
 						</select>
-						<select name="amount">
+						
+						<select  id="amount" name="amount">
 						    <option value="">수량</option>
 						    <option value="1">1</option>
 						    <option value="2">2</option>
@@ -188,12 +204,29 @@
 						    <option value="4">4</option>
 						    <option value="5">5</option>
 						</select>
-						
-						
+							
+							<div class="carculator">
+							<!-- 
+								<table border="1" cellspacing="0">
+								 	<tr>
+								 		<td id="result2"></td>
+								 		<td id="result"></td>
+								 		<td id="reuslt2">${getinfo.p_price }</td>
+								 	</tr>
+							 	</table>	
+							 -->
+							 <div class="order">
+								<strong>사이즈:<span id="result"></span></strong>
+								<strong>수량:<span id="result2"></span></strong>
+								<strong>금액:<span id="result2" class="money" value="0"></span></strong> 
+							 </div>
+							
 							<ul class="orderBtn">
-								<li><input id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
-								<li><input id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
+								<li><input class="btn btn-primary" id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
+								<li><input class="btn btn-danger" id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
 							</ul>
+						
+						</div>	
 						</form>
 						
 						<!-- 
@@ -350,6 +383,24 @@
 
 		document.myForm.submit();
 	}
+	var a= $("#amount").on("change",function(){
+		var price = '<c:out value="${getinfo.p_price}"/>';
+
+		var text = $("#amount option:selected").text();
+
+		var b =  $("#result2").text(text);
+		var c = parseInt($('#amout option:selected').val());
+		console.log(c);
+		console.log("price:"+price);
+		$('.money').text(price*text);
+		
+	});
+	$("#size").on("change",function(){
+		var text= $("#size option:selected").text();
+		$("#result").text(text);
+		
+	});
+	
 </script>
 </body>
 </html>

@@ -20,7 +20,7 @@ public class ProductsController {
 	
 	@RequestMapping("/products/products_list")
 	public ModelAndView test(@ModelAttribute ProductsDto dto){
-		System.out.println("plistParam?::"+dto.toString());	
+		
 		ModelAndView mView=productsService.getpList(dto);
 		mView.setViewName("products/products_list");
 		return mView;
