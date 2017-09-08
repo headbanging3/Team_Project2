@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.agency.dao.AgencyDao;
 import com.acorn.shoopse.agency.dto.AgencyDto;
+import com.acorn.shoopse.products.dto.ProductsDto;
 import com.acorn.shoopse.wearing.dao.WearingDao;
 import com.acorn.shoopse.wearing.dto.WearingDto;
 
@@ -30,6 +31,13 @@ public class WearingServiceImpl implements WearingService {
 		List<WearingDto> list = wearingDao.getList();
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("list", list);
+		return mView;
+	}
+	@Override
+	public ModelAndView getpName(String p_kind_code) {
+		List<ProductsDto> list2 = wearingDao.getpName(p_kind_code);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("list2", list2);
 		return mView;
 	}
 }

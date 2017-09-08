@@ -22,7 +22,7 @@
 				AND pk.parent_kind_code = #{parent_kind_code}
 			</if>
 			<if test="p_kind_code != null">
-				or pK.p_kind_code = #{p_kind_code}
+				AND pK.p_kind_code = #{p_kind_code}
 			</if>
 		</where> 
 		
@@ -57,6 +57,20 @@
 		WHERE p_code = #{p_code}
 	</select>
 	
+	<select id="getsize" resultType="productsDto" parameterType="int">
+		select p_size 
+		from product_sub
+		where p_code = #{p_code}	
+	</select>
+	<select id="getstock" resultType="productsDto" parameterType="int">
+		select p_stock
+		from product_sub
+		where p_size = #{p_size}	
+	</select>
+	
+	<select id="getslist" resultType="productsDto" parameterType="int">
+	
+	</select>
 	
 	<!-- 두언 -->
 	<select id="getCategory" resultType="com.acorn.shoopse.products.dto.ProductsKindDto">
@@ -73,7 +87,7 @@
 		ORDER BY p_kind_code ASC
 	</select>
 	<insert id="productsInsert" parameterType="productsDto">
-		INSERT INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
+		INSERT ALL INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
 						p_regdate, p_comment, p_detail_comment, p_main_img) 
 		VALUES (
 			p_code_seq.NEXTVAL,
@@ -89,7 +103,9 @@
 			#{p_detail_comment},
 			#{p_main_img}
 		)
-	</insert>
+		INTO product_sub(p_no, p_size, p_stock, p_code) values(p_no_seq.NEXTVAL, #{p_size}, #{p_stock}, p_code_seq.CURRVAL)
+		SELECT * FROM dual
+	</insert>	
 	<delete id="productsDelete" parameterType="String">
 		DELETE FROM product_tb
 		WHERE p_code=#{p_code}
