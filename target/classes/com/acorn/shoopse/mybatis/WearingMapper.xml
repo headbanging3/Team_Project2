@@ -33,6 +33,11 @@
 	<select id="getpSize" resultType="productsDto" parameterType="String">
 	
 	</select>
+	<select id="getProductCode" resultType="productsDto">
+		SELECT p_code, p_name
+		FROM product_tb
+		ORDER BY p_name DESC
+	</select>
 </mapper>
 
 

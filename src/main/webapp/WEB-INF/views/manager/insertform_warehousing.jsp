@@ -76,9 +76,9 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 		<div class="ui" id="article">
 			<h1 class="ui header">입고 등록</h1>
 		</div>		
-		<form id="myForm" class="ui form" name="myForm" action="" method="post">
+		<form id="myForm" class="ui form" name="myForm" action="insertwarehousing.do" method="post">
 			<div class="required field">
-				<label>해당 업체 </label>
+				<label>납품처 </label>
 				<select class="ui fluid dropdown" name="a_code">
 					<option value="">업체선택</option>
 					<c:choose>
@@ -97,14 +97,16 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 				<label>입고 날짜</label>
 				<input type="date" name="w_date" />
 			</div>
+			<!-- 
 			<div class="required field">
 				<label>입고 총 수량</label>
 				<input type="number" name="w_total_count" />
 			</div>
 			<div class="required field">
-				<label>입고 금액</label>
+				<label>입고 총 금액</label>
 				<input type="number" name="w_total_price"/>
 			</div>
+			 
 			<div class="required field">
 				<label for="">제품 종류</label>
 				<select class="ui fluid dropdown" name="" id="category">
@@ -127,6 +129,7 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 					<option value="#"></option>
 				</select>
 			</div>
+			 -->
 			<button type="submit" class="ui button">등록</button>
 		</form>		
 	</div>

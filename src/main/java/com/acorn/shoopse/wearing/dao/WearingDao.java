@@ -14,6 +14,7 @@ public interface WearingDao {
 	public void insert(WearingDto dto);
 	public List<WearingDto> getList();
 	public List<ProductsDto> getpName(String p_kind_code);
+	public List<ProductsDto> getProductCode();
 }
 
 

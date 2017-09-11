@@ -36,4 +36,10 @@ public class WearingDaoImpl implements WearingDao{
 		List<ProductsDto> list = session.selectList("wearing.getpName", p_kind_code);
 		return list;
 	}
+
+	@Override
+	public List<ProductsDto> getProductCode() {
+		List<ProductsDto> list=session.selectList("wearing.getProductCode");
+		return list;
+	}
 }

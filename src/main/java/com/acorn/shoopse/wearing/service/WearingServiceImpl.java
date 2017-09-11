@@ -40,4 +40,13 @@ public class WearingServiceImpl implements WearingService {
 		mView.addObject("list2", list2);
 		return mView;
 	}
+	@Override
+	public ModelAndView getProductCode(HttpServletRequest request) {
+		List<ProductsDto> list=wearingDao.getProductCode();
+		ModelAndView mView=new ModelAndView();
+		int w_no=Integer.parseInt(request.getParameter("w_no"));
+		mView.addObject("list",list);
+		mView.addObject("w_no", w_no);
+		return mView;
+	}
 }
