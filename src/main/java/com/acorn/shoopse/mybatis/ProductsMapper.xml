@@ -52,13 +52,13 @@
 		WHERE p_code = #{p_code}
 	</select>
 	<select id="getinfo" resultType="productsDto" parameterType="int">
-		SELECT p_name,p_price
+		SELECT p_name,p_price,p_code
 		FROM product_tb
 		WHERE p_code = #{p_code}
 	</select>
 	
 	<select id="getsize" resultType="productsDto" parameterType="int">
-		select p_size 
+		select p_size ,p_no
 		from product_sub
 		where p_code = #{p_code}	
 	</select>

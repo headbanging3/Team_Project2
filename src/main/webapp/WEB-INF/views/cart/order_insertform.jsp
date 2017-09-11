@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/home1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fotorama.css" />
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 .row_b{
 	width:768px;

@@ -22,6 +22,14 @@ public class UsersServiceImpl implements UsersService {
 		usersDao.usersSignup(dto);
 		
 	}
+	@Override
+	public void notusersSignup(UsersDto dto, HttpServletRequest request) {
+		UsersDto notuserDto =usersDao.notusersSignup(dto);
+		if(notuserDto!=null){
+			request.getSession().setAttribute("mem_num", notuserDto.getMem_num());
+			request.getSession().setAttribute("mem_flag", notuserDto.getMem_flag());
+		}
+	}
 	//아이디 찾기
 	@Override
 	public ModelAndView findId(UsersDto dto) {

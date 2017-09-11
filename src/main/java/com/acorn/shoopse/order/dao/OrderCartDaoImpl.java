@@ -43,10 +43,28 @@ public class OrderCartDaoImpl implements OrderCartDao {
 
 	@Override
 	public void orderDeleteAjax(List<OrderCartDto> dto) {
-		for(OrderCartDto temp:dto){
-			
+		for(OrderCartDto temp:dto){	
 			session.delete("cart.orderDelete",temp);
+		}	
+	}
+
+	@Override
+	public String cartInsert(OrderCartDto dto) {
+		String result="ok";
+		OrderCartDto cart = session.selectOne("cart.isOrder",dto);//장바구니상태있나확인
+		if(cart==null){//장바구니상태가 없으면
+			System.out.println("카트널");
+			session.insert("cart.orderTB_insert",dto);//장바구니 만들어준다
+			cart = session.selectOne("cart.isOrder",dto);//장바구니번호 가져오고
 		}
-		
+	
+		dto.setO_no(cart.getO_no());//세팅
+		System.out.println("o_no::"+dto.getO_no());
+		try{
+			session.insert("cart.orderSUB_insert",dto);//그리고나서 서브 인서트
+		}catch (Exception e) {
+			result="fail";
+		}
+		return result;
 	}
 }

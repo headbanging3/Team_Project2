@@ -13,6 +13,24 @@
 		WHERE ot.mem_num=#{mem_num} and ot.o_status = 1
 	</select>
 	
+	<select id="isOrder" resultType="cartDto" parameterType="cartDto" >
+		SELECT o_no from order_tb 
+		WHERE mem_num = #{mem_num}
+		AND o_status = 1
+	</select>
+	
+	<insert id="orderTB_insert" parameterType="cartDto">
+		INSERT INTO 
+			order_tb (o_no,mem_num,o_status) 
+		VALUES(O_NO_SEQ.NEXTVAL,#{mem_num},1)
+	</insert>
+	
+	<insert id="orderSUB_insert" parameterType="cartDto">
+		INSERT INTO 
+		order_sub (o_no,p_no,p_code,o_count,o_sub_total_price,o_sub_price) 
+		VALUES(#{o_no},#{p_no},#{p_code},#{o_count},#{o_sub_total_price},#{o_sub_price})
+	</insert>  
+	
 	<update id="countUpdate" parameterType="cartDto">
 		UPDATE order_sub 
 		SET o_count=#{o_count},
@@ -58,6 +76,7 @@
 		AND p_no=#{p_no}
 	</delete>
 	
+
 	
 	
 </mapper>

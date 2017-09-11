@@ -17,6 +17,14 @@ public class UsersDaoImpl implements UsersDao{
 		session.insert("users.insertBefore",dto);
 		session.insert("users.insert",dto);
 	}
+	
+	@Override
+	public UsersDto notusersSignup(UsersDto dto) {
+		session.insert("users.insertBefore",dto);
+		session.insert("users.notUserInsert");
+		UsersDto notuserDto = session.selectOne("users.notUserSelect");
+		return notuserDto;
+	}
 
 	@Override
 	public String findId(UsersDto dto) {
@@ -67,4 +75,6 @@ public class UsersDaoImpl implements UsersDao{
 		session.update("users.update",dto);
 		
 	}
+
+
 }
