@@ -94,6 +94,10 @@
 	width:100%;
 	height:100%;
 }
+#tabmenu{
+	height: 50px;
+	margin-bottom: 30px;
+}
 </style>
 </head>
 <body>
@@ -116,28 +120,22 @@
 	<p>[${status.index}]: ${list[status.index].p_code}</p>
 </c:forEach>
  --%>
-<div class="affix btn-group-vertical pull-right" data-spy="affix" data-offset-top="700" data-offset-bottom="350">
-	<button type="button" class="btn btn-danger">
-	  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+<div class="affix ui vertical buttons pull-right" data-spy="affix" data-offset-top="700" data-offset-bottom="350">
+	<button class="ui black button top">	  
+	  <span class="glyphicon glyphicon-menu-up"></span><br />맨위로
 	</button>
-	<button type="button" class="btn btn-danger">
-	  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
+	<button class="ui black button bottom">
+	  <span class="glyphicon glyphicon-menu-down"></span><br />맨아래로
 	</button>
 </div>
   
 
 	    <!-- best/new/sale/....-->
-<div class="container article">
-	<div class="ui massive top attached tabular menu">
-	  <a class="item active" data-tab="best">
-	    BEST
-	  </a>
-	  <a class="item" data-tab="new">
-	    NEW
-	  </a>
-	  <a class="item" data-tab="sales">
-	    SALES
-	  </a>
+<div class="container article ">
+	<div class="ui fluid massive three item menu" id="tabmenu">
+	  <a class="item active" data-tab="best"><h4 class="en-font">BEST</h4></a>
+	  <a class="item" data-tab="new"><h4 class="en-font">NEW</h4></a>
+	  <a class="item" data-tab="sales"><h4 class="en-font">SALES</h4></a>
 	</div>
 	<!-- BEST 메뉴 탭 -->
 	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
@@ -414,7 +412,16 @@ $(document).ready(function() {
 		  autoplaySpeed: 2000,
 	});
 	
+	$('#tabmenu .item').tab();
 	
+	$('.top').click(function(){
+		$('html, body').animate({ scrollTop : 0}, 400);
+		return false;
+	});
+	$('.bottom').click(function(){
+		$('html, body').animate({ scrollTop: $(document).height()},800);
+		return false;
+	})
 });
 
 </script>
