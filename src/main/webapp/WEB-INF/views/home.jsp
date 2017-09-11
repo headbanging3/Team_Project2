@@ -1,16 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="/resources/resources.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/home1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fotorama.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick-theme.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css" />
+<script src="${pageContext.request.contextPath }/resources/js/fotorama.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/slick.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
 <title>㈜슙스 공식 온라인스토어</title>
 <style>
 
@@ -101,10 +107,10 @@
 </style>
 </head>
 <body>
-		<!-- 네비게이션 -->
-		<!-- branch upst -->
+<!-- 네비게이션 -->
+<!-- branch upst -->
 <jsp:include page="navbar.jsp"></jsp:include>
-		<!-- slick scope -->
+<!-- slick scope -->
 <div class="container-fluid" id="slickscope">
 	<div class="slider" id="topslider">	
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg.jpg" alt="" /></div>
@@ -116,10 +122,6 @@
 	</div>
 </div>
 
-<%-- <c:forEach var="tmp" items="${list}" varStatus="status">
-	<p>[${status.index}]: ${list[status.index].p_code}</p>
-</c:forEach>
- --%>
 <div class="affix ui vertical buttons pull-right" data-spy="affix" data-offset-top="700" data-offset-bottom="350">
 	<button class="ui black button top">	  
 	  <span class="glyphicon glyphicon-menu-up"></span><br />맨위로
@@ -128,9 +130,8 @@
 	  <span class="glyphicon glyphicon-menu-down"></span><br />맨아래로
 	</button>
 </div>
-  
 
-	    <!-- best/new/sale/....-->
+<!-- best/new/sale/....-->
 <div class="container article ">
 	<div class="ui fluid massive three item menu" id="tabmenu">
 	  <a class="item active" data-tab="best"><h4 class="en-font">BEST</h4></a>
@@ -282,12 +283,7 @@
 	</div>
 </div>
 
-	    <!-- 관리자가 추천하는 상품 컨텐츠 -->
-	    
-
-	    
-	    
-	    
+<!-- 관리자가 추천하는 상품 컨텐츠 -->
 <div class="container article">
 	<h1 class="en-font">MD's choice! </h1>
 	<div class="mdslider">	
@@ -353,7 +349,7 @@
 			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 			  <span class="sr-only">Error:</span>
 			  Enter a valid email address
-			</div>
+		  </div>
 		  <li class="list-group-item list-group-item-info">Dapibus ac facilisis in</li>
 		  <li class="list-group-item list-group-item-info">Morbi leo risus</li>
 		  <li class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
@@ -373,11 +369,6 @@
 		document.querySelector("#bg").style.visibility = "visible";
 	</script>
 </c:if>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/fotorama.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/slick.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
 <script>
 var sliderSwitch=false;
 
@@ -424,7 +415,16 @@ $(document).ready(function() {
 	})
 });
 
+//고객센터 드롭메뉴 js
+$('.dropdown').click(function(){
+	$('.submenu').toggleClass('submenuShow')
+});
+$('#menu').click(function(){
+	$( '#nav' ).slideToggle( 'fast' );
+});
+
+
+
 </script>
 </body>
 </html>
-

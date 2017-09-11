@@ -94,7 +94,7 @@
 			}			
 		});
 	});
-	
+ 	
 	
 	$("#division").change(function(){
 		var code = "";

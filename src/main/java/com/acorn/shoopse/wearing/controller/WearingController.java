@@ -44,8 +44,13 @@ public class WearingController {
 	}
 	
 	@RequestMapping("manager/waredetail")
-	public String detail(){
-		return "manager/waredetail";			
+	public ModelAndView detail(HttpServletRequest request){
+		
+		ModelAndView mView=wearingService.getProductCode(request);
+		
+		
+		mView.setViewName("manager/waredetail");
+		return mView;	
 	}
 	
 	@RequestMapping(value="/manager/getDivision")

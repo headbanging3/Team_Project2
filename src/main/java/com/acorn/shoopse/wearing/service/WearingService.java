@@ -12,4 +12,5 @@ public interface WearingService {
 	public void insert(WearingDto dto);
 	public ModelAndView getList();
 	public ModelAndView getpName(String p_kind_code);
+	public ModelAndView getProductCode(HttpServletRequest request);
 }

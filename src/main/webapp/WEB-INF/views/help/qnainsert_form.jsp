@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품문의 등록</title>
-<script src="${pageContext.request.contextPath }/
-	SmartEditor/js/HuskyEZCreator.js"></script>
+<jsp:include page="/resources/resources.jsp"/>
+<script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <style>
 	.container{
 		margin: 0 auto;

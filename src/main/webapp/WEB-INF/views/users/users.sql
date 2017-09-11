@@ -10,7 +10,7 @@ CREATE TABLE users
 	regdate DATE
 );
 
-CREATE SEQUENCE users_seq;
+CREATE SEQUENCE mem_num_seq;
 
 DROP TABLE users CASCADE CONSTRAINT;
 
