@@ -1,17 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>네비게이션</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" />
-</head>
 <div class="container" id="content2">
 		<!-- 메인 로고자리 -->
    	 <div class="navbar-left">
@@ -65,38 +54,3 @@
 		</ul>
    	 </nav>
 </div>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
-<script>
-	//고객센터 드롭메뉴 js
-	$('.dropdown').click(function(){
-		$('.submenu').toggleClass('submenuShow')
-	});
-	$('#menu').click(function(){
-		$( '#nav' ).slideToggle( 'fast' );
-	});
-	
- 	//팝업 띄우는 함수 
-	function showPopup(){
-		window.open("${pageContext.request.contextPath }/popup/signinform.do","팝업창","width=600,height=400,top=200,left=700");
-	}
- 	
- 	// 팝업을 닫는 함수
-	//function closePopup() {
-	//	 window.close();
-	//}
- 	
- 	function menuClick(menu) {
- 		if(menu=='userMain'){			
- 			location.href='${pageContext.request.contextPath }/userpage/index.jsp';
- 		}	
- 		if(menu=='shop'){	
- 			//alert(menu);
- 			location.href='${pageContext.request.contextPath }/userpage/shop/shop.do';
- 		}	
- 		if(menu=='nike'){
- 			//alert(menu);
- 			location.href='${pageContext.request.contextPath }/products/test.do';
- 		}	
- 	}
-</script>

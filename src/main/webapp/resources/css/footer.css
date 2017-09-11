@@ -21,3 +21,13 @@ footer {width:100%;}
     text-align: left;
     color:#6A6C61;
 }
+#footer {
+		position: absolute;
+		bottom: 200;
+		left: 0;
+		right: 0;
+	}
+.contentArea {
+		position: relative;
+		padding-bottom: 50px;
+	}

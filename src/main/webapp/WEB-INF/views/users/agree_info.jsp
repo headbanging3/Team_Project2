@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/resources/resources.jsp"/>
 <title>개인정보 동의서</title>
 <style>
 	.container{
@@ -54,7 +55,6 @@
 	</div>
 </div>
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 	//회원가입 버튼 클릭시 checkbox가 체크 되었는지 확인
 	$("#next").on("click", function(){

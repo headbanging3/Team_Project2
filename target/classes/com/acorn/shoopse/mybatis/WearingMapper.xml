@@ -11,6 +11,33 @@
 		FROM wearing_tb 
 		ORDER BY w_no DESC
 	</select>
+	<select id="p_getList">
+		SELECT P_CODE, P_BRAND, P_NAME, P_KIND_CODE FROM product_tb
+	</select>
+	<select id="getpList" resultType="productsDto" parameterType="String">
+		SELECT pt.P_CODE, P_NO, P_NAME, P_SIZE, P_STOCK
+		FROM PRODUCT_TB pt, PRODUCT_SUB ps
+		WHERE pt.P_CODE = ps.P_CODE
+		AND P_KIND_CODE = #{p_kind_code}
+		ORDER BY 1 DESC
+	</select>
+	<select id="getpName" resultType="productsDto" parameterType="String">
+		SELECT P_NAME 
+			FROM (
+				SELECT pt.P_CODE, P_NO, P_NAME, p_size, p_stock
+				FROM PRODUCT_TB pt, PRODUCT_SUB ps
+				WHERE pt.P_CODE = ps.P_CODE
+				AND P_KIND_CODE = #{P_KIND_CODE}
+				)
+	</select>
+	<select id="getpSize" resultType="productsDto" parameterType="String">
+	
+	</select>
+	<select id="getProductCode" resultType="productsDto">
+		SELECT p_code, p_name
+		FROM product_tb
+		ORDER BY p_name DESC
+	</select>
 </mapper>
 
 

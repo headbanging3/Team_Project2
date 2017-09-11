@@ -1,5 +1,4 @@
 <%@page import="java.util.List"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -7,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/resources/resources.jsp"/>
 <title>상품문의</title>
 <style>
 	.container{
@@ -22,7 +22,7 @@
 	
 	h3{	
 		padding-top:30px;
-		color:#fff;
+		color:#000;
 	}
 	tr{
 		text-align:center;
@@ -124,6 +124,38 @@
 function showPopup(){
 	window.open("${pageContext.request.contextPath}/popup/signinform.do","팝업창","width=400,height=300,top=200,left=700");
 }
+
+//고객센터 드롭메뉴 js
+$('.dropdown').click(function(){
+	$('.submenu').toggleClass('submenuShow')
+});
+$('#menu').click(function(){
+	$( '#nav' ).slideToggle( 'fast' );
+});
+
+//팝업 띄우는 함수 
+function showPopup(){
+	window.open("${pageContext.request.contextPath }/popup/signinform.do","팝업창","width=600,height=400,top=200,left=700");
+}
+	
+// 팝업을 닫는 함수
+//function closePopup() {
+//	 window.close();
+//}
+	
+function menuClick(menu) {
+	if(menu=='userMain'){			
+		location.href='${pageContext.request.contextPath }/userpage/index.jsp';
+	}	
+	if(menu=='shop'){	
+		//alert(menu);
+		location.href='${pageContext.request.contextPath }/userpage/shop/shop.do';
+	}	
+	if(menu=='nike'){
+		//alert(menu);
+		location.href='${pageContext.request.contextPath }/products/test.do';
+	}	
+	}
 </script>
 </body>
 

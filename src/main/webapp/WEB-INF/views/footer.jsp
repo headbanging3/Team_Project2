@@ -1,31 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String cPath=(String)request.getContextPath();
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" type="text/css" media="screen">
-<style>
-	#footer {
-		position: absolute;
-		bottom: 200;
-		left: 0;
-		right: 0;
-	}
-	.contentArea {
-		position: relative;
-		padding-bottom: 50px;
-	}
-</style>
-</head>
-<body>
 <div class="contentArea">
-	
-
 <footer id="footer">
 		<div class=footer-top></div>
 
@@ -39,6 +14,4 @@
 			</ul>
 		</div>
 </footer>
-	</div>
-</body>
-</html>
+</div>

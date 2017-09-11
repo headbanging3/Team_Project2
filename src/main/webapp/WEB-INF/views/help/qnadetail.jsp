@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품문의</title>
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.container{
 		margin: 0 auto;
@@ -56,7 +57,6 @@
 </div>
 
 <jsp:include page="../footer.jsp"/>
-<script src="../resource/js/jquery-3.2.0.js"></script>
 <script>
 	function goBack(){
 		location.href="qnalist.do";

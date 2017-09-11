@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>product_sub 페이지</title>
+<jsp:include page="/resources/resources.jsp"/>
 </head>
 <body>
 <div class="container">

@@ -87,7 +87,7 @@
 		ORDER BY p_kind_code ASC
 	</select>
 	<insert id="productsInsert" parameterType="productsDto">
-		INSERT INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
+		INSERT ALL INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
 						p_regdate, p_comment, p_detail_comment, p_main_img) 
 		VALUES (
 			p_code_seq.NEXTVAL,
@@ -103,7 +103,9 @@
 			#{p_detail_comment},
 			#{p_main_img}
 		)
-	</insert>
+		INTO product_sub(p_no, p_size, p_stock, p_code) values(p_no_seq.NEXTVAL, #{p_size}, #{p_stock}, p_code_seq.CURRVAL)
+		SELECT * FROM dual
+	</insert>	
 	<delete id="productsDelete" parameterType="String">
 		DELETE FROM product_tb
 		WHERE p_code=#{p_code}
