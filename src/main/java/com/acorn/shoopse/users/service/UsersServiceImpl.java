@@ -86,6 +86,7 @@ public class UsersServiceImpl implements UsersService {
 		if(id!=null){
 			UsersDto dto=usersDao.getData(id);
 			mView.addObject("dto", dto);
+			System.out.println(id+" 님 로그인중");
 		}
 		return mView;
 		
