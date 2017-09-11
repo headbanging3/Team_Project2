@@ -48,39 +48,52 @@
 	height: 550px;
 	border-radius: 5px;
 }
+.affix-top{
+	position: relative !important;
+	top: 0;
+	right:0px;
+	transition: top bottom 2s linear;	
+}
 .affix{
-	/* 고정될때 상단에서 떨어질 거리 */
-	top: 150px;
+	/*고정될때 상단에서 떨어질 거리*/
+	position: relative;
+	top:75%;
+	right: 0px;
+	transition: top bottom 2s linear;
 }
 .affix-bottom{
-	position: absolute;
+	position: absolute !important;
+	top:75%;
+	right:0px;
+	bottom:0px;
+	transition: top bottom 0.5s linear;
 }
-	#productTag{
-		background: #fff;
-		text-align: center;
-		position: absolute;
-		bottom: 20px;
-	}
+#productTag{
+	background: #fff;
+	text-align: center;
+	position: absolute;
+	bottom: 20px;
+}
+
+.imgWrapper{
+	padding: 10px;
 	
-	.imgWrapper{
-		padding: 10px;
-		
-	}
-	.imgWrapper img{
-		border: 1px solid #cecece;
-	}
-	#topLeft img{
-		width:100%;
-		height:100%;
-	}
-	#topRight img{
-		width:100%;
-		height:100%;
-	}
-	.bottom img{
-		width:100%;
-		height:100%;
-	}
+}
+.imgWrapper img{
+	border: 1px solid #cecece;
+}
+#topLeft img{
+	width:100%;
+	height:100%;
+}
+#topRight img{
+	width:100%;
+	height:100%;
+}
+.bottom img{
+	width:100%;
+	height:100%;
+}
 </style>
 </head>
 <body>
@@ -103,7 +116,7 @@
 	<p>[${status.index}]: ${list[status.index].p_code}</p>
 </c:forEach>
  --%>
-<div class="affix" data-spy="affix" data-offset-top="600" data-offset-bottom="150">
+<div class="affix btn-group-vertical pull-right" data-spy="affix" data-offset-top="700" data-offset-bottom="350">
 	<button type="button" class="btn btn-danger">
 	  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 
 	</button>

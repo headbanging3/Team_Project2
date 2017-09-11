@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>네비게이션</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/footer.css" type="text/css" media="screen">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/navbar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" />

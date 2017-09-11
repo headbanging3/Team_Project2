@@ -36,8 +36,8 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach var="tmp" items="${list }">
 			<tr>
-				<c:forEach var="tmp" items="${list }">
 					<td>${tmp.o_no }</td>
 					<td>${tmp.name }</td>
 					<td>${tmp.id }</td>
@@ -72,8 +72,9 @@
 							<td>배송 완료</td>
 						</c:when>
 					</c:choose>
-				</c:forEach>
+				
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 </div>

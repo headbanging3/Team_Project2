@@ -11,18 +11,6 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 <script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
 <title>입고리스트</title>
 </head>
-<style>
-	#article{
-		padding-top: 50px;
-	}
-	table{
-		width: 100%;
-	}
-	table, th, td {
-	    border: 1px solid black;
-	    border-collapse: collapse;
-	}
-</style>
 <body>
 
 <div class="ui secondary  menu">
@@ -124,8 +112,8 @@ href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css?ve
 			           	</c:when>	
 			           	<c:otherwise>
 			           		<c:forEach var="tmp" items="${list }">
-			         			<tr>
-				                    <td>${tmp.w_no }</td>
+			         			<tr class="center aligned">
+				                    <td><a href="waredetail.do?w_no=${tmp.w_no }">${tmp.w_no }</a></td>
 				                    <td>${tmp.w_date }</td>
 				                    <td>${tmp.w_total_count } EA</td>
 				                    <td>${tmp.w_total_price } 원</td>
