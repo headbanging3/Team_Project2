@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.main{
 		background-color: #fff;
@@ -365,8 +365,6 @@
 
 
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 
 	function popup(){

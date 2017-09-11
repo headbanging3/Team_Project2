@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>아이디 및 비밀번호 찾기</title>
-
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.container{
 		margin: 0 auto;
@@ -66,7 +66,6 @@
 	</div>
 </div>
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 	
 	

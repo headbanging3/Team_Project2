@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
+<jsp:include page="/resources/resources.jsp"/>
 <title>서비스등록</title>
 </head>
 <body>
@@ -58,9 +57,6 @@
 			</form>
 		</div>
 	</div>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery-3.2.0.js"></script>
 	<script>
 		function checked() {
 			var isTypeChk = $('input:radio[name=type]').is(':checked');

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.container{
 		margin: 0 auto;
@@ -95,7 +95,6 @@
 
 </div>
 <jsp:include page="../footer.jsp"/>	
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 	//아이디와 비밀번호가 유효한지 확인을 위한 변수
 	var isValId=false;
