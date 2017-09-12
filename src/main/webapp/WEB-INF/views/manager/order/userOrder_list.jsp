@@ -75,7 +75,6 @@
 						<td>배송완료</td>
 					</c:when>
 				</c:choose>
-				
 			</tr>
 		</tbody>
 	</table>

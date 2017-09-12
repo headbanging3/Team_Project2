@@ -2,9 +2,11 @@ package com.acorn.shoopse.order.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.order.service.OrderService;
@@ -42,6 +44,14 @@ public class OrderController {
 		ModelAndView mView = new ModelAndView();
 		mView = orderService.wholeOrderList();
 		mView.setViewName("/manager/order/order_list");
+		return mView;
+	}
+	
+	@RequestMapping("/manager/orderListDetail")
+	public ModelAndView orderListDetail(@RequestParam int o_no) {
+		ModelAndView mView = new ModelAndView();
+		mView = orderService.orderListDetail(o_no);
+		mView.setViewName("/manager/order/orderListDetail");
 		return mView;
 	}
 	

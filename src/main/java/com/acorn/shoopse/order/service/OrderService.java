@@ -25,4 +25,5 @@ public interface OrderService {
 	public ModelAndView cartInsert(OrderCartDto dto);//장바구니 입력
 	
 	public ModelAndView orderlist(int mem_num);//주문 리스트
+	public ModelAndView orderListDetail(int o_no);
 }
