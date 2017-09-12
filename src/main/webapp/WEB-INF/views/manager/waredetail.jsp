@@ -31,6 +31,8 @@
 	}
 </style>
 <script type="text/template" id="wareTemplate">
+<form action="insertWareDetail.do" id="wareForm">
+	<input type="hidden" name="w_no" value="${w_no }" />
 	<div class="wareDiv">
     	<table>
     		<thead>
@@ -44,9 +46,15 @@
             </thead>
             <tfoot>
                <tr>
-                  <td colspan="2">총 수량 : </td>
-                  <td><input type="text" class="countEa"value="0" disabled="disabled" /></td>
-                  <td><input type="text" class="countUp" value="0" disabled="disabled" /></td>
+                  <td colspan="2">총수량 및 합계금액 </td>
+                  <td>
+					<input type="text" class="countEa" value="0" disabled="disabled" />
+					<input type="hidden" class="countEa" value="0" name="countEa" />
+				  </td>
+                  <td>
+					<input type="text" class="countUp" value="0" disabled="disabled" />
+					<input type="hidden" class="countUp" value="0" name="countUp" />
+				  </td>
                   <td></td>
                </tr>
             </tfoot>
@@ -80,7 +88,10 @@
               </tr>
            </tbody>
         </table>
+		<button type="submit" id="insertWare">저장</button>
+		<button type="button" id="delWare">입고 상품 삭제</button>
       </div>
+</form>	
 </script>
 <script type="text/template" id="addSizeTemplate">
 	<tr>
@@ -89,7 +100,7 @@
         	<select name="p_size" id="p_size">
                 <option value="#">사이즈</option>
                 <c:forEach var="i" begin="220" end="300" step="10"> 
-                   <option value="${i}">${i}</option>
+                   <option name="p_size" value="${i}">${i}</option>
                 </c:forEach>
              </select>
          </td>
@@ -104,14 +115,13 @@
 <body>
 <div id="wrapper">
 <h1>입고 디테일</h1>
-	<form action="#">
+	
 	   <h3>입고 번호 : ${w_no }</h3>
 	   <button type="button" id="addWare">입고 상품 추가</button>
-	   <button type="button" id="insertWare">저장</button>
-		<div id="wareWrapper">
+			   
+		<div id="formWrapper">
 		
 		</div>
-	</form>
 </div>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
@@ -122,9 +132,18 @@
 	   // 상품 추가시 template 추가
 	  var wareTemplate=$("#wareTemplate").text();
 	
-      $("#wareWrapper").append(wareTemplate);
+      $("#formWrapper").append(wareTemplate);
    });
 
+	$(document).on("click", "#delWare",function(){
+		$(this).parent()
+		.parent()
+		.remove();
+	});
+	
+	
+	
+	
 	// 사이즈 추가 버튼 클릭시
    $(document).on("click",".addSize",function(){
 	   // 사이즈 추가 template를 tbody에 추가
@@ -133,7 +152,8 @@
       .append(sizeTemplate);
 	 console.log("asd");
    });
-   
+	
+	
    //사이즈 추가 버튼을 눌러 추가된 로우 삭제
    $(document).on("click",".deleteAn",function(){
 	  // 수량 총합, 단가, 총금액
@@ -188,6 +208,8 @@
       //해당 로우(tr) 제거
       $(this).closest("tr").remove();
    });
+   
+   
    
 	//수량 input에 값을 입력할때
    $(document).on("keyup", ".ea", function(){
