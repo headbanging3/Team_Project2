@@ -65,7 +65,7 @@
 	
 	<update id="orderUpdate" parameterType="orderActionDto">
 		UPDATE order_tb 
-		SET o_total_price =(SELECT sum(o_sub_total_price) FROM order_sub WHERE  o_no=#{o_no})+3000,
+		SET o_total_price =(SELECT sum(o_sub_total_price+3000) FROM order_sub WHERE  o_no=#{o_no}),
 		o_total_count = (SELECT count(o_count) FROM order_sub WHERE  o_no= #{o_no}),
 		o_date=sysdate,
 		o_status='2'
