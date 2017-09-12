@@ -222,13 +222,8 @@
 							 </div>
 							
 							<ul class="orderBtn">
-<<<<<<< HEAD
 								<li><input class="btn btn-primary" id="orderBtn" type="button" value="주문1"  /></li>
 								<li><input class="btn btn-danger" id="cartBtn" type="button" value="장바구니 담기"/></li>
-=======
-								<li><input class="btn btn-primary" id="oBtn" type="button" value="주문1" onclick="showPopup()" /></li>
-								<li><input class="btn btn-danger" id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
->>>>>>> branch 'master' of https://github.com/headbanging3/Team_Project2.git
 							</ul>
 						
 						</div>	
