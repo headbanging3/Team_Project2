@@ -392,9 +392,9 @@
 				data:cart,
 				success:function(result){
 					if(result.result=='fail'){
-						alert('이미 담아져있습니다.장바구니에서확인하세요');
+						alert('장바구니에 있는 상품입니다.장바구니에서확인하세요');
 					}else{
-						var goCart= confirm("장바구니에 담겼습니다.확인하시겠습니까?");
+						var goCart= confirm("장바구니에 담겼습니다.장바구니로 이동하시겠습니까?");
 						if(goCart){
 							location.replace("http://localhost:8888/shoopse/cart/cart_list.do");
 						}else{
@@ -407,7 +407,7 @@
 
 		var mem_flag = "${mem_flag}";
 		if(!mem_flag){
-			alert("비회원입니다.");
+			alert("비회원 구매 진행합니다.");
 			$.ajax({
 				url: 'notuserSignup.do',
 				type:'post',
