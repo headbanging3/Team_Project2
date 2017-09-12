@@ -32,7 +32,7 @@
 		      		<li><a href="javascript:showPopup()">회원가입/로그인</a></li>
 		      	</c:otherwise>		      	
 	      	</c:choose>
-	      			<li><a href="#">주문배송 조회</a></li>
+	      			<li><a href="${pageContext.request.contextPath }/cart/order_list.do">주문배송 조회</a></li>
 		      		<li><a href="${pageContext.request.contextPath }/cart/cart_list.do">장바구니</a></li>
 	    
 	      	<!-- 드랍메뉴 -->	      	

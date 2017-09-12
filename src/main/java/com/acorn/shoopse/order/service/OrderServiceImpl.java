@@ -59,17 +59,6 @@ public class OrderServiceImpl implements OrderService{
 		cartDao.orderDeleteAjax(dto);
 	}
 	
-	public void insert(HttpServletRequest request, OrderDao dao) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ModelAndView getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public ModelAndView wholeOrderList() {
 		List<WholeOrderDto> list = orderDao.orderGetList();
@@ -86,6 +75,26 @@ public class OrderServiceImpl implements OrderService{
 		
 		return mView;
 		
+	}
+
+	@Override
+	public ModelAndView orderlist(int mem_num) {
+		List<OrderCartDto> orderList = cartDao.getOrderList(mem_num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("orderList", orderList);
+		return mView;
+	}
+
+	@Override
+	public void insert(HttpServletRequest request, OrderDao dao) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ModelAndView getList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
 

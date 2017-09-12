@@ -27,26 +27,36 @@
 		<!-- 네비게이션 -->
 <jsp:include page="../navbar.jsp"></jsp:include>
 <c:choose>
-<c:when test="${not empty cartList }">
+<c:when test="${not empty orderList }">
+<div style="font-size:50px">주문 내역</div>
 <table class="table">
-	
-	<c:forEach var="tmp" items="${cartList }">
+	<tr>
+		<td>체크박스</td>
+		<td>상품</td>
+		<td>사이즈</td>
+		<td>수량</td>
+		<td>단위가격</td>
+		<td>합계가격</td>
+		<td>주문날짜</td>
+		<td>배송상태</td>
+	</tr>
+	<c:forEach var="tmp" items="${orderList }">
 	<tr>
 		<td><input type="checkbox" name="del" class="del"/><br/></td>
 		<td>${tmp.p_name }</td>
 		<td>${tmp.p_size }</td>
 		<td>${tmp.o_count }</td>
-		<td><button class="counter">+</button><button class="counter">-</button></td>
 		<td>${tmp.o_sub_price }</td>
 		<td class="price">${tmp.o_sub_total_price}</td>
-		
+		<td>${tmp.o_date }</td>
+		<td>발송 준비중</td>
 	</tr>
 	</c:forEach>
 </table>
 
 </c:when>
-<c:when test="${empty cartList}">
-	장바구니가 비었습니다
+<c:when test="${empty orderList}">
+	<div style="font-size:50px">주문목록이 없습니다.</div>
 </c:when>
 </c:choose>
 
