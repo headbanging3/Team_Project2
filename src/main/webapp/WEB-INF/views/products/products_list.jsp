@@ -39,7 +39,7 @@
 	.content img{
 		width:350px;
 		height:320px;
-		border: 1px solid red;
+		border: 1px solid #cecece;
 	}
 	/*a:hover{color:#000;}*/                     
 	.midMenu ul li a{

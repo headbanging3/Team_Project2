@@ -13,18 +13,17 @@
 	}
 	#signForm{
 		margin-top:30px;
+		padding:20px;
 	}
 	h3{
 		padding-bottom:10px;
 	}
-	.container div{
-		padding:20px;
-	}
+	
 	.container button{
 		margin : 20px;
 	}
 	.form-inline{
-		margin: 100px 0;
+		margin: 70px 0;
 		padding:30px;
 	}
 	.btn{
@@ -67,11 +66,7 @@
 </div>
 <jsp:include page="../footer.jsp"/>
 <script>
-	
-	
-	
-
-	//폼 제출 이벤트 처리 
+		//폼 제출 이벤트 처리 
 	$("#findIdForm").on("submit",function(){
 		var memName=$("#memName").val();
 		var memEmail=$("#memEmail").val();

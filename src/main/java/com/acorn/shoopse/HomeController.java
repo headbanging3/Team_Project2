@@ -32,7 +32,7 @@ public class HomeController {
 		// home best 상품 목록
 		
 		ModelAndView mView=new ModelAndView();
-		mView=productsService.getList();
+		mView=productsService.getBestList();
 		//System.out.println("mView::::"+mView);
 		mView.setViewName("home");
 		return mView;

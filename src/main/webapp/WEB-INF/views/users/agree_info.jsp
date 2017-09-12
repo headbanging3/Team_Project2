@@ -11,9 +11,7 @@
 		margin: 0 auto;
 		text-align:center;
 		}
-	.container div{
-		padding:20px;
-	}
+	
 	label, input{
 		margin:20px;
 	}
@@ -22,6 +20,7 @@
 	}
 	#signForm{
 		margin-top:30px;
+		padding:20px;
 	}
 </style>
 </head>
@@ -35,7 +34,7 @@
 	<div>
 		<h3>개인정보 수집 동의</h3>
 		<textarea name="agreeInfo1" id="agreeInfo1" cols="100" rows="10" disabled="disabled">
-			개인정보 감사히 쓰겠습니다. 냠냠
+			개인정보 수집 이용 약관
 		</textarea><br />
 		<label for="agree1">개인정보 수집에 동의 합니다.</label>
 		<input type="checkbox" id="agree1"/>
@@ -43,7 +42,7 @@
 	<div>
 		<h3>개인정보 활용 동의</h3>
 		<textarea name="agreeInfo2" id="agreeInfo2" cols="100" rows="10" disabled="disabled">
-			개인정보 감사히 쓰겠습니다. 냠냠
+			개인정보 활용 이용 약관
 		</textarea><br />
 		<label for="agree2">개인정보 수집에 동의 합니다.</label>
 		<input type="checkbox" id="agree2" />

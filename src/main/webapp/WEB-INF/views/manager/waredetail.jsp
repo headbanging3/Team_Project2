@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<jsp:include page="nav/m_nav.jsp"></jsp:include>
+<jsp:include page="nav/sidebar.jsp"></jsp:include>
 <style>
    table, td, th{
       border: 1px solid black;
@@ -21,6 +23,12 @@
    thead td, thead th{
       text-align:center;
    }
+   #wrapper {
+		width:90%;
+		float:left;
+		margin-left:320px;
+		
+	}
 </style>
 <script type="text/template" id="wareTemplate">
 	<div class="wareDiv">
@@ -67,7 +75,7 @@
                      <input type="text" name="up" class="up" value="0" />
                   </td>
                   <td>
-                     <button class="addSize">사이즈 추가</button>
+                     <button type="button" class="addSize">사이즈 추가</button>
                   </td>
               </tr>
            </tbody>
@@ -94,15 +102,18 @@
 </script>
 </head>
 <body>
+<div id="wrapper">
 <h1>입고 디테일</h1>
-   <h3>입고 번호 : ${w_no }</h3>
-   <button id="addWare">입고 상품 추가</button>
-   <button id="insertWare">저장</button>
-   <form action="">
-	   <div id="wrapper">
-	      
-	   </div>
-   </form>
+	<form action="#">
+	   <h3>입고 번호 : ${w_no }</h3>
+	   <button type="button" id="addWare">입고 상품 추가</button>
+	   <button type="button" id="insertWare">저장</button>
+		<div id="wareWrapper">
+		
+		</div>
+	</form>
+</div>
+
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 
 <script>
@@ -111,7 +122,7 @@
 	   // 상품 추가시 template 추가
 	  var wareTemplate=$("#wareTemplate").text();
 	
-      $("#wrapper").append(wareTemplate);
+      $("#wareWrapper").append(wareTemplate);
    });
 
 	// 사이즈 추가 버튼 클릭시
@@ -120,7 +131,7 @@
 	  var sizeTemplate=$("#addSizeTemplate").text();
 	  $(this).closest("tbody")
       .append(sizeTemplate);
-	 
+	 console.log("asd");
    });
    
    //사이즈 추가 버튼을 눌러 추가된 로우 삭제
