@@ -59,7 +59,9 @@
    		color:#000;
    		text-decoration: underline;
    }
-
+	.midMenu ul{
+		text-align: center;
+	}
 </style>
 </head>
 <body>

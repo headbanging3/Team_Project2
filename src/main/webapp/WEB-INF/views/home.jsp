@@ -104,6 +104,9 @@
 	height: 50px;
 	margin-bottom: 30px;
 }
+#slickscope{
+	margin-top:100px;
+}
 </style>
 </head>
 <body>
