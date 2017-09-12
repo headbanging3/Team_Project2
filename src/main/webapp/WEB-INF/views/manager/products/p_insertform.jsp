@@ -41,10 +41,6 @@
 	
 	<label for="p_name">상품명</label>
 	<input type="text" name="p_name" id="p_name"/><br /><br />	
-	<label for="p_size">사이즈</label>
-	<input type="text" name="p_size"/>
-	<label for="p_stock">수량</label>
-	<input type="text" name="p_stock" />
 	<label for="p_price">가격</label>
 	<input type="text" name="p_price" id="p_price" /><br />
 	<label for="point">마일리지</label>
