@@ -11,6 +11,7 @@ import com.acorn.shoopse.users.dto.UsersDto;
 
 public interface UsersService {
 	public void usersSignup(UsersDto dto);
+	public void notusersSignup(UsersDto dto, HttpServletRequest request);
 	public ModelAndView findId(UsersDto dto);
 	public ModelAndView findPwd(UsersDto dto);
 	public ModelAndView isOverlab(String id);

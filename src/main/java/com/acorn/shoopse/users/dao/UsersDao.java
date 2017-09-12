@@ -4,6 +4,7 @@ import com.acorn.shoopse.users.dto.UsersDto;
 
 public interface UsersDao {
 	public void usersSignup(UsersDto dto);
+	public UsersDto notusersSignup(UsersDto dto);
 	public String findId(UsersDto dto);
 	public String findPwd(UsersDto dto);
 	public String isOverlab(String id);

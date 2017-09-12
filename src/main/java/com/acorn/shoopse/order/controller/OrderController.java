@@ -33,14 +33,9 @@ public class OrderController {
 			mView.setViewName("/popup/signinform");
 			return mView;
 		} 
-		
-		
-	}
+	}//OrderCartController 에서 처리 하기로...비회원, 회원 처리도 해야하므로.2017.09.11lks
 	
-	@RequestMapping("/products/orderPage")
-	public String orderPage() {
-		return "/manager/order/order_insert";
-	}
+	
 	
 	@RequestMapping("/manager/orderList")
 	public ModelAndView orderList() {

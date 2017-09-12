@@ -77,6 +77,16 @@ public class OrderServiceImpl implements OrderService{
 		mView.addObject("list", list);
 		return mView;
 	}
+
+	@Override
+	public ModelAndView cartInsert(OrderCartDto dto) {
+		String result = cartDao.cartInsert(dto);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("result",result);
+		
+		return mView;
+		
+	}
 }
 
 

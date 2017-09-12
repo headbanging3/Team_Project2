@@ -27,15 +27,13 @@
 		      	<c:when test="${not empty sessionScope.id }">
 		      		<li><a href="${pageContext.request.contextPath }/users/info.do">${sessionScope.id } 님</a></li>
 		      		<li><a href="${pageContext.request.contextPath }/logout.do"> 로그아웃 </a></li>
-		      		<li><a href="#">주문배송 조회</a></li>
-		      		<li><a href="${pageContext.request.contextPath }/cart/cart_list.do">장바구니</a></li>
 		      	</c:when>
 		      	<c:otherwise>
 		      		<li><a href="javascript:showPopup()">회원가입/로그인</a></li>
-		      		<li><a href="#">주문배송 조회</a></li>
-		      		<li><a href="${pageContext.request.contextPath }/cart/cart_list.do">장바구니</a></li>
-		      	</c:otherwise>
+		      	</c:otherwise>		      	
 	      	</c:choose>
+	      			<li><a href="#">주문배송 조회</a></li>
+		      		<li><a href="${pageContext.request.contextPath }/cart/cart_list.do">장바구니</a></li>
 	    
 	      	<!-- 드랍메뉴 -->	      	
 			<li class="dropdown">
