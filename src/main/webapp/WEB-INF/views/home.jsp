@@ -309,10 +309,22 @@
 		</ul>
 	</div>
 </div>
+<c:set var="id" value="${sessionScope.id }"/>
 
-<div>
-	<a id="bg" class="btn" href="m_home.do" role="button">관리자페이지</a>
-</div>
+<c:choose>
+<c:when test="${id ne 'root' }">
+	<c:set var="cl" value="hide"/>
+</c:when>
+<c:otherwise>
+	<c:set var="cl" value=""/>
+	 	<div>
+		<a id="bg" class="btn ${cl }" href="m_home.do" role="button">관리자페이지</a>
+	</div>
+</c:otherwise>
+</c:choose>
+
+
+
 
 <!-- ****************footer**************** -->
 <jsp:include page="footer.jsp"></jsp:include>
