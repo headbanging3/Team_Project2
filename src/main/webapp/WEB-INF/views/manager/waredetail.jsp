@@ -31,7 +31,7 @@
    <div id="wrapper">
       
    </div>
-<script src="js/jquery-3.2.0.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 
 <script>
    var wareNum=1;
