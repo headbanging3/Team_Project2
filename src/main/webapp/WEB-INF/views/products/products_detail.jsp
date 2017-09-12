@@ -225,7 +225,6 @@
 								<li><input class="btn btn-primary" id="orderBtn" type="button" value="주문1"  /></li>
 								<li><input class="btn btn-danger" id="cartBtn" type="button" value="장바구니 담기"/></li>
 							</ul>
-						
 						</div>	
 						</form>
 						
