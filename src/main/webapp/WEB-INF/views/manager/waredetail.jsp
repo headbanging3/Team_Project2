@@ -7,107 +7,218 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	table, td, th{
-		border: 1px solid black;
-		margin:30px;
-	}
-	#ea, #up{
-		text-align:right;
-	}
-	
+   table, td, th{
+      border: 1px solid black;
+      margin:30px;
+      text-align:right;
+   }
+   tfoot{
+       text-align:right;
+   }
+   input{
+      text-align:right;
+   }
+   thead td, thead th{
+      text-align:center;
+   }
 </style>
 </head>
 <body>
 <h1>입고 디테일</h1>
-	<h3>입고 번호 : ${w_no }</h3>
-	<button id="addWare">입고 상품 추가</button>
-	<div id="wrapper">
-		
-	</div>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
-<script>
-	
-	$("#addWare").click(function(){
-		var a=$('<div class="wareDiv">'+
-				'<table>'+
-					'<thead>'+
-					'<tr>'+
-						'<th>상품 코드</th>'+
-						'<th>사이즈</th>'+
-						'<th>수량</th>'+
-						'<th>단가</th>'+
-						'<th>사이즈 추가</th>'+
-					'</tr>'+
-				'</thead>'+
-				'<tfoot>'+
-					'<tr>'+
-						'<td colspan="2">총 수량 : </td>'+
-						'<td colspan="2">총 금액 : </td>'+
-					'</tr>'+
-				'</tfoot>'+
-				'<tbody>'+
-					'<tr>'+
-						'<td>'+
-						'<select name="p_code" id="p_code">'+
-							'<option value="#">제품</option>'+
-							'<c:forEach var="tmp" items="${list}">'+		
-								'<option value="${tmp.p_code }">${tmp.p_name }</option>'+
-							'</c:forEach>'+
-						'</select>'+
-						'</td>'+
-						'<td>'+
-							'<select name="p_size" id="p_size">'+
-								'<option value="#">사이즈</option>'+
-								'<c:forEach var="i" begin="220" end="300" step="10">'+		
-									'<option value="${i}">${i}</option>'+
-								'</c:forEach>'+
-							'</select>'+
-						'</td>'+
-						'<td>'+
-							'<input type="text" name="ea" id="ea" />'+
-						'</td>'+
-						'<td>'+
-							'<input type="text" name="up" id="up" />'+
-						'</td>'+
-						'<td>'+
-							'<button class="addSize">사이즈 추가</button>'+
-						'</td>'+
-					'</tr>'+
-				'</tbody>'+
-			'</table>'+
-			'</div>');
-		$("#wrapper").append(a);
-		
-	});
+   <h3>입고 번호 : ${w_no }</h3>
+   <button id="addWare">입고 상품 추가</button>
+    <button id="insertWare">저장</button>
+   <div id="wrapper">
+      
+   </div>
+<script src="js/jquery-3.2.0.js"></script>
 
-	$(document).on("click",".addSize",function(){
-		console.log("asd");
-		$(this).closest("tbody")
-		.append('<tr>'+
-				'<td></td>'+
-				'<td>'+
-					'<select name="p_size" id="p_size">'+
-						'<option value="#">사이즈</option>'+
-						'<c:forEach var="i" begin="220" end="300" step="10">'+		
-							'<option value="${i}">${i}</option>'+
-						'</c:forEach>'+
-					'</select>'+
-				'</td>'+
-				'<td>'+
-					'<input type="text" name="ea" id="ea" />'+
-				'</td>'+
-				'<td></td>'+
-				'<td><a href="#" class="deleteAn">삭제</a></td>'+
-				'</tr>');
-	});
-	
-	$(document).on("click",".deleteAn",function(){
-		$(this).closest("tr").remove();
-		
-	});
-	
-	$()
+<script>
+   var wareNum=1;
+   $("#addWare").click(function(){
+
+      var a=$('<div class="wareDiv">'+
+            '<table>'+
+               '<thead>'+
+               '<tr>'+
+                  '<th>상품 코드</th>'+
+                  '<th>사이즈</th>'+
+                  '<th>수량</th>'+
+                  '<th>단가</th>'+
+                  '<th>사이즈 추가</th>'+
+               '</tr>'+
+            '</thead>'+
+            '<tfoot>'+
+               '<tr>'+
+                  '<td colspan="2">총 수량 : </td>'+
+                  '<td><input type="text" class="countEa"value="0" disabled="disabled" /></td>'+
+                  '<td><input type="text" class="countUp" value="0" disabled="disabled" /></td>'+
+                  '<td></td>'+
+               '</tr>'+
+            '</tfoot>'+
+            '<tbody>'+
+               '<tr>'+
+                  '<td>'+
+                  '<select name="p_code" id="p_code">'+
+                     '<option value="#">제품</option>'+
+                     '<c:forEach var="tmp" items="${list}">'+      
+                        '<option value="${tmp.p_code }">${tmp.p_name }</option>'+
+                     '</c:forEach>'+
+                  '</select>'+
+                  '</td>'+
+                  '<td>'+
+                     '<select name="p_size" id="p_size">'+
+                        '<option value="#">사이즈</option>'+
+                        '<c:forEach var="i" begin="220" end="300" step="10">'+      
+                           '<option value="${i}">${i}</option>'+
+                        '</c:forEach>'+
+                     '</select>'+
+                  '</td>'+
+                  '<td>'+
+                     '<input type="text" name="ea" class="ea" />'+
+                  '</td>'+
+                  '<td>'+
+                     '<input type="text" name="up" class="up" value="0" />'+
+                  '</td>'+
+                  '<td>'+
+                     '<button class="addSize">사이즈 추가</button>'+
+                  '</td>'+
+               '</tr>'+
+            '</tbody>'+
+         '</table>'+
+         '</div>');
+      $("#wrapper").append(a);
+      wareNum+=1;
+   });
+
+   $(document).on("click",".addSize",function(){
+      $(this).closest("tbody")
+      .append('<tr>'+
+            '<td></td>'+
+            '<td>'+
+               '<select name="p_size" id="p_size">'+
+                  '<option value="#">사이즈</option>'+
+                  '<c:forEach var="i" begin="220" end="300" step="10">'+      
+                     '<option value="${i}">${i}</option>'+
+                  '</c:forEach>'+
+               '</select>'+
+            '</td>'+
+            '<td>'+
+               '<input type="text" name="ea" class="ea" />'+
+            '</td>'+
+            '<td></td>'+
+            '<td><a href="#" class="deleteAn">삭제</a></td>'+
+            '</tr>');
+   });
+   
+   $(document).on("click",".deleteAn",function(){
+      var allEa=0;
+      var up=0;
+      var result=0;
+      $(".ea").each(function(){
+
+         if(isNaN(parseInt($(this).val()))){
+            allEa+=0;
+         }else{
+            allEa+=parseInt($(this).val());
+         }   
+      });
+
+      allEa-=parseInt($(this).parent()
+                  .prev()
+                  .prev()
+                  .find(".ea")
+                  .val());
+      up=$("tbody tr:first-child").children()
+         .next()
+         .next()
+         .next()
+         .find(".up")
+         .val();
+
+      if(isNaN(up)){
+         up=0;
+      }
+
+      result=allEa*up;
+      
+      $(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countUp")
+      .val(result);
+
+       $(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countEa")
+      .val(allEa);      
+      $(this).closest("tr").remove();
+   });
+   
+
+
+
+   $(document).on("keyup", ".ea", function(){
+      
+      var allEa=0;
+      var up=0;
+      var result=0;
+      
+      $(".ea").each(function(){
+         if(isNaN(parseInt($(this).val()))){
+            allEa+=0;
+         }else{
+            allEa+=parseInt($(this).val());
+         }   
+      });
+
+      $(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countEa")
+      .val(allEa);
+      
+      up=$("tbody tr:first-child").children()
+         .next()
+         .next()
+         .next()
+         .find(".up")
+         .val();
+
+      if(isNaN(up)){
+         up=0;
+      }
+
+      result=allEa*up;
+      
+      $(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countUp")
+      .val(result);
+      
+   });
+
+   $(document).on("keyup", ".up", function(){
+      
+      var allEa=$(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countEa")
+      .val();
+
+      var up=parseInt($(this).val());
+   
+   
+      $(this).closest("tbody")
+      .prev()
+      .children()
+      .find(".countUp")
+      .val(allEa*up);
+
+   });
+
 </script>
 </body>
 </html>
