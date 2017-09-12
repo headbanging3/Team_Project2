@@ -9,6 +9,19 @@
 		FROM product_tb
 		ORDER BY p_regdate DESC
 	</select>
+	<select id="getBestList" resultType="productsDto">
+		SELECT * FROM (   
+   		SELECT a. p_code,a. p_kind_code,a. p_name, 
+                    a.p_brand, a.p_price, a.point, a.p_regdate, 
+                    a.p_comment, a.p_detail_comment,a. p_main_img,
+                    nvl(b.o_count,0) as o_count
+         FROM  
+            (
+                select p_code,sum(o_count) as o_count from order_sub group by p_code 
+            ) b,product_tb a
+            where  a.p_code =b.p_code(+) 
+			) order by o_count desc, p_regdate desc
+	</select>
 	
 	<select id="getpList" resultType="productsDto" parameterType="productsDto">
 		SELECT pt.p_code, pk.p_kind_code, pt.p_name, 

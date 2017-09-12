@@ -69,6 +69,11 @@ public class ProductsDaoImpl implements ProductsDao{
 		String pstock =session.selectOne("products.getstock",p_code);
 		return pstock;
 	}
+	@Override
+	public List<ProductsDto> getBestList() {
+		List<ProductsDto> list=session.selectList("products.getBestList");
+		return list;
+	}
 	
 	
 	

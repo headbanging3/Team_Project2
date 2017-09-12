@@ -8,5 +8,5 @@ public interface ProductsService {
 	public ModelAndView getList();
 	public ModelAndView getDetail(int p_code);
 	public ModelAndView getpList(ProductsDto dto);
-	
+	public ModelAndView getBestList();
 }

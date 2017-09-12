@@ -62,7 +62,7 @@
    		width:500px;
    		height:400px;
    		float:left;
-   		border: 1px solid red;
+   		border: 1px solid #cecece;
    }
    #topText span{
    		font-size: 20px;

@@ -75,13 +75,13 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3" for="email">이메일 : </label>
+					<label class="col-sm-3" for="email">* 이메일 : </label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" name="email" id="email" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3" for="addr">주소 : </label>
+					<label class="col-sm-3" for="addr">* 주소 : </label>
 					<div class="col-sm-9">
 						<input type="text" class="form-control" name="addr" id="addr" /><br />
 					</div>
@@ -116,13 +116,24 @@
 		var pwdMatching=reg2.test(inputPwd);
 		if(pwdMatching && inputPwd==inputPwd2){
 			isValPwd=true;
-			console.log("isValPwd=true");
 		}
 		if(isValId==false){
 			alert("아이디 중복환인을 눌러주세요");
 			return false;
 		}else if(isValPwd==false){
 			alert("비밀번호를 확인해주세요");
+			return false;
+		}else if($("#name").val()==""){
+			alert("이름을 입력해주세요.");
+			return false;
+		}else if($("#phone").val()==""){
+			alert("번호를 입력해주세요.");
+			return false;
+		}else if($("#email").val()==""){
+			alert("이메일을 입력해주세요.");
+			return false;
+		}else if($("#addr").val()==""){
+			alert("주소를 입력해주세요.");
 			return false;
 		}
 	});
