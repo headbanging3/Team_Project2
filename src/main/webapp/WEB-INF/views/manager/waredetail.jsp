@@ -22,6 +22,15 @@
       text-align:center;
    }
 </style>
+<script type="text/template" id="myTemplate">
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+			</tr>
+		</thead>
+	</table>
+</script>
 </head>
 <body>
 <h1>입고 디테일</h1>
@@ -129,15 +138,17 @@
                   .prev()
                   .find(".ea")
                   .val());
-      up=$("tbody tr:first-child").children()
-         .next()
-         .next()
-         .next()
-         .find(".up")
-         .val();
-
+      up=$(this).parent()
+	      .parent()
+	      .parent()
+	      .first()
+	      .find(".up")
+	      .val();
+      
       if(isNaN(up)){
          up=0;
+      }else if(isNaN(allEa)){
+    	  allEa=0;
       }
 
       result=allEa*up;
@@ -165,7 +176,7 @@
       var up=0;
       var result=0;
       
-      $(".ea").each(function(){
+      $(this).parent().parent().parent().find(".ea").each(function(){
          if(isNaN(parseInt($(this).val()))){
             allEa+=0;
          }else{
@@ -179,10 +190,10 @@
       .find(".countEa")
       .val(allEa);
       
-      up=$("tbody tr:first-child").children()
-         .next()
-         .next()
-         .next()
+      up=$(this).parent()
+         .parent()
+         .parent()
+         .first()
          .find(".up")
          .val();
 
@@ -201,7 +212,7 @@
    });
 
    $(document).on("keyup", ".up", function(){
-      
+      var result=0;
       var allEa=$(this).closest("tbody")
       .prev()
       .children()
@@ -209,16 +220,25 @@
       .val();
 
       var up=parseInt($(this).val());
+   	  result=allEa*up;
    
-   
-      $(this).closest("tbody")
-      .prev()
-      .children()
-      .find(".countUp")
-      .val(allEa*up);
+   	 $(this).closest("tbody")
+     .prev()
+     .children()
+     .find(".countUp")
+     .val(allEa*up);
 
+      
    });
 
+   function setAllEa(closestName, findName, value){
+	   
+	   $(this).closest(closestName)
+	      .prev()
+	      .children()
+	      .find(findName)
+	      .val(value);
+   }
 </script>
 </body>
 </html>
