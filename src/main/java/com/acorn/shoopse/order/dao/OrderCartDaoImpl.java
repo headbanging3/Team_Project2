@@ -67,4 +67,14 @@ public class OrderCartDaoImpl implements OrderCartDao {
 		}
 		return result;
 	}
+
+	@Override
+	public List<OrderCartDto> getOrderList(int mem_num) {
+		List<OrderCartDto> orderList = session.selectList("cart.getOrderList",mem_num);
+		for(OrderCartDto temp:orderList){
+			System.out.println("getpList::"+temp.toString());
+		}
+		
+		return orderList;
+	}
 }

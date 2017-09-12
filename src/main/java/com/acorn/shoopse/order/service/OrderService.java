@@ -23,4 +23,6 @@ public interface OrderService {
 	public void orderDeleteAjax(List<OrderCartDto> dto);//주문삭제
 	public ModelAndView wholeOrderList();//
 	public ModelAndView cartInsert(OrderCartDto dto);//장바구니 입력
+	
+	public ModelAndView orderlist(int mem_num);//주문 리스트
 }

@@ -34,6 +34,7 @@
 <jsp:include page="../navbar.jsp"></jsp:include>
 <c:choose>
 <c:when test="${not empty cartList }">
+<div style="font-size:50px">장바구니 목록</div>
 <table class="table">
 	<tr>
 		<td>체크박스</td>
@@ -93,7 +94,7 @@
 </div>
 </c:when>
 <c:when test="${empty cartList}">
-	장바구니가 비었습니다
+	<div style="font-size:50px">장바구니가 비었습니다</div>
 </c:when>
 </c:choose>
 

@@ -52,19 +52,19 @@ public class OrderCartController {
 		return mView;
 	}
 	
-//	@RequestMapping("/cart/order_list")
-//	public ModelAndView orderList(HttpServletRequest request){
-//		//System.out.println("cartList?");
-//		int mem_num = 0;
-//		if(request.getSession().getAttribute("mem_num")!=null){
-//			mem_num=(int)request.getSession().getAttribute("mem_num");
-//			//System.out.println("mem_num:"+mem_num);
-//		}
-//		ModelAndView mView=orderService.list(mem_num);
-//		mView.setViewName("cart/order_list");
-//		return mView;	
-//	}
-	
+	@RequestMapping("/cart/order_list")
+	public ModelAndView order_list(HttpServletRequest request){
+		//System.out.println("cartList?");
+		int mem_num = 0;
+		if(request.getSession().getAttribute("mem_num")!=null){
+			mem_num=(int)request.getSession().getAttribute("mem_num");
+			//System.out.println("mem_num:"+mem_num);
+		}
+		ModelAndView mView=orderService.orderlist(mem_num);
+		mView.setViewName("cart/order_list");
+		return mView;
+	}
+
 	@RequestMapping("/cart/item_count_ajax")
 	public ModelAndView itemCountAjax(@ModelAttribute OrderCartDto dto){
 		//System.out.println("count:"+dto.getO_count()+":pno:"+dto.getP_no()+":ono:"+dto.getO_no()+":pcode:"+dto.getP_code());
@@ -100,12 +100,11 @@ public class OrderCartController {
 		return mView;		
 	}
 	@RequestMapping("/cart/order_insert")
-	public ModelAndView orderInsert(@ModelAttribute OrderActionDto dto, HttpSession session){
+	public String orderInsert(@ModelAttribute OrderActionDto dto, HttpSession session){
 		//System.out.println("OrderActionDto::"+dto.toString());
 		int mem_num=(int)session.getAttribute("mem_num");
 		dto.setMem_num(mem_num);
-		orderService.orderInsert(dto);
-		return null;
-		//return "redirect:";	
+		orderService.orderInsert(dto);	
+		return "redirect:/cart/order_list.do";	
 	}
 }

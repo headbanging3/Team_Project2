@@ -15,6 +15,7 @@ public class OrderCartDto {
 	private String p_code;
 	private String p_name;
 	private String p_size;
+	private String o_date;
 	
 	
 	public int getMem_num() {
@@ -83,12 +84,19 @@ public class OrderCartDto {
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
 	}
+	public String getO_date() {
+		return o_date;
+	}
+	public void setO_date(String o_date) {
+		this.o_date = o_date;
+	}
 	@Override
 	public String toString() {
 		return "OrderCartDto [mem_num=" + mem_num + ", o_no=" + o_no + ", o_total_count=" + o_total_count
 				+ ", o_total_price=" + o_total_price + ", p_no=" + p_no + ", o_count=" + o_count
 				+ ", o_sub_total_price=" + o_sub_total_price + ", o_sub_price=" + o_sub_price + ", p_code=" + p_code
-				+ ", p_name=" + p_name + ", p_size=" + p_size + "]";
+				+ ", p_name=" + p_name + ", p_size=" + p_size + ", o_date=" + o_date + "]";
 	}
+	
 	
 }
