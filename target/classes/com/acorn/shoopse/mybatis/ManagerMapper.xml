@@ -48,7 +48,7 @@
 	</select>
 	
 	<select id="wholeOrderList" resultType="com.acorn.shoopse.order.dto.WholeOrderDto">
-		SELECT ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, max(pt.p_name), o_status
+		SELECT ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, max(pt.p_name) p_name, o_status
 		FROM users u, order_tb ot, product_tb pt, order_req_addr ora, order_sub os
 		WHERE u.mem_num = ot.mem_num
 		AND ot.o_no = ora.o_no
@@ -56,7 +56,16 @@
 		GROUP BY ot.o_no, name, id, email, phone, res_name, res_phone, res_address, ot.o_date, o_total_count, o_total_price, o_status
 		ORDER BY ot.o_no DESC
 	</select>
-
+	
+	<select id="orderListDetail" resultType="com.acorn.shoopse.order.dto.OrderListDetailDto" parameterType="int">
+		SELECT ot.o_no, os.p_no, os.p_code, o_count, o_sub_total_price, o_sub_price, p_size, p_name, p_price, point
+		FROM order_tb ot, order_sub os, product_sub ps, PRODUCT_TB pt
+		WHERE ot.o_no = os.o_no
+		AND os.p_code = pt.p_code
+		AND os.p_no = ps.p_no
+		AND ot.o_no = #{o_no}
+	</select>
+	
 </mapper>
 
 

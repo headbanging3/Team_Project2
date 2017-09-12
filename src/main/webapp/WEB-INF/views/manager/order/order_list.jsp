@@ -50,8 +50,7 @@
 					<td>${tmp.o_total_count }</td>
 					<td>${tmp.o_total_price }</td>
 					<td><c:if test="${tmp.o_total_count ne 1 }">
-							<a href="">${tmp.p_name }외  ${tmp.o_total_count - 1}개</a></c:if></td>
-				
+							<a href="${pageContext.request.contextPath }/manager/orderListDetail.do?o_no=${tmp.o_no }">${tmp.p_name }외  ${tmp.o_total_count - 1}개</a></c:if></td>
 					<c:choose>
 						<c:when test="${tmp.o_status == 1 }">
 							<td>장바구니 상태</td>
