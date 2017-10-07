@@ -44,8 +44,13 @@ public class WearingController {
 	}
 	
 	@RequestMapping("manager/waredetail")
-	public String detail(){
-		return "manager/waredetail";			
+	public ModelAndView detail(HttpServletRequest request){
+		
+		ModelAndView mView=wearingService.getProductCode(request);
+		//ModelAndView mView=wearingService.getDetailList();
+		
+		mView.setViewName("manager/waredetail");
+		return mView;	
 	}
 	
 	@RequestMapping(value="/manager/getDivision")
@@ -61,6 +66,13 @@ public class WearingController {
 		ModelAndView mView = wearingService.getpName(p_kind_code);
 		return mView;
 	}
+	
+	@RequestMapping("/manager/insertWareDetail")
+	public String insertWareDetail(HttpServletRequest request){
+		wearingService.insertWareDetail(request);
+		return "redirect:manager/warehousing.do";
+	}
+	
 	
 }
 

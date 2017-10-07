@@ -2,6 +2,7 @@ package com.acorn.shoopse.order.dto;
 
 public class OrderCartDto {
 	//order_tb
+	private int mem_num;
 	private int o_no;
 	private int o_total_count;
 	private int o_total_price;
@@ -14,8 +15,15 @@ public class OrderCartDto {
 	private String p_code;
 	private String p_name;
 	private String p_size;
+	private String o_date;
 	
 	
+	public int getMem_num() {
+		return mem_num;
+	}
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
+	}
 	public int getO_no() {
 		return o_no;
 	}
@@ -76,5 +84,19 @@ public class OrderCartDto {
 	public void setP_size(String p_size) {
 		this.p_size = p_size;
 	}
+	public String getO_date() {
+		return o_date;
+	}
+	public void setO_date(String o_date) {
+		this.o_date = o_date;
+	}
+	@Override
+	public String toString() {
+		return "OrderCartDto [mem_num=" + mem_num + ", o_no=" + o_no + ", o_total_count=" + o_total_count
+				+ ", o_total_price=" + o_total_price + ", p_no=" + p_no + ", o_count=" + o_count
+				+ ", o_sub_total_price=" + o_sub_total_price + ", o_sub_price=" + o_sub_price + ", p_code=" + p_code
+				+ ", p_name=" + p_name + ", p_size=" + p_size + ", o_date=" + o_date + "]";
+	}
+	
 	
 }

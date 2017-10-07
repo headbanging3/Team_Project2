@@ -11,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.acorn.shoopse.agency.dto.AgencyDto;
 import com.acorn.shoopse.products.dto.ProductsDto;
+import com.acorn.shoopse.products.dto.ProductsSubDto;
 import com.acorn.shoopse.users.dto.UsersDto;
 import com.acorn.shoopse.wearing.dto.WearingDto;
+import com.acorn.shoopse.wearing.dto.WearingSubDto;
 
 @Repository
 public class WearingDaoImpl implements WearingDao{
@@ -34,6 +36,26 @@ public class WearingDaoImpl implements WearingDao{
 	@Override
 	public List<ProductsDto> getpName(String p_kind_code) {
 		List<ProductsDto> list = session.selectList("wearing.getpName", p_kind_code);
+		return list;
+	}
+
+	@Override
+	public List<ProductsDto> getProductCode() {
+		List<ProductsDto> list=session.selectList("wearing.getProductCode");
+		return list;
+	}
+
+	@Override
+	public void insertWareDetail(WearingSubDto dto) {
+		session.insert("wearing.insertDetailPS",dto);
+		session.insert("wearing.insertDetailWS",dto);
+		
+		
+	}
+
+	@Override
+	public List<WearingSubDto> getDetailList() {
+		List<WearingSubDto> list=session.selectList("wearing.getDetailList");
 		return list;
 	}
 }

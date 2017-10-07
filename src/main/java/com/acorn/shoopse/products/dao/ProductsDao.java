@@ -14,7 +14,7 @@ public interface ProductsDao {
 	public ProductsDto getinfo(int p_code);
 	public List<String> psize(int p_code);
 	public String pstock(int p_code);
-	
+	public List<ProductsDto> getBestList();
 	
 	
 	

@@ -1,16 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<jsp:include page="/resources/resources.jsp"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/home1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fotorama.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/slick/slick-theme.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/semantic/semantic.min.css" />
+<script src="${pageContext.request.contextPath }/resources/js/fotorama.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/slick.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
 <title>㈜슙스 공식 온라인스토어</title>
 <style>
 
@@ -48,26 +54,12 @@
 	height: 550px;
 	border-radius: 5px;
 }
-.affix-top{
-	position: relative !important;
-	top: 0;
-	right:0px;
-	transition: top bottom 2s linear;	
-}
+
 .affix{
-	/*고정될때 상단에서 떨어질 거리*/
-	position: relative;
-	top:75%;
-	right: 0px;
-	transition: top bottom 2s linear;
+	right:20px;
+		
 }
-.affix-bottom{
-	position: absolute !important;
-	top:75%;
-	right:0px;
-	bottom:0px;
-	transition: top bottom 0.5s linear;
-}
+
 #productTag{
 	background: #fff;
 	text-align: center;
@@ -98,13 +90,17 @@
 	height: 50px;
 	margin-bottom: 30px;
 }
+#slickscope{
+	margin-top:100px;
+}
+
 </style>
 </head>
 <body>
-		<!-- 네비게이션 -->
-		<!-- branch upst -->
+<!-- 네비게이션 -->
+<!-- branch upst -->
 <jsp:include page="navbar.jsp"></jsp:include>
-		<!-- slick scope -->
+<!-- slick scope -->
 <div class="container-fluid" id="slickscope">
 	<div class="slider" id="topslider">	
 	  <div><img src="${pageContext.request.contextPath }/resources/img/slickimg.jpg" alt="" /></div>
@@ -116,11 +112,7 @@
 	</div>
 </div>
 
-<%-- <c:forEach var="tmp" items="${list}" varStatus="status">
-	<p>[${status.index}]: ${list[status.index].p_code}</p>
-</c:forEach>
- --%>
-<div class="affix ui vertical buttons pull-right" data-spy="affix" data-offset-top="700" data-offset-bottom="350">
+<div class="affix ui vertical buttons pull-right" data-offset="15" data-spy="affix" data-offset-top="700">
 	<button class="ui black button top">	  
 	  <span class="glyphicon glyphicon-menu-up"></span><br />맨위로
 	</button>
@@ -128,9 +120,8 @@
 	  <span class="glyphicon glyphicon-menu-down"></span><br />맨아래로
 	</button>
 </div>
-  
 
-	    <!-- best/new/sale/....-->
+<!-- best/new/sale/....-->
 <div class="container article ">
 	<div class="ui fluid massive three item menu" id="tabmenu">
 	  <a class="item active" data-tab="best"><h4 class="en-font">BEST</h4></a>
@@ -138,114 +129,25 @@
 	  <a class="item" data-tab="sales"><h4 class="en-font">SALES</h4></a>
 	</div>
 	<!-- BEST 메뉴 탭 -->
-	<div id="bestbox" class="ui massive bottom attached tab segment active" data-tab="best">
-		<div class="row">			
-			<div class="col-xs-8 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png"/>
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>			   
-			</div>
-			<div class="col-xs-4">
-				<div class="row">
-					<div class="col-xs-12 imgWrapper">
-						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-							<span><strong>브랜드명</strong></span><br/>
-							<span>상품이름 ||</span>
-							<span>가격</span>
-				        </div>	
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 imgWrapper">
-						<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-						<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-							<span><strong>브랜드명</strong></span><br/>
-							<span>상품이름 ||</span>
-							<span>가격</span>
-				        </div>	
-					</div>
-				</div>
-			</div>
-	
-		</div>
-		<div class="row">
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-			<div class="col-xs-4 imgWrapper">
-				<img class="ui fluid image" src="${pageContext.request.contextPath }/resources/img/image.png">
-				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
-		        </div>	
-			</div>
-			
-		</div>
-	</div>
-	<!-- NEW 메뉴 탭 -->
-	<div class="ui massive bottom attached tab segment" data-tab="new" id="new">
+	<div class="ui massive bottom attached tab segment active" data-tab="best">
 	  <div class="row">			
 			<div class="col-xs-8 imgWrapper" id="topLeft">
-				<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${list[0].p_main_img}"/>
+				<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${bestList[0].p_main_img}"/>
 				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-					<span><strong>브랜드명</strong></span><br/>
-					<span>상품이름 ||</span>
-					<span>가격</span>
+					<span><strong>${bestList[0].p_brand}</strong></span><br/>
+					<span>${bestList[0].p_name} ||</span>
+					<span>${bestList[0].p_price}</span>
 		        </div>			   
 			</div>
 			<div class="col-xs-4">
-				<c:forEach var="tmp" items="${list }" begin="1" end="2">
+				<c:forEach var="tmp" items="${bestList }" begin="1" end="2">
 					<div class="row">	
 						<div class="col-xs-12 imgWrapper" id="topRight">
 							<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
 							<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-								<span><strong>브랜드명</strong></span><br/>
-								<span>상품이름 ||</span>
-								<span>가격</span>
+								<span><strong>${tmp.p_brand}</strong></span><br/>
+								<span>${tmp.p_name} ||</span>
+								<span>${tmp.p_price}</span>
 					        </div>	
 						</div>
 					</div>
@@ -253,41 +155,87 @@
 			</div>
 		</div>
 		<div class="row">
-			<c:forEach var="tmp" items="${list }" begin="3" end="5">
+			<c:forEach var="tmp" items="${bestList }" begin="3" end="5">
 				<div class="col-xs-4 imgWrapper bottm">
 					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
 					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-						<span><strong>브랜드명</strong></span><br/>
-						<span>상품이름 ||</span>
-						<span>가격</span>
+						<span><strong>${tmp.p_brand}</strong></span><br/>
+						<span>${tmp.p_name} ||</span>
+						<span>${tmp.p_price}</span>
 			        </div>	
 				</div>
 			</c:forEach>
 		</div>
 		<div class="row">
-			<c:forEach var="tmp" items="${list }" begin="6" end="8">
+			<c:forEach var="tmp" items="${bestList }" begin="6" end="8">
 				<div class="col-xs-4 imgWrapper bottm">
 					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
 					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
-						<span><strong>브랜드명</strong></span><br/>
-						<span>상품이름 ||</span>
-						<span>가격</span>
+						<span><strong>${tmp.p_brand}</strong></span><br/>
+						<span>${tmp.p_name} ||</span>
+						<span>${tmp.p_price}</span>
+			        </div>	
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+	<!-- NEW 메뉴 탭 -->
+	<div class="ui massive bottom attached tab segment" data-tab="new" id="new">
+	  <div class="row">			
+			<div class="col-xs-8 imgWrapper" id="topLeft">
+				<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${newList[0].p_main_img}"/>
+				<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+					<span><strong>${newList[0].p_brand}</strong></span><br/>
+					<span>${newList[0].p_name} ||</span>
+					<span>${newList[0].p_price}</span>
+		        </div>			   
+			</div>
+			<div class="col-xs-4">
+				<c:forEach var="tmp" items="${newList }" begin="1" end="2">
+					<div class="row">	
+						<div class="col-xs-12 imgWrapper" id="topRight">
+							<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
+							<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+								<span><strong>${tmp.p_brand}</strong></span><br/>
+								<span>${tmp.p_name} ||</span>
+								<span>${tmp.p_price}</span>
+					        </div>	
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		<div class="row">
+			<c:forEach var="tmp" items="${newList }" begin="3" end="5">
+				<div class="col-xs-4 imgWrapper bottm">
+					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+						<span><strong>${tmp.p_brand}</strong></span><br/>
+						<span>${tmp.p_name} ||</span>
+						<span>${tmp.p_price}</span>
+			        </div>	
+				</div>
+			</c:forEach>
+		</div>
+		<div class="row">
+			<c:forEach var="tmp" items="${newList }" begin="6" end="8">
+				<div class="col-xs-4 imgWrapper bottm">
+					<img class="img-responsive ui fluid image" src="${pageContext.request.contextPath }/resources/img/productImgs/${tmp.p_main_img}">
+					<div class="col-xs-10 col-xs-push-1 hidden-sm hidden-xs" id="productTag">
+						<span><strong>${tmp.p_brand}</strong></span><br/>
+						<span>${tmp.p_name} ||</span>
+						<span>${tmp.p_price}</span>
 			        </div>	
 				</div>
 			</c:forEach>
 		</div>
 	</div>
 	<div class="ui massive bottom attached tab segment" data-tab="sales">
-	  3There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+	  <h3>세일중인 상품이 없습니다.</h3>
 	</div>
 </div>
 
-	    <!-- 관리자가 추천하는 상품 컨텐츠 -->
-	    
-
-	    
-	    
-	    
+<!-- 관리자가 추천하는 상품 컨텐츠 -->
 <div class="container article">
 	<h1 class="en-font">MD's choice! </h1>
 	<div class="mdslider">	
@@ -353,7 +301,7 @@
 			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 			  <span class="sr-only">Error:</span>
 			  Enter a valid email address
-			</div>
+		  </div>
 		  <li class="list-group-item list-group-item-info">Dapibus ac facilisis in</li>
 		  <li class="list-group-item list-group-item-info">Morbi leo risus</li>
 		  <li class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
@@ -361,23 +309,31 @@
 		</ul>
 	</div>
 </div>
+<c:set var="id" value="${sessionScope.id }"/>
 
+<c:choose>
+<c:when test="${id ne 'root' }">
+	<c:set var="cl" value="hide"/>
+</c:when>
+<c:otherwise>
+	<c:set var="cl" value=""/>
+	 	
+</c:otherwise>
+</c:choose>
 <div>
-	<a id="bg" class="btn" href="m_home.do" role="button">관리자페이지</a>
-</div>
+		<a id="bg" class="btn ${cl }" href="m_home.do" role="button">관리자페이지</a>
+	</div>
+
+
 
 <!-- ****************footer**************** -->
 <jsp:include page="footer.jsp"></jsp:include>
+
 <c:if test="${sessionScope.id eq root }">
 	<script>
 		document.querySelector("#bg").style.visibility = "visible";
 	</script>
 </c:if>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/fotorama.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/slick.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/semantic/semantic.min.js"></script>
-<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
 <script>
 var sliderSwitch=false;
 
@@ -424,7 +380,46 @@ $(document).ready(function() {
 	})
 });
 
+//고객센터 드롭메뉴 js
+$('.dropdown').click(function(){
+	$('.submenu').toggleClass('submenuShow')
+});
+$('#menu').click(function(){
+	$( '#nav' ).slideToggle( 'fast' );
+});
+
+//고객센터 드롭메뉴 js
+$('.dropdown').click(function(){
+	$('.submenu').toggleClass('submenuShow')
+});
+$('#menu').click(function(){
+	$( '#nav' ).slideToggle( 'fast' );
+});
+
+//팝업 띄우는 함수 
+function showPopup(){
+	window.open("${pageContext.request.contextPath}/popup/signinform.do","팝업창","width=600,height=400,top=200,left=700");
+}
+	
+// 팝업을 닫는 함수
+//function closePopup() {
+//	 window.close();
+//}
+	
+function menuClick(menu) {
+	if(menu=='userMain'){			
+		location.href='/shoopse/userpage/index.jsp';
+	}	
+	if(menu=='shop'){	
+		//alert(menu);
+		location.href='/shoopse/userpage/shop/shop.do';
+	}	
+	if(menu=='nike'){
+		//alert(menu);
+		location.href='/shoopse/products/test.do';
+	}	
+	}
+
 </script>
 </body>
 </html>
-

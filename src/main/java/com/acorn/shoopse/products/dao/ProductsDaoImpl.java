@@ -23,9 +23,9 @@ public class ProductsDaoImpl implements ProductsDao{
 	@Override
 	public List<ProductsDto> getpList(ProductsDto dto) {
 		List<ProductsDto> plist = session.selectList("products.getpList", dto);
-		for(ProductsDto temp:plist){
+		/*for(ProductsDto temp:plist){
 			System.out.println("getpList::"+temp.toString());
-		}
+		}*/
 		return plist;
 	}
 	@Override
@@ -68,6 +68,11 @@ public class ProductsDaoImpl implements ProductsDao{
 	public String pstock(int p_code) {
 		String pstock =session.selectOne("products.getstock",p_code);
 		return pstock;
+	}
+	@Override
+	public List<ProductsDto> getBestList() {
+		List<ProductsDto> list=session.selectList("products.getBestList");
+		return list;
 	}
 	
 	

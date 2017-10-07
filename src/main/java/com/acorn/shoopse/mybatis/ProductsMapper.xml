@@ -9,6 +9,19 @@
 		FROM product_tb
 		ORDER BY p_regdate DESC
 	</select>
+	<select id="getBestList" resultType="productsDto">
+		SELECT * FROM (   
+   		SELECT a. p_code,a. p_kind_code,a. p_name, 
+                    a.p_brand, a.p_price, a.point, a.p_regdate, 
+                    a.p_comment, a.p_detail_comment,a. p_main_img,
+                    nvl(b.o_count,0) as o_count
+         FROM  
+            (
+                select p_code,sum(o_count) as o_count from order_sub group by p_code 
+            ) b,product_tb a
+            where  a.p_code =b.p_code(+) 
+			) order by o_count desc, p_regdate desc
+	</select>
 	
 	<select id="getpList" resultType="productsDto" parameterType="productsDto">
 		SELECT pt.p_code, pk.p_kind_code, pt.p_name, 
@@ -52,13 +65,13 @@
 		WHERE p_code = #{p_code}
 	</select>
 	<select id="getinfo" resultType="productsDto" parameterType="int">
-		SELECT p_name,p_price
+		SELECT p_name,p_price,p_code
 		FROM product_tb
 		WHERE p_code = #{p_code}
 	</select>
 	
 	<select id="getsize" resultType="productsDto" parameterType="int">
-		select p_size 
+		select p_size ,p_no
 		from product_sub
 		where p_code = #{p_code}	
 	</select>
@@ -87,7 +100,7 @@
 		ORDER BY p_kind_code ASC
 	</select>
 	<insert id="productsInsert" parameterType="productsDto">
-		INSERT ALL INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
+		INSERT INTO product_tb(p_code, p_kind_code, p_name, p_brand, p_price, point,
 						p_regdate, p_comment, p_detail_comment, p_main_img) 
 		VALUES (
 			p_code_seq.NEXTVAL,
@@ -103,8 +116,6 @@
 			#{p_detail_comment},
 			#{p_main_img}
 		)
-		INTO product_sub(p_no, p_size, p_stock, p_code) values(p_no_seq.NEXTVAL, #{p_size}, #{p_stock}, p_code_seq.CURRVAL)
-		SELECT * FROM dual
 	</insert>	
 	<delete id="productsDelete" parameterType="String">
 		DELETE FROM product_tb

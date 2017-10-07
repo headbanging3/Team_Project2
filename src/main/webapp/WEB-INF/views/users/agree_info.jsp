@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="/resources/resources.jsp"/>
 <title>개인정보 동의서</title>
 <style>
 	.container{
 		margin: 0 auto;
 		text-align:center;
 		}
-	.container div{
-		padding:20px;
-	}
+	
 	label, input{
 		margin:20px;
 	}
@@ -21,6 +20,7 @@
 	}
 	#signForm{
 		margin-top:30px;
+		padding:20px;
 	}
 </style>
 </head>
@@ -34,7 +34,7 @@
 	<div>
 		<h3>개인정보 수집 동의</h3>
 		<textarea name="agreeInfo1" id="agreeInfo1" cols="100" rows="10" disabled="disabled">
-			개인정보 감사히 쓰겠습니다. 냠냠
+			개인정보 수집 이용 약관
 		</textarea><br />
 		<label for="agree1">개인정보 수집에 동의 합니다.</label>
 		<input type="checkbox" id="agree1"/>
@@ -42,7 +42,7 @@
 	<div>
 		<h3>개인정보 활용 동의</h3>
 		<textarea name="agreeInfo2" id="agreeInfo2" cols="100" rows="10" disabled="disabled">
-			개인정보 감사히 쓰겠습니다. 냠냠
+			개인정보 활용 이용 약관
 		</textarea><br />
 		<label for="agree2">개인정보 수집에 동의 합니다.</label>
 		<input type="checkbox" id="agree2" />
@@ -54,7 +54,6 @@
 	</div>
 </div>
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 	//회원가입 버튼 클릭시 checkbox가 체크 되었는지 확인
 	$("#next").on("click", function(){

@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>나의 문의 내역</title>
+<jsp:include page="/resources/resources.jsp"/>
 </head>
 <style>
 	#itembox{

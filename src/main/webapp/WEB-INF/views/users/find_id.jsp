@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>아이디 및 비밀번호 찾기</title>
-
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.container{
 		margin: 0 auto;
@@ -13,18 +13,17 @@
 	}
 	#signForm{
 		margin-top:30px;
+		padding:20px;
 	}
 	h3{
 		padding-bottom:10px;
 	}
-	.container div{
-		padding:20px;
-	}
+	
 	.container button{
 		margin : 20px;
 	}
 	.form-inline{
-		margin: 100px 0;
+		margin: 70px 0;
 		padding:30px;
 	}
 	.btn{
@@ -66,13 +65,8 @@
 	</div>
 </div>
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
-	
-	
-	
-
-	//폼 제출 이벤트 처리 
+		//폼 제출 이벤트 처리 
 	$("#findIdForm").on("submit",function(){
 		var memName=$("#memName").val();
 		var memEmail=$("#memEmail").val();

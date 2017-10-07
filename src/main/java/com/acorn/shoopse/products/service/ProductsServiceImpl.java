@@ -63,6 +63,17 @@ public class ProductsServiceImpl implements ProductsService{
 		return mView;
 	}
 
+	@Override
+	public ModelAndView getBestList() {
+		ModelAndView mView=new ModelAndView();		
+		List<ProductsDto> bestList=productsDao.getBestList();
+		List<ProductsDto> newList=productsDao.getList();
+		mView.addObject("bestList", bestList);
+		mView.addObject("newList", newList);
+		
+		return mView;
+	}
+
 	
 
 	

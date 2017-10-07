@@ -3,7 +3,7 @@
 <mapper namespace="users">
 	<insert id="insertBefore" parameterType="usersDto">
 		INSERT INTO users_tb(mem_num,mem_flag) 
-		VALUES(MEM_NUM_SEQ.NEXTVAL, 1)
+		VALUES(MEM_NUM_SEQ.NEXTVAL, #{mem_flag})
 	</insert>
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO users(mem_num,id,pwd,name,phone,email,addr,regdate,point) 
@@ -12,6 +12,17 @@
 					SELECT MAX(mem_num) FROM users_tb
 				), #{id}, #{pwd}, #{name}, #{phone}, #{email}, #{addr},SYSDATE,1000)
 	</insert>
+	<!-- 비회원 처리 -->
+	<insert id="notUserInsert">
+		INSERT INTO not_user(mem_num) 
+		VALUES(
+				(SELECT MAX(mem_num) FROM users_tb)
+				)
+	</insert>
+	<select id="notUserSelect" resultType="usersDto">
+		select * from users_tb where mem_num = (select max(mem_num) from users_tb)
+	</select>
+	<!-- 비회원 -->
 	<select id="findId" parameterType="usersDto" resultType="String">
 		SELECT id FROM users WHERE name=#{name} AND email=#{email}
 	</select>

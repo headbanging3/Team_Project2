@@ -3,7 +3,7 @@
 <mapper namespace="wearing">
 	<insert id="insert" parameterType="wearingDto">
 		INSERT INTO wearing_tb(w_no,w_date,w_total_count,w_total_price,a_code)
-		VALUES(w_no_seq.NEXTVAL,TO_DATE(#{w_date}),#{w_total_count},#{w_total_price},#{a_code})
+		VALUES(w_no_seq.NEXTVAL,TO_DATE(#{w_date}),0,0,#{a_code})
 	</insert>
 	<select id="getList" resultType="wearingDto">
 		SELECT w_no, w_total_count, w_total_price, a_code, 
@@ -33,6 +33,29 @@
 	<select id="getpSize" resultType="productsDto" parameterType="String">
 	
 	</select>
+	<select id="getProductCode" resultType="productsDto">
+		SELECT p_code, p_name
+		FROM product_tb
+		ORDER BY p_name DESC
+	</select>
+	<insert id="insertDetailPS" parameterType="com.acorn.shoopse.wearing.dto.WearingSubDto">
+		INSERT INTO product_sub(p_no, p_code, p_size, p_stock)
+		VALUES(p_no_seq.NEXTVAL, 
+				(SELECT p_code FROM product_tb WHERE p_code=#{p_code}), 
+				#{p_size},
+				#{p_stock})
+	</insert>
+	<insert id="insertDetailWS" parameterType="com.acorn.shoopse.wearing.dto.WearingSubDto">
+		INSERT INTO wearing_sub(w_no, p_code, p_no, w_count, w_price)
+		VALUES(
+			(SELECT w_no FROM wearing_tb WHERE w_no=#{w_no}),
+			(SELECT p_code FROM product_tb WHERE p_code=#{p_code}),
+			(SELECT max(p_no) FROM product_sub),
+			#{w_count},
+			#{w_price}
+		)	
+	</insert>
+	
 </mapper>
 
 

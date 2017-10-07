@@ -41,10 +41,6 @@
 	
 	<label for="p_name">상품명</label>
 	<input type="text" name="p_name" id="p_name"/><br /><br />	
-	<label for="p_size">사이즈</label>
-	<input type="text" name="p_size"/>
-	<label for="p_stock">수량</label>
-	<input type="text" name="p_stock" />
 	<label for="p_price">가격</label>
 	<input type="text" name="p_price" id="p_price" /><br />
 	<label for="point">마일리지</label>
@@ -94,7 +90,7 @@
 			}			
 		});
 	});
-	
+ 	
 	
 	$("#division").change(function(){
 		var code = "";
@@ -130,13 +126,13 @@
 			return false;
 		}
 		
-		for(var i=0; i<subFiles.length; i++){
+		/* for(var i=0; i<subFiles.length; i++){
 			console.log(subFiles[i]);
 			if(subFiles[i].value==''){
 				alert("서브 이미지 파일을 입력하세요!");
 				return false;
-			}
-		}
+			} 
+		}*/
 		
 	});
 </script>

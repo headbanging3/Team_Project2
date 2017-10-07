@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" />
+<title>㈜슙스 공식 온라인스토어</title>
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.main{
 		background-color: #fff;
@@ -62,7 +62,7 @@
    		width:500px;
    		height:400px;
    		float:left;
-   		border: 1px solid red;
+   		border: 1px solid #cecece;
    }
    #topText span{
    		font-size: 20px;
@@ -191,7 +191,7 @@
 						<select id="size" name="size">
 						    <option value="">사이즈</option>
 						    <c:forEach var="tmp" items="${psize }">
-						    	<option value="${tmp.p_size }">${tmp.p_size }</option>
+						    	<option value="${tmp.p_no }">${tmp.p_size }</option>
 						    </c:forEach>
 						   						 
 						</select>
@@ -218,14 +218,13 @@
 							 <div class="order">
 								<strong>사이즈:<span id="result"></span></strong>
 								<strong>수량:<span id="result2"></span></strong>
-								<strong>금액:<span id="result2" class="money" value="0"></span></strong> 
+								<strong>금액:<span class="money" value="0"></span></strong> 
 							 </div>
 							
 							<ul class="orderBtn">
-								<li><input class="btn btn-primary" id="oBtn" type="button" value="주문1" onclick="mySubmit(1)" /></li>
-								<li><input class="btn btn-danger" id="cBtn" type="button" value="장바구니 담기" onclick="mySubmit(2)"/></li>
+								<li><input class="btn btn-primary" id="orderBtn" type="button" value="주문1"  /></li>
+								<li><input class="btn btn-danger" id="cartBtn" type="button" value="장바구니 담기"/></li>
 							</ul>
-						
 						</div>	
 						</form>
 						
@@ -365,24 +364,65 @@
 
 
 <jsp:include page="../footer.jsp"/>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.2.0.js"></script>
 <script>
 
 	function popup(){
 		window.open("${pageContext.request.contextPath}/products/popup.do","팝업창","width=600,height=400,top=200,left=500");
 	}
 	
-	function mySubmit(index) {
-		if(index==1) {
-			document.myForm.action = 'orderAction.do';
+	$("#cartBtn").on("click",function(){
+		var p_no = $("#size option:selected").val();
+		var p_code = "${getinfo.p_code}";
+		var o_count = $("#amount option:selected").text();
+		var o_sub_price = "${getinfo.p_price }";
+		var o_sub_total_price = o_sub_price*o_count;
+		
+		var cart = {
+				p_no:p_no,p_code:p_code,o_count:o_count,o_sub_total_price:o_sub_total_price,o_sub_price:o_sub_price
+		}//ajax태울 카트객체
+		console.log(cart);
+		if(!(p_no&&p_code&&o_count&&o_sub_price&&o_sub_total_price)){
+			return;
 		}
-		if(index==2) {
-			document.myForm.action="orderPage.do";
+		function insert(){
+			$.ajax({
+				url: 'insertCart_ajax.do',
+				type:'post',
+				data:cart,
+				success:function(result){
+					if(result.result=='fail'){
+						alert('장바구니에 있는 상품입니다.장바구니에서확인하세요');
+					}else{
+						var goCart= confirm("장바구니에 담겼습니다.장바구니로 이동하시겠습니까?");
+						if(goCart){
+							location.replace("http://localhost:8888/shoopse/cart/cart_list.do");
+						}else{
+							location.reload();
+						}
+					}
+				}
+			})
 		}
 
-		document.myForm.submit();
-	}
+		var mem_flag = "${mem_flag}";
+		if(!mem_flag){
+			alert("비회원 구매 진행합니다.");
+			$.ajax({
+				url: 'notuserSignup.do',
+				type:'post',
+				data: {
+					mem_flag:2
+				},
+				success:function(){
+					console.log('비회원생성');
+					insert();
+				}
+			})
+		}else{
+			insert();
+		}	
+	});
+	
 	var a= $("#amount").on("change",function(){
 		var price = '<c:out value="${getinfo.p_price}"/>';
 
@@ -390,8 +430,8 @@
 
 		var b =  $("#result2").text(text);
 		var c = parseInt($('#amout option:selected').val());
-		console.log(c);
-		console.log("price:"+price);
+		//console.log(c);
+		//console.log("price:"+price);
 		$('.money').text(price*text);
 		
 	});

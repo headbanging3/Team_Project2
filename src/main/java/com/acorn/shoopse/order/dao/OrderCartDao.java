@@ -8,8 +8,10 @@ import com.acorn.shoopse.users.dto.UsersDto;
 
 public interface OrderCartDao {
 	public List<OrderCartDto> getCartList(int mem_num);
+	public List<OrderCartDto> getOrderList(int mem_num);
 	public OrderCartDto itemCount(OrderCartDto dto);
 	public UsersDto getAddr(int mem_num);
 	public void orderInsert(OrderActionDto dto);
 	public void orderDeleteAjax(List<OrderCartDto> dto);
+	public String cartInsert(OrderCartDto dto);
 }

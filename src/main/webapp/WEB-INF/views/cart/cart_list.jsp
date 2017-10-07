@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/home1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/fotorama.css" />
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 .counter { width:20px; height:20px; boder: 1px solid grey; }
 * {
@@ -33,6 +34,7 @@
 <jsp:include page="../navbar.jsp"></jsp:include>
 <c:choose>
 <c:when test="${not empty cartList }">
+<div style="font-size:50px">장바구니 목록</div>
 <table class="table">
 	<tr>
 		<td>체크박스</td>
@@ -92,7 +94,7 @@
 </div>
 </c:when>
 <c:when test="${empty cartList}">
-	장바구니가 비었습니다
+	<div style="font-size:50px">장바구니가 비었습니다</div>
 </c:when>
 </c:choose>
 

@@ -12,6 +12,36 @@
 		    ON ps.p_code = pt.p_code
 		WHERE ot.mem_num=#{mem_num} and ot.o_status = 1
 	</select>
+	<select id="getOrderList" resultType="cartDto" parameterType="int">
+		SELECT ot.o_no, ps.p_no,ps.p_code,pt.p_name, ps.p_size, os.o_count, os.o_sub_price, os.o_sub_total_price,
+				to_char(ot.o_date, 'yyyy-mm-dd') as o_date
+		FROM order_tb ot 
+		JOIN order_sub os 
+		    ON  ot.o_no=os.o_no
+		JOIN product_sub ps 
+		    ON os.p_no=ps.p_no
+		JOIN product_tb pt
+		    ON ps.p_code = pt.p_code
+		WHERE ot.mem_num=#{mem_num} and ot.o_status = 2
+	</select>
+	
+	<select id="isOrder" resultType="cartDto" parameterType="cartDto" >
+		SELECT o_no from order_tb 
+		WHERE mem_num = #{mem_num}
+		AND o_status = 1
+	</select>
+	
+	<insert id="orderTB_insert" parameterType="cartDto">
+		INSERT INTO 
+			order_tb (o_no,mem_num,o_status) 
+		VALUES(O_NO_SEQ.NEXTVAL,#{mem_num},1)
+	</insert>
+	
+	<insert id="orderSUB_insert" parameterType="cartDto">
+		INSERT INTO 
+		order_sub (o_no,p_no,p_code,o_count,o_sub_total_price,o_sub_price) 
+		VALUES(#{o_no},#{p_no},#{p_code},#{o_count},#{o_sub_total_price},#{o_sub_price})
+	</insert>  
 	
 	<update id="countUpdate" parameterType="cartDto">
 		UPDATE order_sub 
@@ -35,7 +65,7 @@
 	
 	<update id="orderUpdate" parameterType="orderActionDto">
 		UPDATE order_tb 
-		SET o_total_price =(SELECT sum(o_sub_total_price) FROM order_sub WHERE  o_no=#{o_no})+3000,
+		SET o_total_price =(SELECT sum(o_sub_total_price+3000) FROM order_sub WHERE  o_no=#{o_no}),
 		o_total_count = (SELECT count(o_count) FROM order_sub WHERE  o_no= #{o_no}),
 		o_date=sysdate,
 		o_status='2'
@@ -58,6 +88,7 @@
 		AND p_no=#{p_no}
 	</delete>
 	
+
 	
 	
 </mapper>

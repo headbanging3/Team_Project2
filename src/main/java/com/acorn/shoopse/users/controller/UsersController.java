@@ -102,8 +102,19 @@ public class UsersController {
 	//회원가입 이후 홈 리다이렉트
 	@RequestMapping("/users/signup")
 	public String signup(@ModelAttribute UsersDto dto){
+		dto.setMem_flag("1");
 		usersService.usersSignup(dto);
+		
 		return "redirect:/home.do";
+	}
+	//비회원가입 lks
+	@RequestMapping("/products/notuserSignup")
+	public String notuserSignup(@ModelAttribute UsersDto dto, HttpServletRequest request){
+		//System.out.println("mem_flag"+dto.getMem_flag());
+		usersService.notusersSignup(dto, request);
+		System.out.println("notUserMem"+request.getSession().getAttribute("mem_num"));
+		System.out.println("notUserFlag"+request.getSession().getAttribute("mem_flag"));
+		return "/products/products_detail";
 	}
 	//아이디 찾는 페이지로 이동
 	@RequestMapping("/users/find_id")

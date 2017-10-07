@@ -13,6 +13,7 @@ import com.acorn.shoopse.order.dao.OrderCartDao;
 import com.acorn.shoopse.order.dto.OrderActionDto;
 import com.acorn.shoopse.order.dao.OrderDao;
 import com.acorn.shoopse.order.dto.OrderCartDto;
+import com.acorn.shoopse.order.dto.OrderListDetailDto;
 import com.acorn.shoopse.order.dto.WholeOrderDto;
 import com.acorn.shoopse.users.dto.UsersDto;
 
@@ -59,6 +60,33 @@ public class OrderServiceImpl implements OrderService{
 		cartDao.orderDeleteAjax(dto);
 	}
 	
+	@Override
+	public ModelAndView wholeOrderList() {
+		List<WholeOrderDto> list = orderDao.orderGetList();
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("list", list);
+		return mView;
+	}
+
+	@Override
+	public ModelAndView cartInsert(OrderCartDto dto) {
+		String result = cartDao.cartInsert(dto);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("result",result);
+		
+		return mView;
+		
+	}
+
+	@Override
+	public ModelAndView orderlist(int mem_num) {
+		List<OrderCartDto> orderList = cartDao.getOrderList(mem_num);
+		ModelAndView mView = new ModelAndView();
+		mView.addObject("orderList", orderList);
+		return mView;
+	}
+
+	@Override
 	public void insert(HttpServletRequest request, OrderDao dao) {
 		// TODO Auto-generated method stub
 		
@@ -71,10 +99,11 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public ModelAndView wholeOrderList() {
-		List<WholeOrderDto> list = orderDao.orderGetList();
+	public ModelAndView orderListDetail(int o_no) {
+		List<OrderListDetailDto> list = orderDao.orderListDetail(o_no);
 		ModelAndView mView = new ModelAndView();
 		mView.addObject("list", list);
+		
 		return mView;
 	}
 }

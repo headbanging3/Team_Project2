@@ -15,11 +15,15 @@ public interface OrderService {
 	public ModelAndView getList();
 	
 	
-	/* ************************* 상품 CRUD ************************* */
-	public ModelAndView list(int mem_num);
-	public ModelAndView itemCount(OrderCartDto dto);
-	public ModelAndView getAddr(int mem_num);
-	public void orderInsert(OrderActionDto dto);
-	public void orderDeleteAjax(List<OrderCartDto> dto);
-	public ModelAndView wholeOrderList();
+	/* ************************* 장바구니 CRUD ************************* */
+	public ModelAndView list(int mem_num);//장바구니 리스트
+	public ModelAndView itemCount(OrderCartDto dto);//카트 개수조절
+	public ModelAndView getAddr(int mem_num);//주문주소가져오기
+	public void orderInsert(OrderActionDto dto);//주문인서트
+	public void orderDeleteAjax(List<OrderCartDto> dto);//주문삭제
+	public ModelAndView wholeOrderList();//
+	public ModelAndView cartInsert(OrderCartDto dto);//장바구니 입력
+	
+	public ModelAndView orderlist(int mem_num);//주문 리스트
+	public ModelAndView orderListDetail(int o_no);
 }

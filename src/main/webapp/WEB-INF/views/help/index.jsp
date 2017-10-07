@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>고객센터</title>
+<jsp:include page="/resources/resources.jsp"/>
 <style>
 	.help div{
 		

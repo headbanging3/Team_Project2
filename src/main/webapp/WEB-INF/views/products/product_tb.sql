@@ -13,6 +13,9 @@ INSERT INTO product_kind(p_kind_code, parent_kind_code, kind_name)
 VALUES		('0102', (SELECT p_kind_code FROM product_kind WHERE p_kind_code='01'), '맥스');
 INSERT INTO product_kind(p_kind_code, parent_kind_code, kind_name) 
 VALUES		('0103', (SELECT p_kind_code FROM product_kind WHERE p_kind_code='01'), '포스');
+INSERT INTO product_kind(p_kind_code, parent_kind_code, kind_name) 
+VALUES		('0201', (SELECT p_kind_code FROM product_kind WHERE p_kind_code='02'), '스탠스미스');
+
 
 
 
