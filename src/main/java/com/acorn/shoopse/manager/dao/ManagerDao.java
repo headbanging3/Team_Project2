@@ -24,5 +24,7 @@ public interface ManagerDao {
 	public ProductsDto productsUpdateForm(String p_code); 
 	public void productsUpdate(ProductsDto dto);
 	public OrderListDto userOrderList(int mem_num);
-	public void subImgsInsert(ProductsImgsDto imgsDto);
+	public void subImgInsert(ProductsImgsDto imgsDto);
+	public void subImgDelete(String p_code);
+	public List<String> subImgList(String p_code);
 }

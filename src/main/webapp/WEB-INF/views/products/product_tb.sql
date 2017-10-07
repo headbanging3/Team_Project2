@@ -1,5 +1,5 @@
 INSERT INTO product_kind(p_kind_code, kind_name) VALUES('01','나이키');
-INSERT INTO product_kind(p_kind_code, kind_name) VALUES('02','아이다스');
+INSERT INTO product_kind(p_kind_code, kind_name) VALUES('02','아디다스');
 INSERT INTO product_kind(p_kind_code, kind_name) VALUES('03','뉴발란스');
 INSERT INTO product_kind(p_kind_code, kind_name) VALUES('04','기타');
 
