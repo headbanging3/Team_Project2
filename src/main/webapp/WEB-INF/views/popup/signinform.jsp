@@ -33,7 +33,7 @@
 		  <div class="form">
 		    <h2>Login to your account</h2>
 			    <form action="loginresult.do" method="post" onsubmit="return login()">
-			    	<input type="hidden" id="RSAModulus" value="${RSAModulus}"/>
+<!-- 			    	<input type="hidden" id="RSAModulus" value="${RSAModulus}"/>
        				<input type="hidden" id="RSAExponent" value="${RSAExponent}"/> 
 			    
 	  		    	<input type="text"  name="USER_ID_TEXT" id="USER_ID_TEXT" placeholder="Username" value="${id }"/>
@@ -41,7 +41,10 @@
 			      	
 			      	<input type="hidden" id="USER_ID" name="USER_ID">
         			<input type="hidden" id="USER_PW" name="USER_PW">
-
+ -->
+ 					<input type="text"  name="USER_ID" id="USER_ID" placeholder="Username" value="${id }"/>
+			      	<input type="password" name="USER_PW" id="USER_PW" placeholder="Password"/>
+ 
 			      	<button type="submit">Login</button>
 			    </form>
 			   
@@ -70,8 +73,8 @@ function findBtn_click() {
   }
   
 function login(){
-    var id = $("#USER_ID_TEXT");
-    var pw = $("#USER_PW_TEXT");
+    var id = $("#USER_ID");
+    var pw = $("#USER_PW");
 
     if(id.val() == ""){
         alert("아이디를 입력 해주세요.");
@@ -86,7 +89,7 @@ function login(){
     }
     
     // rsa 암호화
-    var rsa = new RSAKey();
+<!--    var rsa = new RSAKey();
     rsa.setPublic($('#RSAModulus').val(), $('#RSAExponent').val());
     
     $("#USER_ID").val(rsa.encrypt(id.val()));
@@ -94,7 +97,7 @@ function login(){
     
     id.val("");
     pw.val("");
-
+-->
     return true;
 }
 </script>
